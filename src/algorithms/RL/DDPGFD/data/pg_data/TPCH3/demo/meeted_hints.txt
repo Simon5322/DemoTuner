@@ -1,0 +1,52 @@
+Hint: ( work_mem , 8mb , [] )  hint_id : 1 
+Hint: ( work_mem , 36mb , [] )  hint_id : 2 
+Hint: ( work_mem , 64mb , [] )  hint_id : 3 
+Hint: ( work_mem , 0.01mem , [] )  hint_id : 4 
+Hint: ( work_mem , 0.03mem , [] )  hint_id : 5 
+Hint: ( work_mem , 0.05mem , [] )  hint_id : 6 
+Hint: ( work_mem , increase , ['complex query'] )  hint_id : 9 
+Hint: ( wal_buffers , 1mb , [] )  hint_id : 12 
+Hint: ( wal_buffers , 8mb , [] )  hint_id : 13 
+Hint: ( wal_buffers , decrease , ['not write heavy'] )  hint_id : 16 
+Hint: ( wal_buffers , increase , ['many connections'] )  hint_id : 19 
+Hint: ( temp_buffers , increase , ['many connections'] )  hint_id : 21 
+Hint: ( shared_buffers , 2gb , [] )  hint_id : 23 
+Hint: ( shared_buffers , 2.5gb , [] )  hint_id : 24 
+Hint: ( shared_buffers , 4gb , [] )  hint_id : 25 
+Hint: ( shared_buffers , 0.2mem , [] )  hint_id : 26 
+Hint: ( shared_buffers , 0.4mem , [] )  hint_id : 27 
+Hint: ( shared_buffers , 0.25mem , [] )  hint_id : 28 
+Hint: ( shared_buffers , 0.15mem , ['not memory available'] )  hint_id : 29 
+Hint: ( effective_cache_size , 0.5mem , [] )  hint_id : 34 
+Hint: ( maintenance_work_mem , 256mb , [] )  hint_id : 41 
+Hint: ( maintenance_work_mem , 512mb , [] )  hint_id : 42 
+Hint: ( maintenance_work_mem , 0.05mem , [] )  hint_id : 47 
+Hint: ( max_connections , increase , ['many connections'] )  hint_id : 49 
+Hint: ( max_connections , 4cpu , [] )  hint_id : 50 
+Hint: ( max_connections , 8cpu , [] )  hint_id : 51 
+Hint: ( max_connections , 500 , [] )  hint_id : 52 
+Hint: ( max_connections , decrease , ['not memory available'] )  hint_id : 53 
+Hint: ( max_connections , 500 , ['many cpus'] )  hint_id : 55 
+Hint: ( bgwriter_lru_multiplier , 1 , ['not write heavy'] )  hint_id : 59 
+Hint: ( bgwriter_lru_multiplier , 0.5 , ['not write heavy'] )  hint_id : 60 
+Hint: ( bgwriter_lru_multiplier , 0.7 , ['not write heavy'] )  hint_id : 61 
+Hint: ( bgwriter_lru_multiplier , 0.9 , ['not write heavy'] )  hint_id : 62 
+Hint: ( backend_flush_after , decrease , ['not write heavy', 'not dirty data in kernel page'] )  hint_id : 66 
+Hint: ( backend_flush_after , 20 , [] )  hint_id : 67 
+Hint: ( backend_flush_after , 22 , [] )  hint_id : 68 
+Hint: ( backend_flush_after , 25 , [] )  hint_id : 69 
+Hint: ( bgwriter_delay , decrease , ['not write heavy', 'not frequent dirty buffers'] )  hint_id : 72 
+Hint: ( max_parallel_workers , 4cpu , [] )  hint_id : 76 
+Hint: ( max_parallel_workers , 8cpu , [] )  hint_id : 77 
+Hint: ( max_parallel_workers , increase , ['large queries'] )  hint_id : 78 
+Hint: ( hash_mem_multiplier , increase , ['large queries'] )  hint_id : 81 
+Hint: ( checkpoint_flush_after , decrease , ['not memory available'] )  hint_id : 82 
+Hint: ( max_wal_size , 8gb , [] )  hint_id : 84 
+Hint: ( max_wal_size , increase , ['large dataset'] )  hint_id : 85 
+Hint: ( max_wal_size , decrease , ['not write heavy'] )  hint_id : 87 
+Hint: ( max_wal_size , increase , ['large queries'] )  hint_id : 89 
+Hint: ( vacuum_cost_page_dirty , increase , ['not write heavy'] )  hint_id : 93 
+Hint: ( min_parallel_table_scan_size , 8mb , [] )  hint_id : 94 
+Hint: ( min_parallel_table_scan_size , decrease , ['small table'] )  hint_id : 95 
+Hint: ( min_parallel_index_scan_size , 512kb , [] )  hint_id : 99 
+Hint: ( min_parallel_index_scan_size , decrease , ['no index'] )  hint_id : 100 

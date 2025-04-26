@@ -1,0 +1,1813 @@
+97,"<re.Match object; span=(249, 272), match='interned_strings_buffer'>","<re.Match object; span=(0, 1), match='8'>",8,"This link can help you calculate the good values for your system.
+Enable PHP OPcache¶
+The OPcache improves the performance of PHP applications by caching precompiled bytecode. We recommend at least the following settings:
+opcache.enable = 1
+opcache.interned_strings_buffer = 8",8.0,,3,"('interned_strings_buffer affects other configs', '8')"
+97,"<re.Match object; span=(105, 120), match='revalidate_freq'>","<re.Match object; span=(0, 1), match='1'>",1,"opcache.max_accelerated_files = 10000
+opcache.memory_consumption = 128
+opcache.save_comments = 1
+opcache.revalidate_freq = 1
+For more details check out the official documentation or this blog post about some recommended settings.
+Next
+Previous",1.0,,3,"('revalidate_freq affects other configs', '1')"
+97,"<re.Match object; span=(46, 64), match='memory_consumption'>","<re.Match object; span=(0, 3), match='128'>",128,"opcache.max_accelerated_files = 10000
+opcache.memory_consumption = 128
+opcache.save_comments = 1
+opcache.revalidate_freq = 1
+For more details check out the official documentation or this blog post about some recommended settings.
+Next
+Previous",128.0,,3,"('memory_consumption affects other configs', '128')"
+97,"<re.Match object; span=(8, 29), match='max_accelerated_files'>","<re.Match object; span=(0, 5), match='10000'>",10000,"opcache.max_accelerated_files = 10000
+opcache.memory_consumption = 128
+opcache.save_comments = 1
+opcache.revalidate_freq = 1
+For more details check out the official documentation or this blog post about some recommended settings.
+Next
+Previous",10000.0,,3,"('max_accelerated_files affects other configs', '10000')"
+97,"<re.Match object; span=(79, 92), match='save_comments'>","<re.Match object; span=(0, 1), match='1'>",1,"opcache.max_accelerated_files = 10000
+opcache.memory_consumption = 128
+opcache.save_comments = 1
+opcache.revalidate_freq = 1
+For more details check out the official documentation or this blog post about some recommended settings.
+Next
+Previous",1.0,,3,"('save_comments affects other configs', '1')"
+1,"<re.Match object; span=(18, 31), match='seq_page_cost'>","<re.Match object; span=(0, 1), match='1'>","1
+","#records
+= 100000
+seq_page_cost
+= 1
+(default)
+cpu_tuple_cost
+= 0.01
+(default)
+cpu_filter_cost = 0.0025 (default)",1.0,,3,"('seq_page_cost affects other configs', '1\n')"
+1,"<re.Match object; span=(46, 60), match='cpu_tuple_cost'>","<re.Match object; span=(0, 4), match='0.01'>","0.01
+","#records
+= 100000
+seq_page_cost
+= 1
+(default)
+cpu_tuple_cost
+= 0.01
+(default)
+cpu_filter_cost = 0.0025 (default)",0.01,,3,"('cpu_tuple_cost affects other configs', '0.01\n')"
+1,"<re.Match object; span=(78, 93), match='cpu_filter_cost'>","<re.Match object; span=(0, 6), match='0.0025'>",0.0025,"#records
+= 100000
+seq_page_cost
+= 1
+(default)
+cpu_tuple_cost
+= 0.01
+(default)
+cpu_filter_cost = 0.0025 (default)",0.0025,,3,"('cpu_filter_cost affects other configs', '0.0025')"
+5,"<re.Match object; span=(22, 36), match='shared_buffers'>","<re.Match object; span=(0, 3), match='25%'>",25% of available RAM,"8. Properly Configure shared_buffers
+We typically recommend 25% of available RAM. If you install TimescaleDB via a method that runs timescaledb-tune, it should automatically configure shared_buffers to something well-suited to your hardware specs.",0.25,,1,"('shared_buffers affects other configs', 'hardware specs')"
+5,"<re.Match object; span=(171, 185), match='shared_buffers'>","<re.Match object; span=(0, 3), match='25%'>",25%,"Note: in some cases, typically with virtualization and constrained cgroups memory allocation, these automatically-configured settings may not be ideal. To check that your shared_buffers are set to within the 25% range,  run SHOW shared_buffers from your psql connection.
+9. Run our Docker Images on Linux Hosts
+If you are running a TimescaleDB Docker container (which runs Linux) on top of another Linux operating system, you're in great shape. The container is basically providing process isolation, and the overhead is extremely minimal.",0.25,,1,"('shared_buffers is affected by other condition', 'virtualization and constrained cgroups memory allocation')"
+5,"<re.Match object; span=(94, 115), match='_timescaledb_internal'>","<re.Match object; span=(0, 5), match='388MB'>",388MB     | 108MB    ,"-----------------------------------------+------------+------------+------------+------------
+_timescaledb_internal._hyper_1_96_chunk | 200MB     | 64MB
+| 8192 bytes | 272MB
+_timescaledb_internal._hyper_1_95_chunk | 388MB     | 108MB     | 8192 bytes | 500MB",388.0,MB,3,"('_timescaledb_internal affects other configs', 'hyper_1_96_chunk | 200MB \xa0 \xa0')"
+5,"<re.Match object; span=(94, 115), match='_timescaledb_internal'>","<re.Match object; span=(12, 17), match='108MB'>",388MB     | 108MB    ,"-----------------------------------------+------------+------------+------------+------------
+_timescaledb_internal._hyper_1_96_chunk | 200MB     | 64MB
+| 8192 bytes | 272MB
+_timescaledb_internal._hyper_1_95_chunk | 388MB     | 108MB     | 8192 bytes | 500MB",108.0,MB,3,"('_timescaledb_internal affects other configs', 'hyper_1_96_chunk | 200MB \xa0 \xa0')"
+5,"<re.Match object; span=(0, 21), match='_timescaledb_internal'>","<re.Match object; span=(0, 5), match='388MB'>",388MB     | 108MB    ,"_timescaledb_internal._hyper_1_94_chunk | 388MB     | 108MB     | 8192 bytes | 500MB
+_timescaledb_internal._hyper_1_93_chunk | 388MB     | 108MB     | 8192 bytes | 500MB",388.0,MB,3,"('_timescaledb_internal is affected by other condition', 'hyper_1_94_chunk | 388MB \xa0 \xa0')"
+5,"<re.Match object; span=(0, 21), match='_timescaledb_internal'>","<re.Match object; span=(12, 17), match='108MB'>",388MB     | 108MB    ,"_timescaledb_internal._hyper_1_94_chunk | 388MB     | 108MB     | 8192 bytes | 500MB
+_timescaledb_internal._hyper_1_93_chunk | 388MB     | 108MB     | 8192 bytes | 500MB",108.0,MB,3,"('_timescaledb_internal is affected by other condition', 'hyper_1_94_chunk | 388MB \xa0 \xa0')"
+11,"<re.Match object; span=(280, 295), match='max_connections'>","<re.Match object; span=(0, 3), match='100'>",100 concurrent connections,"PostgreSQL supports various types of indexes such as B-Tree (default), Hash, GiST, SP-GiST, and GIN. Here are the detailed steps to create PostgreSQL index.
+5. Increase maximum connections
+By default, PostgreSQL supports a maximum of 100 concurrent connections. This is stored in max_connections server variable. You can increase this number to support more concurrent connections and keep users from waiting. However, each connection consumes memory, so don’t increase it, unless required.",100.0,,3,"('max_connections is affected by other condition', 'each connection consumes memory')"
+15,"<re.Match object; span=(196, 224), match='checkpoint_completion_target'>","<re.Match object; span=(0, 3), match='0.9'>",0.9,"[local]:5433 user@exampledb=# select name, setting from pg_settings where name like '%wal_size%' or name like '%checkpoint%' order by name;
+name
+setting
+------------------------------+-----------
+checkpoint_completion_target | 0.9",0.9,,3,"('checkpoint_completion_target is affected by other condition', '0.9')"
+15,"<re.Match object; span=(28, 46), match='checkpoint_timeout'>","<re.Match object; span=(0, 3), match='300'>",300,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 1024
+min_wal_size
+| 80
+(7 rows)",300.0,,3,"('checkpoint_timeout affects other configs', '300')"
+15,"<re.Match object; span=(99, 111), match='max_wal_size'>","<re.Match object; span=(0, 4), match='1024'>",1024,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 1024
+min_wal_size
+| 80
+(7 rows)",1024.0,,3,"('max_wal_size affects other configs', '1024')"
+15,"<re.Match object; span=(53, 71), match='checkpoint_warning'>","<re.Match object; span=(0, 2), match='30'>",30,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 1024
+min_wal_size
+| 80
+(7 rows)",30.0,,3,"('checkpoint_warning affects other configs', '30')"
+15,"<re.Match object; span=(119, 131), match='min_wal_size'>","<re.Match object; span=(0, 4), match='1024'>",1024,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 1024
+min_wal_size
+| 80
+(7 rows)",1024.0,,3,"('min_wal_size is affected by other condition', '80\n')"
+15,"<re.Match object; span=(0, 12), match='max_wal_size'>","<re.Match object; span=(0, 3), match='1GB'>",1GB (1024MB).,"max_wal_size sets the maximum amount of Write-Ahead-Logging (WAL) to grow between automatic checkpoints. This is a soft limit; WAL size can exceed max_wal_size under special circumstances, such as heavy load, a failing archive_command, or a high wal_keep_segments setting.
+It should also be noted that increasing this parameter can increase the amount of time needed for crash recovery. The default value is 1GB (1024MB).",1.0,GB,3,"('max_wal_size is affected by other condition', 'high wal_keep_segments setting')"
+15,"<re.Match object; span=(0, 12), match='max_wal_size'>","<re.Match object; span=(5, 11), match='1024MB'>",1GB (1024MB).,"max_wal_size sets the maximum amount of Write-Ahead-Logging (WAL) to grow between automatic checkpoints. This is a soft limit; WAL size can exceed max_wal_size under special circumstances, such as heavy load, a failing archive_command, or a high wal_keep_segments setting.
+It should also be noted that increasing this parameter can increase the amount of time needed for crash recovery. The default value is 1GB (1024MB).",1024.0,MB,3,"('max_wal_size is affected by other condition', 'high wal_keep_segments setting')"
+15,"<re.Match object; span=(635, 663), match='checkpoint_completion_target'>","<re.Match object; span=(0, 3), match='0.9'>",0.9,"The ideal value, for most use cases, is to increase the value for max_wal_size such that it can hold at least one hour's worth of logs. The caveat here, however, is that you do not want to set this value extremely high, as it can increase the amount of time needed for crash recovery. If desired, the min_wal_size can also be increased, so that the system can handle spikes in WAL usage during batch jobs and other unusual circumstances. After making the appropriate configuration changes, and reloading Postgres, we can validate that the new settings are applied, as we expect:
+name
+setting
+------------------------------+-----------
+checkpoint_completion_target | 0.9",0.9,,3,"('checkpoint_completion_target affects other configs', '0.9')"
+15,"<re.Match object; span=(0, 22), match='checkpoint_flush_after'>","<re.Match object; span=(0, 2), match='32'>",32,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 16384
+min_wal_size
+| 4096",32.0,,3,"('checkpoint_flush_after affects other configs', '32')"
+15,"<re.Match object; span=(28, 46), match='checkpoint_timeout'>","<re.Match object; span=(0, 3), match='300'>",300,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 16384
+min_wal_size
+| 4096",300.0,,3,"('checkpoint_timeout affects other configs', '300')"
+15,"<re.Match object; span=(99, 111), match='max_wal_size'>","<re.Match object; span=(0, 5), match='16384'>",16384,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 16384
+min_wal_size
+| 4096",16384.0,,3,"('max_wal_size affects other configs', '16384')"
+15,"<re.Match object; span=(53, 71), match='checkpoint_warning'>","<re.Match object; span=(0, 2), match='30'>",30,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 16384
+min_wal_size
+| 4096",30.0,,3,"('checkpoint_warning affects other configs', '30')"
+15,"<re.Match object; span=(120, 132), match='min_wal_size'>","<re.Match object; span=(0, 4), match='4096'>",4096,"checkpoint_flush_after
+| 32
+checkpoint_timeout
+| 300
+checkpoint_warning
+| 30
+log_checkpoints
+| off
+max_wal_size
+| 16384
+min_wal_size
+| 4096",4096.0,,3,"('min_wal_size affects other configs', '4096')"
+22,"<re.Match object; span=(45, 51), match='pg_hba'>","<re.Match object; span=(13, 18), match='127.0'>",host all all 127.0.0.1/32 ident,"host all all 127.0.0.1/32 md5
+If the default pg_hba.conf file contains the following line:
+host all all 127.0.0.1/32 ident",127.0,,3,"('pg_hba is affected by other condition', 'If the default pg_hba.conf file contains the following line')"
+22,"<re.Match object; span=(45, 51), match='pg_hba'>","<re.Match object; span=(19, 22), match='0.1'>",host all all 127.0.0.1/32 ident,"host all all 127.0.0.1/32 md5
+If the default pg_hba.conf file contains the following line:
+host all all 127.0.0.1/32 ident",0.1,,3,"('pg_hba is affected by other condition', 'If the default pg_hba.conf file contains the following line')"
+22,"<re.Match object; span=(45, 51), match='pg_hba'>","<re.Match object; span=(23, 25), match='32'>",host all all 127.0.0.1/32 ident,"host all all 127.0.0.1/32 md5
+If the default pg_hba.conf file contains the following line:
+host all all 127.0.0.1/32 ident",32.0,,3,"('pg_hba is affected by other condition', 'If the default pg_hba.conf file contains the following line')"
+22,"<re.Match object; span=(378, 392), match='max_connection'>","<re.Match object; span=(0, 3), match='100'>",100 maximum connections and then add 50 extra connections,"Small to mid-sized clusters - Consider the following settings as starting points. If resources are limited, consider reducing the buffer sizes and checkpoint segments further. Ongoing
+tuning may be required based on each host's resource utilization. For example, if the Cloudera Manager Server is running on the same host as other roles, the following values may be acceptable:
+max_connection - In general, allow each database on a host 100 maximum connections and then add 50 extra connections. You may have to increase the system",100.0,,3,"('max_connection affects other configs', 'allow each database on a host 100 maximum connections and then add 50 extra connections')"
+22,"<re.Match object; span=(378, 392), match='max_connection'>","<re.Match object; span=(37, 39), match='50'>",100 maximum connections and then add 50 extra connections,"Small to mid-sized clusters - Consider the following settings as starting points. If resources are limited, consider reducing the buffer sizes and checkpoint segments further. Ongoing
+tuning may be required based on each host's resource utilization. For example, if the Cloudera Manager Server is running on the same host as other roles, the following values may be acceptable:
+max_connection - In general, allow each database on a host 100 maximum connections and then add 50 extra connections. You may have to increase the system",50.0,,3,"('max_connection affects other configs', 'allow each database on a host 100 maximum connections and then add 50 extra connections')"
+22,"<re.Match object; span=(113, 132), match='checkpoint_segments'>","<re.Match object; span=(0, 2), match='16'>",16,"resources available to PostgreSQL, as described at Connection Settings.
+shared_buffers - 256MB
+wal_buffers - 8MB
+checkpoint_segments - 16
+Note: The checkpoint_segments setting is removed in PostgreSQL 9.5 and higher, replaced by min_wal_size and max_wal_size. The PostgreSQL 9.5",16.0,,3,"('checkpoint_segments affects other configs', 'min_wal_size and max_wal_size')"
+22,"<re.Match object; span=(72, 86), match='shared_buffers'>","<re.Match object; span=(0, 5), match='256MB'>",256MB,"resources available to PostgreSQL, as described at Connection Settings.
+shared_buffers - 256MB
+wal_buffers - 8MB
+checkpoint_segments - 16
+Note: The checkpoint_segments setting is removed in PostgreSQL 9.5 and higher, replaced by min_wal_size and max_wal_size. The PostgreSQL 9.5",256.0,MB,3,"('shared_buffers affects other configs', '256MB')"
+22,"<re.Match object; span=(95, 106), match='wal_buffers'>","<re.Match object; span=(0, 3), match='8MB'>",8MB,"resources available to PostgreSQL, as described at Connection Settings.
+shared_buffers - 256MB
+wal_buffers - 8MB
+checkpoint_segments - 16
+Note: The checkpoint_segments setting is removed in PostgreSQL 9.5 and higher, replaced by min_wal_size and max_wal_size. The PostgreSQL 9.5",8.0,MB,3,"('wal_buffers affects other configs', '8MB')"
+22,"<re.Match object; span=(127, 155), match='checkpoint_completion_target'>","<re.Match object; span=(0, 3), match='0.9'>",0.9,"release notes provides the following formula for determining the new settings:
+max_wal_size = (3 * checkpoint_segments) * 16MB
+checkpoint_completion_target - 0.9
+Large clusters - Can contain up to 1000 hosts. Consider the following settings as starting points.",0.9,,3,"('checkpoint_completion_target affects other configs', '0.9')"
+22,"<re.Match object; span=(99, 118), match='checkpoint_segments'>","<re.Match object; span=(0, 1), match='3'>",3,"release notes provides the following formula for determining the new settings:
+max_wal_size = (3 * checkpoint_segments) * 16MB
+checkpoint_completion_target - 0.9
+Large clusters - Can contain up to 1000 hosts. Consider the following settings as starting points.",3.0,,3,"('checkpoint_segments affects other configs', 'new settings')"
+22,"<re.Match object; span=(0, 14), match='max_connection'>","<re.Match object; span=(0, 3), match='100'>","100 maximum
+connections and then add 50 extra connections","max_connection - For large clusters, each database is typically hosted on a different host. In general, allow each database on a host 100 maximum
+connections and then add 50 extra connections. You may have to increase the system resources available to PostgreSQL, as described at Connection Settings.
+shared_buffers - 1024MB. This requires that the operating system can allocate sufficient shared memory. See PostgreSQL information on Managing Kernel Resources for more information on setting kernel resources.",100.0,,3,"('max_connection is affected by other condition', 'each database is typically hosted on a different host')"
+22,"<re.Match object; span=(0, 14), match='max_connection'>","<re.Match object; span=(37, 39), match='50'>","100 maximum
+connections and then add 50 extra connections","max_connection - For large clusters, each database is typically hosted on a different host. In general, allow each database on a host 100 maximum
+connections and then add 50 extra connections. You may have to increase the system resources available to PostgreSQL, as described at Connection Settings.
+shared_buffers - 1024MB. This requires that the operating system can allocate sufficient shared memory. See PostgreSQL information on Managing Kernel Resources for more information on setting kernel resources.",50.0,,3,"('max_connection is affected by other condition', 'each database is typically hosted on a different host')"
+22,"<re.Match object; span=(301, 315), match='shared_buffers'>","<re.Match object; span=(0, 6), match='1024MB'>",1024MB,"max_connection - For large clusters, each database is typically hosted on a different host. In general, allow each database on a host 100 maximum
+connections and then add 50 extra connections. You may have to increase the system resources available to PostgreSQL, as described at Connection Settings.
+shared_buffers - 1024MB. This requires that the operating system can allocate sufficient shared memory. See PostgreSQL information on Managing Kernel Resources for more information on setting kernel resources.",1024.0,MB,3,"('shared_buffers is affected by other condition', 'requires that the operating system can allocate sufficient shared memory')"
+22,"<re.Match object; span=(201, 220), match='checkpoint_segments'>","<re.Match object; span=(0, 3), match='128'>",128,"wal_buffers - 16MB. This value is derived from the shared_buffers value. Setting wal_buffers to be approximately 3% of shared_buffers up to a maximum of approximately 16MB is sufficient in most cases.
+checkpoint_segments - 128. The PostgreSQL Tuning
+Guide recommends values between 32 and 256 for write-intensive systems, such as this one.
+Note: The checkpoint_segments setting is removed in PostgreSQL 9.5 and higher, replaced by min_wal_size and max_wal_size. The PostgreSQL 9.5",128.0,,3,"('checkpoint_segments affects other configs', 'min_wal_size and max_wal_size')"
+22,"<re.Match object; span=(127, 155), match='checkpoint_completion_target'>","<re.Match object; span=(0, 3), match='0.9'>",0.9,"release notes provides the following formula for determining the new settings:
+max_wal_size = (3 * checkpoint_segments) * 16MB
+checkpoint_completion_target - 0.9.
+Configure the PostgreSQL server to start at boot.
+Command
+RHEL 7 compatible",0.9,,3,"('checkpoint_completion_target affects other configs', '0.9')"
+22,"<re.Match object; span=(99, 118), match='checkpoint_segments'>","<re.Match object; span=(0, 1), match='3'>",3,"release notes provides the following formula for determining the new settings:
+max_wal_size = (3 * checkpoint_segments) * 16MB
+checkpoint_completion_target - 0.9.
+Configure the PostgreSQL server to start at boot.
+Command
+RHEL 7 compatible",3.0,,3,"('checkpoint_segments affects other configs', 'new settings')"
+25,"<re.Match object; span=(166, 177), match='total_sales'>","<re.Match object; span=(0, 1), match='1'>","1, 1, 3000","!-- let's add a row in the sales base table
+INSERT INTO sales (id, item, store_id, customer_id, amount)
+VALUES(8, 'Gaming PC Super ProXXL', 1, 1, 3000);
+SELECT city, total_sales FROM city_sales WHERE city = 'Paris'",1.0,,3,"('total_sales is affected by other condition', ""city = 'Paris"")"
+25,"<re.Match object; span=(166, 177), match='total_sales'>","<re.Match object; span=(3, 4), match='1'>","1, 1, 3000","!-- let's add a row in the sales base table
+INSERT INTO sales (id, item, store_id, customer_id, amount)
+VALUES(8, 'Gaming PC Super ProXXL', 1, 1, 3000);
+SELECT city, total_sales FROM city_sales WHERE city = 'Paris'",1.0,,3,"('total_sales is affected by other condition', ""city = 'Paris"")"
+25,"<re.Match object; span=(166, 177), match='total_sales'>","<re.Match object; span=(6, 10), match='3000'>","1, 1, 3000","!-- let's add a row in the sales base table
+INSERT INTO sales (id, item, store_id, customer_id, amount)
+VALUES(8, 'Gaming PC Super ProXXL', 1, 1, 3000);
+SELECT city, total_sales FROM city_sales WHERE city = 'Paris'",3000.0,,3,"('total_sales is affected by other condition', ""city = 'Paris"")"
+25,"<re.Match object; span=(304, 336), match='max_concurrency_scaling_clusters'>","<re.Match object; span=(0, 1), match='1'>",1 (default) to 10,"By default, concurrency scaling is disabled, and you can enable it for any workload management (WLM) queue to scale to a virtually unlimited number of concurrent queries, with consistently fast query performance. You can control the maximum number of concurrency scaling clusters allowed by setting the “max_concurrency_scaling_clusters” parameter value from 1 (default) to 10 (contact support to raise this soft limit). The free billing credits provided for concurrency scaling is often enough and the majority of customers using this feature don’t end up paying extra for it. For more information about the concurrency scaling billing model see Concurrency Scaling pricing.
+You can monitor and control the concurrency scaling usage and cost by creating daily, weekly, or monthly usage limits and instruct Amazon Redshift to automatically take action (such as logging, alerting or disabling further usage) if those limits are reached. For more information, see Managing usage limits in Amazon Redshift.",1.0,,3,"('max_concurrency_scaling_clusters affects other configs', 'contact support to raise this soft limit')"
+25,"<re.Match object; span=(304, 336), match='max_concurrency_scaling_clusters'>","<re.Match object; span=(15, 17), match='10'>",1 (default) to 10,"By default, concurrency scaling is disabled, and you can enable it for any workload management (WLM) queue to scale to a virtually unlimited number of concurrent queries, with consistently fast query performance. You can control the maximum number of concurrency scaling clusters allowed by setting the “max_concurrency_scaling_clusters” parameter value from 1 (default) to 10 (contact support to raise this soft limit). The free billing credits provided for concurrency scaling is often enough and the majority of customers using this feature don’t end up paying extra for it. For more information about the concurrency scaling billing model see Concurrency Scaling pricing.
+You can monitor and control the concurrency scaling usage and cost by creating daily, weekly, or monthly usage limits and instruct Amazon Redshift to automatically take action (such as logging, alerting or disabling further usage) if those limits are reached. For more information, see Managing usage limits in Amazon Redshift.",10.0,,3,"('max_concurrency_scaling_clusters affects other configs', 'contact support to raise this soft limit')"
+25,"<re.Match object; span=(182, 194), match='ext_spectrum'>","<re.Match object; span=(39, 40), match='5'>","Archived, “cold” sales data older than 5 years","Historical sales data warehoused in a local Amazon Redshift database (represented as “local_dwh”)
+Archived, “cold” sales data older than 5 years stored on Amazon S3 (represented as “ext_spectrum”)
+We can create a late binding view in Amazon Redshift that allows you to merge and query data from all three sources. See the following code:",5.0,,3,"('ext_spectrum affects other configs', 'Archived, “cold” sales data')"
+25,"<re.Match object; span=(173, 183), match='account_id'>","<re.Match object; span=(7, 20), match='3_reader_role'>",role/<s3_reader_role>',"CREATE TEMP TABLE staging (LIKE ods.store_sales);
+-- replace the following COPY from S3:
+/*COPY staging FROM 's3://yourETLbucket/daily_store_sales/'
+IAM_ROLE 'arn:aws:iam::<account_id>:role/<s3_reader_role>'",3.0,_reader_role,3,"('account_id affects other configs', 'role')"
+26,"<re.Match object; span=(246, 261), match='cpu_dma_latency'>","<re.Match object; span=(0, 1), match='0'>",0,"You can apply the tuned-admin server profile for typical latency performance tuning. It disables the tuned and ktune power-saving mechanisms. The CPU speed mode changes to Performance. The I/O elevator is changed to Deadline for each device. The cpu_dma_latency parameter is registered with a value of 0 (the lowest possible latency) for power management QoS to limit latency where possible.
+Use the following Linux tools to measure maximum turbo frequency and power states:",0.0,,3,"('cpu_dma_latency is affected by other condition', 'power management QoS')"
+27,"<re.Match object; span=(64, 75), match='signup_date'>","<re.Match object; span=(25, 26), match='1'>",:beg_date AND :beg_date +1,"select count(1) from registration where cancelled = 'N'
+AND   r.signup_date BETWEEN :beg_date AND :beg_date +1
+It returns 4,344 records out of the 79,800 total records in registration. That is, 5.43 percent of the records will be read with that filter.",1.0,,3,"('signup_date is affected by other condition', ""cancelled = 'N'\nAND\xa0\xa0"")"
+27,"<re.Match object; span=(85, 93), match='beg_date'>","<re.Match object; span=(11, 12), match='1'>",:beg_date +1,"select count(1) from registration where cancelled = 'N'
+AND   r.signup_date BETWEEN :beg_date AND :beg_date +1
+It returns 4,344 records out of the 79,800 total records in registration. That is, 5.43 percent of the records will be read with that filter.",1.0,,3,"('beg_date is affected by other condition', ':beg_date +1')"
+28,"<re.Match object; span=(77, 85), match='pair_div'>","<re.Match object; span=(0, 1), match='4'>",4,"LANGUAGE plpgsql
+PARALLEL SAFE;
+1- EXPLAIN ANALYZE
+SELECT * from trade where pair_div_4 (id);
+Seq Scan on trade",4.0,,3,"('pair_div is affected by other condition', 'trade')"
+28,"<re.Match object; span=(129, 137), match='pair_div'>","<re.Match object; span=(0, 4), match='4_ps'>",4_ps,"Parallel Seq Scan on trade
+(cost=0.00..192283.11 rows=234800 width=16) (actual time=0.868..1301.220 rows=140880 loops=3)
+Filter: pair_div_4_ps(id)",4.0,_ps,3,"('pair_div is affected by other condition', 'trade\n')"
+28,"<re.Match object; span=(52, 63), match='max_pro_min'>","<re.Match object; span=(1, 6), match='1.589'>","
+1.589 |
+0.53 |
+1.589","public.prc_clientes
+2 |
+1.447 |
+0.72 |
+0.387
+public.max_pro_min
+3 |
+1.589 |
+0.53 |
+1.589
+public.registro_ddl",1.589,,3,"('max_pro_min affects other configs', '\n1.589')"
+28,"<re.Match object; span=(52, 63), match='max_pro_min'>","<re.Match object; span=(9, 13), match='0.53'>","
+1.589 |
+0.53 |
+1.589","public.prc_clientes
+2 |
+1.447 |
+0.72 |
+0.387
+public.max_pro_min
+3 |
+1.589 |
+0.53 |
+1.589
+public.registro_ddl",0.53,,3,"('max_pro_min affects other configs', '\n1.589')"
+28,"<re.Match object; span=(52, 63), match='max_pro_min'>","<re.Match object; span=(16, 21), match='1.589'>","
+1.589 |
+0.53 |
+1.589","public.prc_clientes
+2 |
+1.447 |
+0.72 |
+0.387
+public.max_pro_min
+3 |
+1.589 |
+0.53 |
+1.589
+public.registro_ddl",1.589,,3,"('max_pro_min affects other configs', '\n1.589')"
+33,"<re.Match object; span=(64, 74), match='range_join'>","<re.Match object; span=(0, 3), match='0.5'>",0.5,"$""left.start"" < $""right.end"")
+val joined2 = df1
+.join(df2.hint(""range_join"", 0.5), $""left.type"" === $""right.type"" &&
+$""left.end"" > $""right.start"" &&",0.5,,3,"('range_join is affected by other condition', 'df1\n')"
+35,"<re.Match object; span=(155, 172), match='check_db_versions'>","<re.Match object; span=(0, 2), match='16'>",16,"main:MESSAGE:2020-09-23 17h09.44 utc:9172:
+Greenbone Vulnerability Manager version 9.0.0 (DB revision 221)
+md manage:MESSAGE:2020-09-23 17h09.44 utc:9173: check_db_versions: database version of SCAP database: 16",16.0,,3,"('check_db_versions affects other configs', 'database version of SCAP database: 16')"
+35,"<re.Match object; span=(48, 65), match='check_db_versions'>","<re.Match object; span=(0, 2), match='15'>",15,"md manage:MESSAGE:2020-09-23 17h09.44 utc:9173: check_db_versions: SCAP database version supported by manager: 15
+main:CRITICAL:2020-09-23 17h09.44 utc:9173: gvmd: database is wrong version
+I don’t really understand this error, as I don’t see how my SCAP database version could be newer than the one supported by the manager, since I havn’t actually changed the SCAP data during the PSQL upgrade.",15.0,,3,"('check_db_versions is affected by other condition', 'PSQL upgrade')"
+35,"<re.Match object; span=(98, 114), match='non_simult_ports'>","<re.Match object; span=(0, 3), match='139'>","139, 445, 3389","8:01am
+#14
+I have not tweaked any openvas configuration; as the default values looks good enough:
+non_simult_ports = 139, 445, 3389, Services/irc
+vendor_version =
+safe_checks = yes",139.0,,3,"('not affected ', '')"
+35,"<re.Match object; span=(98, 114), match='non_simult_ports'>","<re.Match object; span=(5, 8), match='445'>","139, 445, 3389","8:01am
+#14
+I have not tweaked any openvas configuration; as the default values looks good enough:
+non_simult_ports = 139, 445, 3389, Services/irc
+vendor_version =
+safe_checks = yes",445.0,,3,"('not affected ', '')"
+35,"<re.Match object; span=(98, 114), match='non_simult_ports'>","<re.Match object; span=(10, 14), match='3389'>","139, 445, 3389","8:01am
+#14
+I have not tweaked any openvas configuration; as the default values looks good enough:
+non_simult_ports = 139, 445, 3389, Services/irc
+vendor_version =
+safe_checks = yes",3389.0,,3,"('not affected ', '')"
+35,"<re.Match object; span=(30, 50), match='time_between_request'>","<re.Match object; span=(0, 1), match='0'>",0,"nasl_no_signature_check = yes
+time_between_request = 0
+expand_vhosts = yes
+max_checks = 10
+optimize_test = yes
+report_host_details = yes
+config_file = /opt/gvm/etc/openvas/openvas.conf",0.0,,3,"('time_between_request is affected by other condition', '0')"
+35,"<re.Match object; span=(75, 85), match='max_checks'>","<re.Match object; span=(0, 2), match='10'>",10,"nasl_no_signature_check = yes
+time_between_request = 0
+expand_vhosts = yes
+max_checks = 10
+optimize_test = yes
+report_host_details = yes
+config_file = /opt/gvm/etc/openvas/openvas.conf",10.0,,3,"('max_checks is affected by other condition', '10')"
+35,"<re.Match object; span=(100, 115), match='plugins_timeout'>","<re.Match object; span=(0, 3), match='320'>",320,"unscanned_closed_udp = yes
+include_folders = /opt/gvm/var/lib/openvas/plugins
+test_empty_vhost = no
+plugins_timeout = 320
+cgi_path = /cgi-bin:/scripts",320.0,,3,"('plugins_timeout affects other configs', '320')"
+35,"<re.Match object; span=(0, 19), match='checks_read_timeout'>","<re.Match object; span=(0, 1), match='5'>",5,"checks_read_timeout = 5
+unscanned_closed = yes
+auto_enable_dependencies = yes
+log_whole_attack = no
+db_address = /var/run/redis/redis.sock
+drop_privileges = no
+log_plugins_name_at_load = no",5.0,,3,"('checks_read_timeout is affected by other condition', '5')"
+35,"<re.Match object; span=(50, 59), match='max_hosts'>","<re.Match object; span=(0, 2), match='30'>",30,"scanner_plugins_timeout = 36000
+timeout_retry = 3
+max_hosts = 30
+network_scan = no
+open_sock_max_attempts = 5
+plugins_folder = /opt/gvm/var/lib/openvas/plugins",30.0,,3,"('max_hosts affects other configs', '30')"
+35,"<re.Match object; span=(0, 23), match='scanner_plugins_timeout'>","<re.Match object; span=(0, 5), match='36000'>",36000,"scanner_plugins_timeout = 36000
+timeout_retry = 3
+max_hosts = 30
+network_scan = no
+open_sock_max_attempts = 5
+plugins_folder = /opt/gvm/var/lib/openvas/plugins",36000.0,,3,"('scanner_plugins_timeout affects other configs', 'timeout_retry = 3')"
+35,"<re.Match object; span=(32, 45), match='timeout_retry'>","<re.Match object; span=(0, 1), match='3'>",3,"scanner_plugins_timeout = 36000
+timeout_retry = 3
+max_hosts = 30
+network_scan = no
+open_sock_max_attempts = 5
+plugins_folder = /opt/gvm/var/lib/openvas/plugins",3.0,,3,"('timeout_retry is affected by other condition', '3')"
+35,"<re.Match object; span=(83, 105), match='open_sock_max_attempts'>","<re.Match object; span=(0, 1), match='5'>",5,"scanner_plugins_timeout = 36000
+timeout_retry = 3
+max_hosts = 30
+network_scan = no
+open_sock_max_attempts = 5
+plugins_folder = /opt/gvm/var/lib/openvas/plugins",5.0,,3,"('open_sock_max_attempts affects other configs', '5')"
+41,"<re.Match object; span=(20, 33), match='database_name'>","<re.Match object; span=(0, 5), match='10000'>",10000,"pgbench  -i  -s 50  database_name
+Afterward, I executed the command below to test the database with 150 clients
+pgbench  -c 10  -j 2  -t  10000  database_name
+As you see, in our initial baseline test, I instructed pgbench to execute with ten different client sessions. Each client session will execute 10,000 transactions.",10000.0,,3,"('database_name affects other configs', '10000')"
+41,"<re.Match object; span=(117, 132), match='max_client_conn'>","<re.Match object; span=(0, 3), match='100'>",100,"We will make use of the transaction pooling mode. Inside the pgbouncer.ini file, I modified the following parameter:
+max_client_conn = 100
+The max_client_conn parameter defines how many client connections to pgbouncer (instead of Postgres) are allowed.
+default_pool_size = 25
+The default_pool_size parameter defines how many server connections to allow per user/database pair.",100.0,,3,"('max_client_conn affects other configs', 'transaction pooling mode')"
+41,"<re.Match object; span=(138, 154), match='connection_cache'>","<re.Match object; span=(9, 13), match='5432'>","
+port  = 5432","I changed the following parameters in the pgpool.conf file to make it route clients connections from pgpool2 to Postgres database server.
+connection_cache  = on
+listen_addresses  = ‘postgres_database_name’’
+port  = 5432
+Setting the connection_cache parameter to on activates pgpool2 pooling capability.",5432.0,,3,"('connection_cache is affected by other condition', 'activates pgpool2 pooling capability')"
+43,"<re.Match object; span=(64, 70), match='pg_wal'>","<re.Match object; span=(0, 24), match='00000001000000A900000065'>",00000001000000A900000065,"test ! -f /mnt/server/archivedir/00000001000000A900000065 && cp pg_wal/00000001000000A900000065 /mnt/server/archivedir/00000001000000A900000065
+A similar command will be generated for each new file to be archived.
+The archive command will be executed under the ownership of the same user that the PostgreSQL server is running as. Since the series of WAL files being archived contains effectively everything in your database, you will want to be sure that the archived data is protected from prying eyes; for example, archive into a directory that does not have group or world read access.",1000000.0,A900000065,3,"('pg_wal is affected by other condition', 'prying eyes')"
+48,"<re.Match object; span=(147, 157), match='product_id'>","<re.Match object; span=(0, 2), match='30'>",30,"Using the queries from the previous blog entry, let's see how deletions from previous pages affect displaying of page four from page three:
+SELECT product_id, description
+FROM product
+WHERE product_id > 30
+ORDER BY product_id
+LIMIT 11;
+product_id | description",30.0,,3,"('product_id is affected by other condition', 'deletions')"
+48,"<re.Match object; span=(26, 36), match='product_id'>","<re.Match object; span=(0, 2), match='30'>",30,"DELETE FROM product WHERE product_id <= 5;
+SELECT product_id, description
+FROM product
+WHERE product_id > 30
+ORDER BY product_id
+LIMIT 11;
+product_id | description",30.0,,3,"('product_id is affected by other condition', '30')"
+48,"<re.Match object; span=(270, 285), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 3","As you can see, the delete had no affect because we were anchored on the last value on the page, rather than, if we had used offset, the first value of the result set.
+Inserts
+before page four are also ignored:
+INSERT INTO product
+SELECT id, 'Product ' || id::TEXT
+FROM generate_series(1, 3) AS t(id);
+SELECT product_id, description",1.0,,3,"('generate_series is affected by other condition', 'delete')"
+48,"<re.Match object; span=(270, 285), match='generate_series'>","<re.Match object; span=(3, 4), match='3'>","1, 3","As you can see, the delete had no affect because we were anchored on the last value on the page, rather than, if we had used offset, the first value of the result set.
+Inserts
+before page four are also ignored:
+INSERT INTO product
+SELECT id, 'Product ' || id::TEXT
+FROM generate_series(1, 3) AS t(id);
+SELECT product_id, description",3.0,,3,"('generate_series is affected by other condition', 'delete')"
+48,"<re.Match object; span=(19, 29), match='product_id'>","<re.Match object; span=(0, 2), match='30'>",30,"FROM product
+WHERE product_id > 30
+ORDER BY product_id
+LIMIT 11;
+product_id | description
+------------+-------------",30.0,,3,"('product_id is affected by other condition', '30')"
+48,"<re.Match object; span=(145, 155), match='product_id'>","<re.Match object; span=(0, 2), match='31'>",31,"Of course, inserts and deletes after the current page would display normally.
+We can also easily go backward from page four:
+WITH page AS
+SELECT product_id, description
+FROM product
+WHERE product_id < 31
+ORDER BY product_id DESC
+LIMIT 11",31.0,,3,"('product_id is affected by other condition', 'inserts and deletes')"
+48,"<re.Match object; span=(144, 154), match='product_id'>","<re.Match object; span=(0, 2), match='21'>",21,"(Remember, when paging backward, the first row (e.g., 20) is used as a marker to indicate if another previous page exists.)
+WITH page AS
+SELECT product_id, description
+FROM product
+WHERE product_id < 21
+LIMIT 11
+SELECT product_id, description
+FROM page
+ORDER BY product_id;",21.0,,3,"('product_id is affected by other condition', '21')"
+48,"<re.Match object; span=(7, 17), match='product_id'>","<re.Match object; span=(8, 9), match='1'>",Product 1,"SELECT product_id, description
+FROM product
+ORDER BY product_id
+LIMIT 11;
+product_id | description
+------------+-------------
+1 | Product 1",1.0,,3,"('product_id is affected by other condition', 'Product 1')"
+48,"<re.Match object; span=(7, 17), match='product_id'>","<re.Match object; span=(0, 2), match='12'>",12,"SELECT product_id, description
+FROM product
+WHERE product_id > 12
+ORDER BY product_id
+LIMIT 11;
+product_id | description
+------------+-------------",12.0,,3,"('product_id is affected by other condition', '12')"
+48,"<re.Match object; span=(20, 30), match='product_id'>","<re.Match object; span=(0, 2), match='13'>",13,"WITH page AS
+SELECT product_id, description
+FROM product
+WHERE product_id < 13
+ORDER BY product_id DESC
+LIMIT 11
+SELECT product_id, description
+FROM page",13.0,,3,"('product_id is affected by other condition', '13')"
+48,"<re.Match object; span=(95, 105), match='product_id'>","<re.Match object; span=(0, 1), match='4'>",4,"8 | Product 8
+9 | Product 9
+10 | Product 10
+11 | Product 11
+12 | Product 12
+UPDATE product SET product_id = 4 WHERE product_id = 14;
+UPDATE product SET product_id = 5 WHERE product_id = 15;",4.0,,3,"('product_id affects other configs', '14')"
+48,"<re.Match object; span=(20, 30), match='product_id'>","<re.Match object; span=(0, 2), match='13'>",13,"WITH page AS
+SELECT product_id, description
+FROM product
+WHERE product_id < 13
+ORDER BY product_id DESC
+LIMIT 11
+SELECT product_id, description
+FROM page",13.0,,3,"('product_id is affected by other condition', '13')"
+48,"<re.Match object; span=(7, 17), match='product_id'>","<re.Match object; span=(8, 9), match='1'>",Product 1,"SELECT product_id, description
+FROM product
+ORDER BY product_id
+LIMIT 11;
+product_id | description
+------------+-------------
+1 | Product 1",1.0,,3,"('product_id is affected by other condition', 'Product 1')"
+48,"<re.Match object; span=(5, 20), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 100","FROM generate_series(1, 100) AS t(id);
+Generating the first page is quite simple using limit.
+Paging forward is simple too.
+The user is not requesting to see previous pages, so any additions or removals in those pages are not
+significant.
+They are also not asking to see an updated display of the current page's values, so that can be ignored too.",1.0,,3,"('generate_series is affected by other condition', 'ignored')"
+48,"<re.Match object; span=(5, 20), match='generate_series'>","<re.Match object; span=(3, 6), match='100'>","1, 100","FROM generate_series(1, 100) AS t(id);
+Generating the first page is quite simple using limit.
+Paging forward is simple too.
+The user is not requesting to see previous pages, so any additions or removals in those pages are not
+significant.
+They are also not asking to see an updated display of the current page's values, so that can be ignored too.",100.0,,3,"('generate_series is affected by other condition', 'ignored')"
+48,"<re.Match object; span=(6, 16), match='product_id'>","<re.Match object; span=(0, 2), match='30'>",30,"WHERE product_id > 30
+ORDER BY product_id
+LIMIT 11;
+product_id | description
+------------+-------------
+31 | Product 31
+32 | Product 32",30.0,,3,"('product_id is affected by other condition', '30')"
+48,"<re.Match object; span=(7, 17), match='product_id'>","<re.Match object; span=(1, 3), match='10'>","
+10 | Product 10
+11 | Product 11","SELECT product_id, description
+FROM page
+ORDER BY product_id;
+product_id | description
+------------+-------------
+10 | Product 10
+11 | Product 11",10.0,,3,"('product_id affects other configs', '\n')"
+48,"<re.Match object; span=(7, 17), match='product_id'>","<re.Match object; span=(14, 16), match='10'>","
+10 | Product 10
+11 | Product 11","SELECT product_id, description
+FROM page
+ORDER BY product_id;
+product_id | description
+------------+-------------
+10 | Product 10
+11 | Product 11",10.0,,3,"('product_id affects other configs', '\n')"
+48,"<re.Match object; span=(7, 17), match='product_id'>","<re.Match object; span=(17, 19), match='11'>","
+10 | Product 10
+11 | Product 11","SELECT product_id, description
+FROM page
+ORDER BY product_id;
+product_id | description
+------------+-------------
+10 | Product 10
+11 | Product 11",11.0,,3,"('product_id affects other configs', '\n')"
+48,"<re.Match object; span=(7, 17), match='product_id'>","<re.Match object; span=(30, 32), match='11'>","
+10 | Product 10
+11 | Product 11","SELECT product_id, description
+FROM page
+ORDER BY product_id;
+product_id | description
+------------+-------------
+10 | Product 10
+11 | Product 11",11.0,,3,"('product_id affects other configs', '\n')"
+48,"<re.Match object; span=(119, 132), match='timestamp_age'>","<re.Match object; span=(1, 2), match='2'>","
+2 days","age
+--------
+2 days
+The first query uses subtraction, and computes based on seconds.
+The second query internally calls
+timestamp_age().
+The comment in the source code is illustrative:",2.0,,3,"('timestamp_age is affected by other condition', '\n2 days')"
+48,"<re.Match object; span=(47, 59), match='pg_namespace'>","<re.Match object; span=(0, 1), match='1'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",1.0,,3,"('pg_namespace affects other configs', '\npg_catalog.pg_function_is_visible')"
+48,"<re.Match object; span=(47, 59), match='pg_namespace'>","<re.Match object; span=(3, 4), match='2'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",2.0,,3,"('pg_namespace affects other configs', '\npg_catalog.pg_function_is_visible')"
+48,"<re.Match object; span=(47, 59), match='pg_namespace'>","<re.Match object; span=(6, 7), match='4'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",4.0,,3,"('pg_namespace affects other configs', '\npg_catalog.pg_function_is_visible')"
+48,"<re.Match object; span=(5, 15), match='pg_catalog'>","<re.Match object; span=(0, 1), match='1'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",1.0,,3,"('pg_catalog affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(5, 15), match='pg_catalog'>","<re.Match object; span=(3, 4), match='2'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",2.0,,3,"('pg_catalog affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(5, 15), match='pg_catalog'>","<re.Match object; span=(6, 7), match='4'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",4.0,,3,"('pg_catalog affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(193, 215), match='pg_function_is_visible'>","<re.Match object; span=(0, 1), match='1'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",1.0,,3,"('pg_function_is_visible affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(193, 215), match='pg_function_is_visible'>","<re.Match object; span=(3, 4), match='2'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",2.0,,3,"('pg_function_is_visible affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(193, 215), match='pg_function_is_visible'>","<re.Match object; span=(6, 7), match='4'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",4.0,,3,"('pg_function_is_visible affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(16, 23), match='pg_proc'>","<re.Match object; span=(0, 1), match='1'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",1.0,,3,"('pg_proc affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(16, 23), match='pg_proc'>","<re.Match object; span=(3, 4), match='2'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",2.0,,3,"('pg_proc affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(16, 23), match='pg_proc'>","<re.Match object; span=(6, 7), match='4'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",4.0,,3,"('pg_proc affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(158, 176), match='information_schema'>","<re.Match object; span=(0, 1), match='1'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",1.0,,3,"('information_schema is affected by other condition', '\npg_catalog.pg_function_is_visible')"
+48,"<re.Match object; span=(158, 176), match='information_schema'>","<re.Match object; span=(3, 4), match='2'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",2.0,,3,"('information_schema is affected by other condition', '\npg_catalog.pg_function_is_visible')"
+48,"<re.Match object; span=(158, 176), match='information_schema'>","<re.Match object; span=(6, 7), match='4'>","1, 2, 4","from pg_catalog.pg_proc p left join pg_catalog.pg_namespace n on n.oid =
+p.pronamespace where p.prokind = 'a' and n.nspname <> 'pg_catalog' and
+n.nspname <> 'information_schema' and
+pg_catalog.pg_function_is_visible(p.oid) order by 1, 2, 4;",4.0,,3,"('information_schema is affected by other condition', '\npg_catalog.pg_function_is_visible')"
+48,"<re.Match object; span=(18, 28), match='pg_catalog'>","<re.Match object; span=(0, 1), match='1'>","1, 2, 4","AND n.nspname <> 'pg_catalog'
+AND n.nspname <> 'information_schema'
+AND pg_catalog.pg_function_is_visible(p.oid)
+ORDER BY 1, 2, 4;",1.0,,3,"('pg_catalog affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(18, 28), match='pg_catalog'>","<re.Match object; span=(3, 4), match='2'>","1, 2, 4","AND n.nspname <> 'pg_catalog'
+AND n.nspname <> 'information_schema'
+AND pg_catalog.pg_function_is_visible(p.oid)
+ORDER BY 1, 2, 4;",2.0,,3,"('pg_catalog affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(18, 28), match='pg_catalog'>","<re.Match object; span=(6, 7), match='4'>","1, 2, 4","AND n.nspname <> 'pg_catalog'
+AND n.nspname <> 'information_schema'
+AND pg_catalog.pg_function_is_visible(p.oid)
+ORDER BY 1, 2, 4;",4.0,,3,"('pg_catalog affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(83, 105), match='pg_function_is_visible'>","<re.Match object; span=(0, 1), match='1'>","1, 2, 4","AND n.nspname <> 'pg_catalog'
+AND n.nspname <> 'information_schema'
+AND pg_catalog.pg_function_is_visible(p.oid)
+ORDER BY 1, 2, 4;",1.0,,3,"('pg_function_is_visible affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(83, 105), match='pg_function_is_visible'>","<re.Match object; span=(3, 4), match='2'>","1, 2, 4","AND n.nspname <> 'pg_catalog'
+AND n.nspname <> 'information_schema'
+AND pg_catalog.pg_function_is_visible(p.oid)
+ORDER BY 1, 2, 4;",2.0,,3,"('pg_function_is_visible affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(83, 105), match='pg_function_is_visible'>","<re.Match object; span=(6, 7), match='4'>","1, 2, 4","AND n.nspname <> 'pg_catalog'
+AND n.nspname <> 'information_schema'
+AND pg_catalog.pg_function_is_visible(p.oid)
+ORDER BY 1, 2, 4;",4.0,,3,"('pg_function_is_visible affects other configs', '1, 2, 4')"
+48,"<re.Match object; span=(100, 119), match='password_encryption'>","<re.Match object; span=(2, 3), match='5'>",md5 or scram-sha-256,"statement: ALTER USER postgres PASSWORD 'md567429efea5606f58dff8f67e3e2ad490'
+Notice psql runs show password_encryption to determine if md5 or scram-sha-256 should be used.
+psql then hashes the supplied password and issues an alter user command.
+While it",5.0,,3,"('password_encryption is affected by other condition', '\npsql then hashes the supplied password and issues an alter user command')"
+48,"<re.Match object; span=(100, 119), match='password_encryption'>","<re.Match object; span=(17, 20), match='256'>",md5 or scram-sha-256,"statement: ALTER USER postgres PASSWORD 'md567429efea5606f58dff8f67e3e2ad490'
+Notice psql runs show password_encryption to determine if md5 or scram-sha-256 should be used.
+psql then hashes the supplied password and issues an alter user command.
+While it",256.0,,3,"('password_encryption is affected by other condition', '\npsql then hashes the supplied password and issues an alter user command')"
+48,"<re.Match object; span=(28, 37), match='pg_typeof'>","<re.Match object; span=(57, 58), match='1'>","--------+--------+----------+--------------+-----------
+""1""","| ?column? | jsonb_typeof | pg_typeof
+--------+--------+----------+--------------+-----------
+""1""",1.0,,3,"('pg_typeof affects other configs', '--------+--------+----------+--------------+-----------\n""1""')"
+48,"<re.Match object; span=(16, 24), match='pg_class'>","<re.Match object; span=(12, 16), match='1259'>","
+oid
+------
+1259","SELECT oid FROM pg_class WHERE relname = 'pg_class';
+oid
+------
+1259
+SELECT oid FROM PG_CLASS WHERE relname = 'pg_class';
+oid
+------
+1259",1259.0,,3,"('pg_class affects other configs', '\noid\n------\n1259')"
+48,"<re.Match object; span=(90, 101), match='my_pg_class'>","<re.Match object; span=(34, 37), match='256'>","oid, relname::citext, repeat('x', 256","CREATE EXTENSION citext;
+-- 'x' column added so the row has a typical length
+CREATE TABLE my_pg_class2 AS SELECT oid, relname::citext, repeat('x', 256) FROM pg_class;",256.0,,3,"('my_pg_class is affected by other condition', ""repeat('x', 256"")"
+48,"<re.Match object; span=(93, 101), match='pg_class'>","<re.Match object; span=(34, 37), match='256'>","oid, relname::citext, repeat('x', 256","CREATE EXTENSION citext;
+-- 'x' column added so the row has a typical length
+CREATE TABLE my_pg_class2 AS SELECT oid, relname::citext, repeat('x', 256) FROM pg_class;",256.0,,3,"('pg_class is affected by other condition', ""repeat('x', 256"")"
+48,"<re.Match object; span=(16, 27), match='my_pg_class'>","<re.Match object; span=(12, 16), match='1259'>","
+oid
+------
+1259","SELECT oid FROM my_pg_class2 WHERE relname = 'pg_class';
+oid
+------
+1259
+SELECT oid FROM my_pg_class2 WHERE relname = 'PG_CLASS';
+oid
+------
+1259",1259.0,,3,"('my_pg_class affects other configs', '\noid\n------\n1259')"
+48,"<re.Match object; span=(19, 27), match='pg_class'>","<re.Match object; span=(12, 16), match='1259'>","
+oid
+------
+1259","SELECT oid FROM my_pg_class2 WHERE relname = 'pg_class';
+oid
+------
+1259
+SELECT oid FROM my_pg_class2 WHERE relname = 'PG_CLASS';
+oid
+------
+1259",1259.0,,3,"('pg_class affects other configs', '\noid\n------\n1259')"
+48,"<re.Match object; span=(287, 296), match='cwork_mem'>","<re.Match object; span=(0, 5), match='100MB'>",100MB,"I have recently covered the importance of libpq environment variables and
+connection specification options.
+While most libpq options control how to connect to the Postgres server, there is one special option that
+can change variables on the server you connect to, e.g.:
+$ psql 'options=-cwork_mem=100MB dbname=test'",100.0,MB,3,"('cwork_mem affects other configs', 'options=-cwork_mem=100MB dbname=test')"
+48,"<re.Match object; span=(16, 24), match='work_mem'>","<re.Match object; span=(0, 5), match='100MB'>",100MB,"$ PGOPTIONS=""-c work_mem=100MB"" psql test
+These settings can also be set at the user, database, and
+cluster level on the database side too, but having control on the client side is often useful.
+View or Post Comments
+Connect Parameter Specification Options
+Friday, June 12, 2020",100.0,MB,3,"('work_mem affects other configs', 'psql test')"
+48,"<re.Match object; span=(134, 141), match='pg_xact'>","<re.Match object; span=(6, 8), match='57'>",slide 57,"there are many stages to a commit:
+Write commit record to the write-ahead log
+Flush the write-ahead log to durable storage
+Update the pg_xact (slide 57)
+Transfer to replicas
+Mark the commit as visible to other sessions (ProcArrayEndTransaction() updates",57.0,,3,"('pg_xact affects other configs', 'Update')"
+48,"<re.Match object; span=(277, 292), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 50000","usually treat languages, their characters, and ordering as unified, but in the digital world, they are treated separately, and their distinction can be hard to visualize.
+These two posted queries illustrate collation in a very creative way. The first query, SELECT
+chr(i) FROM generate_series(1, 50000) i ORDER BY chr(i) COLLATE ""C"", outputs characters in their ""C"" binary order, with ascii as the first 128 characters, successive groups of languages",1.0,,3,"('generate_series is affected by other condition', '\n')"
+48,"<re.Match object; span=(277, 292), match='generate_series'>","<re.Match object; span=(3, 8), match='50000'>","1, 50000","usually treat languages, their characters, and ordering as unified, but in the digital world, they are treated separately, and their distinction can be hard to visualize.
+These two posted queries illustrate collation in a very creative way. The first query, SELECT
+chr(i) FROM generate_series(1, 50000) i ORDER BY chr(i) COLLATE ""C"", outputs characters in their ""C"" binary order, with ascii as the first 128 characters, successive groups of languages",50000.0,,3,"('generate_series is affected by other condition', '\n')"
+48,"<re.Match object; span=(88, 103), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 50000","following, and ending with pictographic languages.
+The second query, SELECT chr(i) FROM generate_series(1, 50000) i ORDER BY chr(i) COLLATE ""en_US.utf8"", outputs the same 50,000 characters in ""United States English"" utf8 order.",1.0,,3,"('generate_series is affected by other condition', 'pictographic languages')"
+48,"<re.Match object; span=(88, 103), match='generate_series'>","<re.Match object; span=(3, 8), match='50000'>","1, 50000","following, and ending with pictographic languages.
+The second query, SELECT chr(i) FROM generate_series(1, 50000) i ORDER BY chr(i) COLLATE ""en_US.utf8"", outputs the same 50,000 characters in ""United States English"" utf8 order.",50000.0,,3,"('generate_series is affected by other condition', 'pictographic languages')"
+48,"<re.Match object; span=(39, 55), match='random_page_cost'>","<re.Match object; span=(0, 3), match='1.1'>",1.1,"When using ssds, the default value for
+random_page_cost should be lowered, perhaps to 1.1.
+This can be set at the
+tablespace level if there is a mix of tablespaces on ssds and magnetic disks.",1.1,,3,"('random_page_cost is affected by other condition', 'the default value for\nrandom_page_cost should be lowered')"
+49,"<re.Match object; span=(376, 384), match='work_mem'>","<re.Match object; span=(0, 5), match='256MB'>",256MB,"so memory-related optimizations generally have more of an impact on PostGIS than other types of PostgreSQL queries.For general details about optimizing PostgreSQL, refer to Tuning your PostgreSQL Server.For PostgreSQL 9.4+ configuration can be set at the server level without touching postgresql.conf or postgresql.auto.conf
+by using the ALTER SYSTEM command.ALTER SYSTEM SET work_mem = '256MB';
+-- this forces non-startup configs to take effect for new connections
+SELECT pg_reload_conf();",256.0,MB,3,"('work_mem affects other configs', 'non-startup configs to take effect for new connections')"
+49,"<re.Match object; span=(98, 106), match='work_mem'>","<re.Match object; span=(0, 5), match='256MB'>",256MB,"Adjust down for many concurrent users or low RAM.
+If you have lots of RAM and few developers:
+SET work_mem TO '256MB';
+maintenance_work_mem
+- the memory size used for VACUUM, CREATE INDEX, etc.
+Default: 16-64MB",256.0,MB,3,"('work_mem is affected by other condition', 'low RAM')"
+49,"<re.Match object; span=(119, 139), match='maintenance_work_mem'>","<re.Match object; span=(0, 2), match='16'>",16-64MB,"Adjust down for many concurrent users or low RAM.
+If you have lots of RAM and few developers:
+SET work_mem TO '256MB';
+maintenance_work_mem
+- the memory size used for VACUUM, CREATE INDEX, etc.
+Default: 16-64MB",16.0,,3,"('maintenance_work_mem is affected by other condition', 'low RAM')"
+49,"<re.Match object; span=(119, 139), match='maintenance_work_mem'>","<re.Match object; span=(3, 7), match='64MB'>",16-64MB,"Adjust down for many concurrent users or low RAM.
+If you have lots of RAM and few developers:
+SET work_mem TO '256MB';
+maintenance_work_mem
+- the memory size used for VACUUM, CREATE INDEX, etc.
+Default: 16-64MB",64.0,MB,3,"('maintenance_work_mem is affected by other condition', 'low RAM')"
+49,"<re.Match object; span=(218, 238), match='maintenance_work_mem'>","<re.Match object; span=(0, 4), match='32MB'>",32MB to 1GB,"Generally too low - ties up I/O, locks objects while swapping memory
+Recommend 32MB to 1GB on production servers w/lots of RAM, but depends
+on the # of concurrent users.
+If you have lots of RAM and few developers:
+SET maintenance_work_mem TO '1GB';",32.0,MB,3,"('maintenance_work_mem is affected by other condition', 'lots of RAM and few developers')"
+49,"<re.Match object; span=(218, 238), match='maintenance_work_mem'>","<re.Match object; span=(8, 11), match='1GB'>",32MB to 1GB,"Generally too low - ties up I/O, locks objects while swapping memory
+Recommend 32MB to 1GB on production servers w/lots of RAM, but depends
+on the # of concurrent users.
+If you have lots of RAM and few developers:
+SET maintenance_work_mem TO '1GB';",1.0,GB,3,"('maintenance_work_mem is affected by other condition', 'lots of RAM and few developers')"
+49,"<re.Match object; span=(0, 31), match='max_parallel_workers_per_gather'>","<re.Match object; span=(0, 1), match='0'>",0,"max_parallel_workers_per_gather
+This setting is only available for PostgreSQL 9.6+ and will only affect PostGIS 2.3+, since only PostGIS 2.3+ supports parallel queries.
+If set to higher than 0, then some queries such as those involving relation functions like ST_Intersects can use multiple processes and can run",0.0,,3,"('max_parallel_workers_per_gather affects other configs', 'PostGIS 2.3+,')"
+49,"<re.Match object; span=(133, 149), match='postgis_topology'>","<re.Match object; span=(0, 3), match='3.1'>",3.1.2devnext,"string, and next time you'll need to drop the ""next"" suffix again:
+ALTER EXTENSION postgis UPDATE TO ""3.1.2devnext"";
+ALTER EXTENSION postgis_topology UPDATE TO ""3.1.2devnext"";If you installed PostGIS originally without a version specified, you can often skip the reinstallation of postgis extension before restoring since the backup just has CREATE EXTENSION postgis and thus",3.1,,3,"('postgis_topology affects other configs', '\nALTER EXTENSION')"
+49,"<re.Match object; span=(133, 149), match='postgis_topology'>","<re.Match object; span=(4, 12), match='2devnext'>",3.1.2devnext,"string, and next time you'll need to drop the ""next"" suffix again:
+ALTER EXTENSION postgis UPDATE TO ""3.1.2devnext"";
+ALTER EXTENSION postgis_topology UPDATE TO ""3.1.2devnext"";If you installed PostGIS originally without a version specified, you can often skip the reinstallation of postgis extension before restoring since the backup just has CREATE EXTENSION postgis and thus",2.0,devnext,3,"('postgis_topology affects other configs', '\nALTER EXTENSION')"
+49,"<re.Match object; span=(11, 26), match='spatial_ref_sys'>","<re.Match object; span=(7, 8), match='0'>",srid > 0 AND srid < 999000,"entry from spatial_ref_sys and re-construct the check(s) with:
+ALTER TABLE spatial_ref_sys ADD CONSTRAINT spatial_ref_sys_srid_check check (srid > 0 AND srid < 999000 );",0.0,,3,"('spatial_ref_sys is affected by other condition', 'check')"
+49,"<re.Match object; span=(11, 26), match='spatial_ref_sys'>","<re.Match object; span=(20, 26), match='999000'>",srid > 0 AND srid < 999000,"entry from spatial_ref_sys and re-construct the check(s) with:
+ALTER TABLE spatial_ref_sys ADD CONSTRAINT spatial_ref_sys_srid_check check (srid > 0 AND srid < 999000 );",999000.0,,3,"('spatial_ref_sys is affected by other condition', 'check')"
+49,"<re.Match object; span=(106, 132), match='spatial_ref_sys_srid_check'>","<re.Match object; span=(7, 8), match='0'>",srid > 0 AND srid < 999000,"entry from spatial_ref_sys and re-construct the check(s) with:
+ALTER TABLE spatial_ref_sys ADD CONSTRAINT spatial_ref_sys_srid_check check (srid > 0 AND srid < 999000 );",0.0,,3,"('spatial_ref_sys_srid_check is affected by other condition', 'srid > 0 AND srid < 999000')"
+49,"<re.Match object; span=(106, 132), match='spatial_ref_sys_srid_check'>","<re.Match object; span=(20, 26), match='999000'>",srid > 0 AND srid < 999000,"entry from spatial_ref_sys and re-construct the check(s) with:
+ALTER TABLE spatial_ref_sys ADD CONSTRAINT spatial_ref_sys_srid_check check (srid > 0 AND srid < 999000 );",999000.0,,3,"('spatial_ref_sys_srid_check is affected by other condition', 'srid > 0 AND srid < 999000')"
+55,"<re.Match object; span=(25, 38), match='last_modified'>","<re.Match object; span=(0, 1), match='1'>","1,4","explain select SUBSTRING(last_modified,1,4) ,count(*)  from hive.df_machine_learning.event_text where lower(name) like ‘%wilbraham%’ or (REGEXP_LIKE(lower(name), ‘.*wilbraham.*’)) group by 1 order by 1;
+14. Explain plan with MySQL (Sample)
+In this particular case you can see that the primary key is used on the ‘ejp_events’ table and the non-primary key on the “ejp_orders’ table. This query is going to be fast!",1.0,,3,"('last_modified affects other configs', '1,4')"
+55,"<re.Match object; span=(25, 38), match='last_modified'>","<re.Match object; span=(2, 3), match='4'>","1,4","explain select SUBSTRING(last_modified,1,4) ,count(*)  from hive.df_machine_learning.event_text where lower(name) like ‘%wilbraham%’ or (REGEXP_LIKE(lower(name), ‘.*wilbraham.*’)) group by 1 order by 1;
+14. Explain plan with MySQL (Sample)
+In this particular case you can see that the primary key is used on the ‘ejp_events’ table and the non-primary key on the “ejp_orders’ table. This query is going to be fast!",4.0,,3,"('last_modified affects other configs', '1,4')"
+57,"<re.Match object; span=(252, 263), match='wal_buffers'>","<re.Match object; span=(0, 4), match='64kB'>",64kB,"Use batch insert in the database (it is usually standard, defined in the compilation and needs to be supported by the database).
+Catalog (database)
+a) PostgreSQL
+Avoid creating additional indexes.
+Use special settings for Postgresql (postgresql.conf):
+wal_buffers = 64kB",64.0,kB,3,"('wal_buffers affects other configs', 'creating additional indexes')"
+57,"<re.Match object; span=(33, 41), match='work_mem'>","<re.Match object; span=(0, 4), match='64MB'>",64MB,"shared_buffers = 1GB # up to 8GB
+work_mem = 64MB
+effective_cache_size = 2GB
+checkpoint_segments = 64
+checkpoint_timeout = 20min
+checkpoint_completion_target = 0.9
+maintenance_work_mem = 256MB",64.0,MB,3,"('work_mem affects other configs', '64MB')"
+57,"<re.Match object; span=(128, 156), match='checkpoint_completion_target'>","<re.Match object; span=(0, 3), match='0.9'>",0.9,"shared_buffers = 1GB # up to 8GB
+work_mem = 64MB
+effective_cache_size = 2GB
+checkpoint_segments = 64
+checkpoint_timeout = 20min
+checkpoint_completion_target = 0.9
+maintenance_work_mem = 256MB",0.9,,3,"('checkpoint_completion_target affects other configs', '0.9')"
+57,"<re.Match object; span=(49, 69), match='effective_cache_size'>","<re.Match object; span=(0, 3), match='2GB'>",2GB,"shared_buffers = 1GB # up to 8GB
+work_mem = 64MB
+effective_cache_size = 2GB
+checkpoint_segments = 64
+checkpoint_timeout = 20min
+checkpoint_completion_target = 0.9
+maintenance_work_mem = 256MB",2.0,GB,3,"('effective_cache_size affects other configs', '2GB')"
+57,"<re.Match object; span=(101, 119), match='checkpoint_timeout'>","<re.Match object; span=(0, 5), match='20min'>",20min,"shared_buffers = 1GB # up to 8GB
+work_mem = 64MB
+effective_cache_size = 2GB
+checkpoint_segments = 64
+checkpoint_timeout = 20min
+checkpoint_completion_target = 0.9
+maintenance_work_mem = 256MB",20.0,min,3,"('checkpoint_timeout affects other configs', '20min')"
+57,"<re.Match object; span=(76, 95), match='checkpoint_segments'>","<re.Match object; span=(0, 2), match='64'>",64,"shared_buffers = 1GB # up to 8GB
+work_mem = 64MB
+effective_cache_size = 2GB
+checkpoint_segments = 64
+checkpoint_timeout = 20min
+checkpoint_completion_target = 0.9
+maintenance_work_mem = 256MB",64.0,,3,"('checkpoint_segments affects other configs', '64')"
+57,"<re.Match object; span=(0, 14), match='shared_buffers'>","<re.Match object; span=(0, 3), match='1GB'>",1GB # up to 8GB,"shared_buffers = 1GB # up to 8GB
+work_mem = 64MB
+effective_cache_size = 2GB
+checkpoint_segments = 64
+checkpoint_timeout = 20min
+checkpoint_completion_target = 0.9
+maintenance_work_mem = 256MB",1.0,GB,3,"('shared_buffers is affected by other condition', 'up to 8GB')"
+57,"<re.Match object; span=(0, 14), match='shared_buffers'>","<re.Match object; span=(12, 15), match='8GB'>",1GB # up to 8GB,"shared_buffers = 1GB # up to 8GB
+work_mem = 64MB
+effective_cache_size = 2GB
+checkpoint_segments = 64
+checkpoint_timeout = 20min
+checkpoint_completion_target = 0.9
+maintenance_work_mem = 256MB",8.0,GB,3,"('shared_buffers is affected by other condition', 'up to 8GB')"
+57,"<re.Match object; span=(163, 183), match='maintenance_work_mem'>","<re.Match object; span=(0, 5), match='256MB'>",256MB,"shared_buffers = 1GB # up to 8GB
+work_mem = 64MB
+effective_cache_size = 2GB
+checkpoint_segments = 64
+checkpoint_timeout = 20min
+checkpoint_completion_target = 0.9
+maintenance_work_mem = 256MB",256.0,MB,3,"('maintenance_work_mem affects other configs', 'shared_buffers')"
+57,"<re.Match object; span=(315, 338), match='innodb_buffer_pool_size'>","<re.Match object; span=(0, 5), match='128MB'>",128MB,"[1] Tip from Edmar Araújo. References: http://www.postgresql.org/docs/9.0/static/app-vacuumdb.html | Carlos Eduardo Smanioto -> Otimização – Uma Ferramenta Chamada Vacuum: http://www.devmedia.com.br/otimizacao-uma-ferramenta-chamada-vacuum/1710
+b) MySQL
+Use special configurations for MySQL:
+sort_buffer_size = 2MB
+innodb_buffer_pool_size = 128MB
+innodb_flush_log_at_trx_commit = 0",128.0,MB,3,"('innodb_buffer_pool_size affects other configs', '128MB')"
+57,"<re.Match object; span=(292, 308), match='sort_buffer_size'>","<re.Match object; span=(0, 3), match='2MB'>",2MB,"[1] Tip from Edmar Araújo. References: http://www.postgresql.org/docs/9.0/static/app-vacuumdb.html | Carlos Eduardo Smanioto -> Otimização – Uma Ferramenta Chamada Vacuum: http://www.devmedia.com.br/otimizacao-uma-ferramenta-chamada-vacuum/1710
+b) MySQL
+Use special configurations for MySQL:
+sort_buffer_size = 2MB
+innodb_buffer_pool_size = 128MB
+innodb_flush_log_at_trx_commit = 0",2.0,MB,3,"('sort_buffer_size affects other configs', '2MB')"
+57,"<re.Match object; span=(347, 377), match='innodb_flush_log_at_trx_commit'>","<re.Match object; span=(0, 1), match='0'>",0,"[1] Tip from Edmar Araújo. References: http://www.postgresql.org/docs/9.0/static/app-vacuumdb.html | Carlos Eduardo Smanioto -> Otimização – Uma Ferramenta Chamada Vacuum: http://www.devmedia.com.br/otimizacao-uma-ferramenta-chamada-vacuum/1710
+b) MySQL
+Use special configurations for MySQL:
+sort_buffer_size = 2MB
+innodb_buffer_pool_size = 128MB
+innodb_flush_log_at_trx_commit = 0",0.0,,3,"('innodb_flush_log_at_trx_commit affects other configs', '0')"
+57,"<re.Match object; span=(43, 73), match='innodb_flush_log_at_trx_commit'>","<re.Match object; span=(0, 1), match='1'>",1,"innodb_flush_method = O_DIRECT
+By default, innodb_flush_log_at_trx_commit would be 1, meaning that the transaction log is stored on disk at each commit in the bank and transactions would not be lost in the event of an operating system crash. Since Bacula uses many small transactions, you can reduce log I/O and increase backup performance exponentially by setting it to 0, meaning that there will be no log storage for each transaction. As in case of job interruption it would be necessary to restart the backup job in any way, so it is a very interesting option.",1.0,,3,"('innodb_flush_log_at_trx_commit is affected by other condition', 'operating system crash')"
+57,"<re.Match object; span=(50, 58), match='rmem_max'>","<re.Match object; span=(20, 29), match='134217728'>",net.core.rmem_max = 134217728,"# allow testing with buffers up to 128MB
+net.core.rmem_max = 134217728
+net.core.wmem_max = 134217728
+# increase Linux autotuning TCP buffer limit to 64MB",134217728.0,,3,"('rmem_max affects other configs', 'net.core')"
+57,"<re.Match object; span=(9, 17), match='tcp_rmem'>","<re.Match object; span=(0, 4), match='4096'>",4096,"net.ipv4.tcp_rmem = 4096 87380 67108864
+net.ipv4.tcp_wmem = 4096 65536 67108864
+# recommended default congestion control is htcp
+net.ipv4.tcp_congestion_control=htcp",4096.0,,3,"('tcp_rmem affects other configs', '4096')"
+57,"<re.Match object; span=(49, 57), match='tcp_wmem'>","<re.Match object; span=(0, 4), match='4096'>",4096 65536,"net.ipv4.tcp_rmem = 4096 87380 67108864
+net.ipv4.tcp_wmem = 4096 65536 67108864
+# recommended default congestion control is htcp
+net.ipv4.tcp_congestion_control=htcp",4096.0,,3,"('tcp_wmem affects other configs', '4096')"
+57,"<re.Match object; span=(49, 57), match='tcp_wmem'>","<re.Match object; span=(5, 10), match='65536'>",4096 65536,"net.ipv4.tcp_rmem = 4096 87380 67108864
+net.ipv4.tcp_wmem = 4096 65536 67108864
+# recommended default congestion control is htcp
+net.ipv4.tcp_congestion_control=htcp",65536.0,,3,"('tcp_wmem affects other configs', '4096')"
+57,"<re.Match object; span=(107, 124), match='zone_reclaim_node'>","<re.Match object; span=(0, 1), match='0'>",0,"reboot
+Operating System
+RAM (> 8GB)
+vm.dirty_ratio = 2
+vm.dirty_background_ratio = 1
+vm.swappiness = 10
+vm.zone_reclaim_node = 0
+Disk Access",0.0,,3,"('zone_reclaim_node is affected by other condition', '0')"
+57,"<re.Match object; span=(39, 50), match='dirty_ratio'>","<re.Match object; span=(0, 1), match='2'>",2,"reboot
+Operating System
+RAM (> 8GB)
+vm.dirty_ratio = 2
+vm.dirty_background_ratio = 1
+vm.swappiness = 10
+vm.zone_reclaim_node = 0
+Disk Access",2.0,,3,"('dirty_ratio is affected by other condition', '2')"
+57,"<re.Match object; span=(58, 80), match='dirty_background_ratio'>","<re.Match object; span=(0, 1), match='1'>",1,"reboot
+Operating System
+RAM (> 8GB)
+vm.dirty_ratio = 2
+vm.dirty_background_ratio = 1
+vm.swappiness = 10
+vm.zone_reclaim_node = 0
+Disk Access",1.0,,3,"('dirty_background_ratio is affected by other condition', '1')"
+60,"<re.Match object; span=(52, 62), match='exec_cache'>","<re.Match object; span=(0, 3), match='288'>","288
+","ActiveRecord::ConnectionAdapters::PostgreSQLAdapter#exec_cache
+288
+(1.7%)
+288
+(1.7%)
+ActiveRecord::Attribute#initialize
+246
+(1.4%)
+246
+(1.4%)",288.0,,3,"('exec_cache affects other configs', '288\n')"
+60,"<re.Match object; span=(60, 76), match='warm_asset_cache'>","<re.Match object; span=(0, 3), match='165'>",165,"6288
+100.0%)
+Capybara::RackTest::Driver#visit
+code:
+164
+def warm_asset_cache
+165
+return if warm_asset_cache?
+166
+return unless defined?(Capybara)",165.0,,3,"('warm_asset_cache is affected by other condition', '165')"
+60,"<re.Match object; span=(64, 68), match='to_s'>","<re.Match object; span=(0, 17), match='0.211340155844156'>","0.211340155844156""","irb(main):003:0> results.where(status: ""passed"").average(:time).to_s
+=> ""0.211340155844156""
+These results can also be placed into a PostgreSQL database by setting the
+RSPEC_PROFILING_POSTGRES_URL variable. This is used to profile the test suite",0.211340155844156,,3,"('to_s affects other configs', '0.211340155844156')"
+60,"<re.Match object; span=(275, 286), match='mem_objects'>","<re.Match object; span=(46, 50), match='100k'>",web server requests do not allocate more than 100k mem_objects,"mem_mallocs: the number of malloc allocations.
+The number of objects and bytes allocated impact how often GC cycles happen.
+Fewer objects allocations result in a significantly more responsive application.
+It is advised that web server requests do not allocate more than 100k mem_objects",100.0,k,3,"('mem_objects is affected by other condition', 'how often GC cycles happen')"
+60,"<re.Match object; span=(99, 114), match='view_duration_s'>","<re.Match object; span=(0, 7), match='0.21657'>",0.21657,"{""time"":""2021-02-15T11:20:40.821Z"",""severity"":""INFO"",""duration_s"":0.27412,""db_duration_s"":0.05755,""view_duration_s"":0.21657,""status"":201,""method"":""POST"",""path"":""/api/v4/projects/user/1"",""mem_objects"":86705,""mem_bytes"":4277179,""mem_mallocs"":22693,""correlation_id"":""...}
+Different types of allocations
+The mem_* values represent different aspects of how objects and memory are allocated in Ruby:
+The following example will create around of 1000 of mem_objects since strings
+can be frozen, and while the underlying string object remains the same, we still need to allocate 1000 references to this string:",0.21657,,3,"('view_duration_s is affected by other condition', '0.21657')"
+60,"<re.Match object; span=(187, 198), match='mem_objects'>","<re.Match object; span=(0, 5), match='86705'>",86705,"{""time"":""2021-02-15T11:20:40.821Z"",""severity"":""INFO"",""duration_s"":0.27412,""db_duration_s"":0.05755,""view_duration_s"":0.21657,""status"":201,""method"":""POST"",""path"":""/api/v4/projects/user/1"",""mem_objects"":86705,""mem_bytes"":4277179,""mem_mallocs"":22693,""correlation_id"":""...}
+Different types of allocations
+The mem_* values represent different aspects of how objects and memory are allocated in Ruby:
+The following example will create around of 1000 of mem_objects since strings
+can be frozen, and while the underlying string object remains the same, we still need to allocate 1000 references to this string:",86705.0,,3,"('mem_objects is affected by other condition', 'strings\ncan be frozen')"
+60,"<re.Match object; span=(207, 216), match='mem_bytes'>","<re.Match object; span=(0, 7), match='4277179'>",4277179,"{""time"":""2021-02-15T11:20:40.821Z"",""severity"":""INFO"",""duration_s"":0.27412,""db_duration_s"":0.05755,""view_duration_s"":0.21657,""status"":201,""method"":""POST"",""path"":""/api/v4/projects/user/1"",""mem_objects"":86705,""mem_bytes"":4277179,""mem_mallocs"":22693,""correlation_id"":""...}
+Different types of allocations
+The mem_* values represent different aspects of how objects and memory are allocated in Ruby:
+The following example will create around of 1000 of mem_objects since strings
+can be frozen, and while the underlying string object remains the same, we still need to allocate 1000 references to this string:",4277179.0,,3,"('mem_bytes is affected by other condition', '4277179')"
+60,"<re.Match object; span=(54, 64), match='duration_s'>","<re.Match object; span=(0, 7), match='0.27412'>",0.27412,"{""time"":""2021-02-15T11:20:40.821Z"",""severity"":""INFO"",""duration_s"":0.27412,""db_duration_s"":0.05755,""view_duration_s"":0.21657,""status"":201,""method"":""POST"",""path"":""/api/v4/projects/user/1"",""mem_objects"":86705,""mem_bytes"":4277179,""mem_mallocs"":22693,""correlation_id"":""...}
+Different types of allocations
+The mem_* values represent different aspects of how objects and memory are allocated in Ruby:
+The following example will create around of 1000 of mem_objects since strings
+can be frozen, and while the underlying string object remains the same, we still need to allocate 1000 references to this string:",0.27412,,3,"('duration_s is affected by other condition', '0.27412')"
+60,"<re.Match object; span=(227, 238), match='mem_mallocs'>","<re.Match object; span=(0, 5), match='22693'>",22693,"{""time"":""2021-02-15T11:20:40.821Z"",""severity"":""INFO"",""duration_s"":0.27412,""db_duration_s"":0.05755,""view_duration_s"":0.21657,""status"":201,""method"":""POST"",""path"":""/api/v4/projects/user/1"",""mem_objects"":86705,""mem_bytes"":4277179,""mem_mallocs"":22693,""correlation_id"":""...}
+Different types of allocations
+The mem_* values represent different aspects of how objects and memory are allocated in Ruby:
+The following example will create around of 1000 of mem_objects since strings
+can be frozen, and while the underlying string object remains the same, we still need to allocate 1000 references to this string:",22693.0,,3,"('mem_mallocs is affected by other condition', '22693')"
+60,"<re.Match object; span=(75, 88), match='db_duration_s'>","<re.Match object; span=(0, 7), match='0.05755'>",0.05755,"{""time"":""2021-02-15T11:20:40.821Z"",""severity"":""INFO"",""duration_s"":0.27412,""db_duration_s"":0.05755,""view_duration_s"":0.21657,""status"":201,""method"":""POST"",""path"":""/api/v4/projects/user/1"",""mem_objects"":86705,""mem_bytes"":4277179,""mem_mallocs"":22693,""correlation_id"":""...}
+Different types of allocations
+The mem_* values represent different aspects of how objects and memory are allocated in Ruby:
+The following example will create around of 1000 of mem_objects since strings
+can be frozen, and while the underlying string object remains the same, we still need to allocate 1000 references to this string:",0.05755,,3,"('db_duration_s is affected by other condition', '0.05755')"
+60,"<re.Match object; span=(132, 143), match='mem_mallocs'>","<re.Match object; span=(0, 1), match='0'>",0,"Gitlab::Memory::Instrumentation.with_memory_allocations do
+1_000.times { '0123456789' }
+end
+=> {:mem_objects=>1001, :mem_bytes=>0, :mem_mallocs=>0}",0.0,,3,"('mem_mallocs is affected by other condition', '0')"
+60,"<re.Match object; span=(97, 108), match='mem_objects'>","<re.Match object; span=(0, 4), match='1001'>",1001,"Gitlab::Memory::Instrumentation.with_memory_allocations do
+1_000.times { '0123456789' }
+end
+=> {:mem_objects=>1001, :mem_bytes=>0, :mem_mallocs=>0}",1001.0,,3,"('mem_objects is affected by other condition', '1001')"
+60,"<re.Match object; span=(117, 126), match='mem_bytes'>","<re.Match object; span=(0, 1), match='0'>",0,"Gitlab::Memory::Instrumentation.with_memory_allocations do
+1_000.times { '0123456789' }
+end
+=> {:mem_objects=>1001, :mem_bytes=>0, :mem_mallocs=>0}",0.0,,3,"('mem_bytes is affected by other condition', '0')"
+60,"<re.Match object; span=(223, 246), match='with_memory_allocations'>","<re.Match object; span=(4, 6), match='23'>",s * 23,"The following example will create around of 1000 of mem_objects, as strings are created dynamically.
+Each of them will not allocate additional memory, as they fit into Ruby slot of 40 bytes:
+Gitlab::Memory::Instrumentation.with_memory_allocations do
+s = '0'
+1_000.times { s * 23 }",23.0,,3,"('with_memory_allocations is affected by other condition', 'strings are created dynamically.\nEach of them will not allocate additional memory')"
+60,"<re.Match object; span=(44, 55), match='mem_mallocs'>","<re.Match object; span=(0, 1), match='0'>",0,"end
+=> {:mem_objects=>1002, :mem_bytes=>0, :mem_mallocs=>0}
+The following example will create around of 1000 of mem_objects, as strings are created dynamically.",0.0,,3,"('mem_mallocs affects other configs', '0')"
+60,"<re.Match object; span=(9, 20), match='mem_objects'>","<re.Match object; span=(0, 4), match='1002'>",1002,"end
+=> {:mem_objects=>1002, :mem_bytes=>0, :mem_mallocs=>0}
+The following example will create around of 1000 of mem_objects, as strings are created dynamically.",1002.0,,3,"('mem_objects affects other configs', 'strings are created dynamically')"
+60,"<re.Match object; span=(29, 38), match='mem_bytes'>","<re.Match object; span=(0, 1), match='0'>",0,"end
+=> {:mem_objects=>1002, :mem_bytes=>0, :mem_mallocs=>0}
+The following example will create around of 1000 of mem_objects, as strings are created dynamically.",0.0,,3,"('mem_bytes is affected by other condition', '0')"
+60,"<re.Match object; span=(233, 244), match='mem_mallocs'>","<re.Match object; span=(0, 4), match='1000'>",1000,"Each of them will allocate additional memory as strings are larger than Ruby slot of 40 bytes:
+Gitlab::Memory::Instrumentation.with_memory_allocations do
+s = '0'
+1_000.times { s * 24 }
+end
+=> {:mem_objects=>1002, :mem_bytes=>32000, :mem_mallocs=>1000}",1000.0,,3,"('mem_mallocs affects other configs', '1000')"
+60,"<re.Match object; span=(194, 205), match='mem_objects'>","<re.Match object; span=(0, 4), match='1002'>",1002,"Each of them will allocate additional memory as strings are larger than Ruby slot of 40 bytes:
+Gitlab::Memory::Instrumentation.with_memory_allocations do
+s = '0'
+1_000.times { s * 24 }
+end
+=> {:mem_objects=>1002, :mem_bytes=>32000, :mem_mallocs=>1000}",1002.0,,3,"('mem_objects affects other configs', '1002')"
+60,"<re.Match object; span=(214, 223), match='mem_bytes'>","<re.Match object; span=(0, 5), match='32000'>",32000,"Each of them will allocate additional memory as strings are larger than Ruby slot of 40 bytes:
+Gitlab::Memory::Instrumentation.with_memory_allocations do
+s = '0'
+1_000.times { s * 24 }
+end
+=> {:mem_objects=>1002, :mem_bytes=>32000, :mem_mallocs=>1000}",32000.0,,3,"('mem_bytes affects other configs', '32000')"
+60,"<re.Match object; span=(143, 154), match='mem_mallocs'>","<re.Match object; span=(0, 1), match='1'>",1,"append = '0123456789012345678901234567890123456789' # 40 bytes
+1_000.times { str.concat(append) }
+end
+=> {:mem_objects=>3, :mem_bytes=>49152, :mem_mallocs=>1}",1.0,,3,"('mem_mallocs is affected by other condition', '1')"
+60,"<re.Match object; span=(107, 118), match='mem_objects'>","<re.Match object; span=(0, 1), match='3'>",3,"append = '0123456789012345678901234567890123456789' # 40 bytes
+1_000.times { str.concat(append) }
+end
+=> {:mem_objects=>3, :mem_bytes=>49152, :mem_mallocs=>1}",3.0,,3,"('mem_objects is affected by other condition', '3')"
+60,"<re.Match object; span=(124, 133), match='mem_bytes'>","<re.Match object; span=(0, 5), match='49152'>",49152,"append = '0123456789012345678901234567890123456789' # 40 bytes
+1_000.times { str.concat(append) }
+end
+=> {:mem_objects=>3, :mem_bytes=>49152, :mem_mallocs=>1}",49152.0,,3,"('mem_bytes affects other configs', '49152')"
+60,"<re.Match object; span=(47, 58), match='mem_mallocs'>","<re.Match object; span=(0, 4), match='1000'>",1000,"=> {:mem_objects=>1003, :mem_bytes=>21968752, :mem_mallocs=>1000}
+Using Memory Profiler
+We can use memory_profiler for profiling.
+The memory_profiler gem is already present in the GitLab Gemfile,
+you just need to require it:
+require 'sidekiq/testing'",1000.0,,3,"('mem_mallocs affects other configs', '1000')"
+60,"<re.Match object; span=(5, 16), match='mem_objects'>","<re.Match object; span=(0, 4), match='1003'>",1003,"=> {:mem_objects=>1003, :mem_bytes=>21968752, :mem_mallocs=>1000}
+Using Memory Profiler
+We can use memory_profiler for profiling.
+The memory_profiler gem is already present in the GitLab Gemfile,
+you just need to require it:
+require 'sidekiq/testing'",1003.0,,3,"('mem_objects affects other configs', '1003')"
+60,"<re.Match object; span=(25, 34), match='mem_bytes'>","<re.Match object; span=(0, 8), match='21968752'>",21968752,"=> {:mem_objects=>1003, :mem_bytes=>21968752, :mem_mallocs=>1000}
+Using Memory Profiler
+We can use memory_profiler for profiling.
+The memory_profiler gem is already present in the GitLab Gemfile,
+you just need to require it:
+require 'sidekiq/testing'",21968752.0,,3,"('mem_bytes affects other configs', '21968752')"
+60,"<re.Match object; span=(103, 124), match='malloc_increase_bytes'>","<re.Match object; span=(0, 8), match='30895288'>",30895288,"And here is an excerpt of what the garbage collector was doing:
+pp GC.stat
+:heap_live_slots=>2346848,
+:malloc_increase_bytes=>30895288,
+...
+We can see that heap_live_slots (the number of reachable objects) jumped to ~2.3M,",30895288.0,,3,"('malloc_increase_bytes is affected by other condition', '\npp GC.stat\n')"
+61,"<re.Match object; span=(104, 119), match='generate_series'>","<re.Match object; span=(0, 1), match='0'>","0, 10000","price INT NOT NULL
+INSERT INTO product (name, price)
+SELECT random()::text, (random() * 1000)::int
+FROM generate_series(0, 10000);
+DROP TABLE IF EXISTS customer CASCADE;",0.0,,3,"('generate_series is affected by other condition', 'random')"
+61,"<re.Match object; span=(104, 119), match='generate_series'>","<re.Match object; span=(3, 8), match='10000'>","0, 10000","price INT NOT NULL
+INSERT INTO product (name, price)
+SELECT random()::text, (random() * 1000)::int
+FROM generate_series(0, 10000);
+DROP TABLE IF EXISTS customer CASCADE;",10000.0,,3,"('generate_series is affected by other condition', 'random')"
+61,"<re.Match object; span=(121, 136), match='generate_series'>","<re.Match object; span=(0, 1), match='0'>","0, 100000","CREATE TABLE customer (
+id serial PRIMARY KEY,
+name TEXT NOT NULL
+INSERT INTO customer (name)
+SELECT random()::text
+FROM generate_series(0, 100000);",0.0,,3,"('generate_series is affected by other condition', 'random')"
+61,"<re.Match object; span=(121, 136), match='generate_series'>","<re.Match object; span=(3, 9), match='100000'>","0, 100000","CREATE TABLE customer (
+id serial PRIMARY KEY,
+name TEXT NOT NULL
+INSERT INTO customer (name)
+SELECT random()::text
+FROM generate_series(0, 100000);",100000.0,,3,"('generate_series is affected by other condition', 'random')"
+61,"<re.Match object; span=(10, 25), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 1000000","db-# FROM generate_series(1, 1000000);
+INSERT 0 1000000
+Time: 15410.234 ms (00:15.410)
+After defining constraints and indexes, loading a million rows to the table took ~15.4s.
+Next, try to load the data into the table first, and only then add constraints and indexes:",1.0,,3,"('generate_series is affected by other condition', 'constraints and indexes')"
+61,"<re.Match object; span=(10, 25), match='generate_series'>","<re.Match object; span=(3, 10), match='1000000'>","1, 1000000","db-# FROM generate_series(1, 1000000);
+INSERT 0 1000000
+Time: 15410.234 ms (00:15.410)
+After defining constraints and indexes, loading a million rows to the table took ~15.4s.
+Next, try to load the data into the table first, and only then add constraints and indexes:",1000000.0,,3,"('generate_series is affected by other condition', 'constraints and indexes')"
+61,"<re.Match object; span=(0, 14), match='orders_updated'>","<re.Match object; span=(47, 48), match='2'>","users_deleted
+----------------+---------------
+2","orders_updated | users_deleted
+----------------+---------------
+2 |
+The main appeal of this approach is that the entire process is executed in a single command, so no need to manage a transaction or worry about cleaning up the intermediate table if the process fails.",2.0,,3,"('orders_updated is affected by other condition', 'users_deleted')"
+61,"<re.Match object; span=(17, 30), match='users_deleted'>","<re.Match object; span=(33, 34), match='2'>","----------------+---------------
+2","orders_updated | users_deleted
+----------------+---------------
+2 |
+The main appeal of this approach is that the entire process is executed in a single command, so no need to manage a transaction or worry about cleaning up the intermediate table if the process fails.",2.0,,3,"('users_deleted affects other configs', '----------------+---------------\n2')"
+61,"<re.Match object; span=(15, 30), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 1000000","db-# FROM
+db-#
+generate_series(1, 1000000);
+INSERT 0 1000000
+db=# SELECT activated, count(*) FROM users GROUP BY activated;
+activated | count",1.0,,3,"('generate_series is affected by other condition', 'activated')"
+61,"<re.Match object; span=(15, 30), match='generate_series'>","<re.Match object; span=(3, 10), match='1000000'>","1, 1000000","db-# FROM
+db-#
+generate_series(1, 1000000);
+INSERT 0 1000000
+db=# SELECT activated, count(*) FROM users GROUP BY activated;
+activated | count",1000000.0,,3,"('generate_series is affected by other condition', 'activated')"
+61,"<re.Match object; span=(20, 30), match='n_distinct'>","<re.Match object; span=(0, 1), match='2'>",2,"attname
+| activated
+n_distinct
+| 2
+most_common_vals
+| {t,f}
+most_common_freqs | {0.89743334,0.10256667}",2.0,,3,"('n_distinct is affected by other condition', '2')"
+61,"<re.Match object; span=(60, 77), match='most_common_freqs'>","<re.Match object; span=(0, 10), match='0.89743334'>","0.89743334,0.10256667","attname
+| activated
+n_distinct
+| 2
+most_common_vals
+| {t,f}
+most_common_freqs | {0.89743334,0.10256667}",0.89743334,,3,"('most_common_freqs affects other configs', '0.89743334,0.10256667')"
+61,"<re.Match object; span=(60, 77), match='most_common_freqs'>","<re.Match object; span=(11, 21), match='0.10256667'>","0.89743334,0.10256667","attname
+| activated
+n_distinct
+| 2
+most_common_vals
+| {t,f}
+most_common_freqs | {0.89743334,0.10256667}",0.10256667,,3,"('most_common_freqs affects other configs', '0.89743334,0.10256667')"
+61,"<re.Match object; span=(99, 114), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 100000","db-#
+'2020-01-01'::date + (interval '1 day') * round(random() * 365 * 2) AS sold_at
+db-# FROM
+db-#
+generate_series(1, 100000);",1.0,,3,"('generate_series is affected by other condition', '\ndb-#\n')"
+61,"<re.Match object; span=(99, 114), match='generate_series'>","<re.Match object; span=(3, 9), match='100000'>","1, 100000","db-#
+'2020-01-01'::date + (interval '1 day') * round(random() * 365 * 2) AS sold_at
+db-# FROM
+db-#
+generate_series(1, 100000);",100000.0,,3,"('generate_series is affected by other condition', '\ndb-#\n')"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",1.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",31.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",31.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(184, 191), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01'::date,"-----------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=108.30..1107.69 rows=4293 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(184, 191), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01'::date,"-----------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=108.30..1107.69 rows=4293 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(184, 191), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01'::date,"-----------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=108.30..1107.69 rows=4293 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(15, 30), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 100000","db-# FROM
+db-#
+generate_series(1, 100000)
+db-# ORDER BY sold_at;
+INSERT 0 100000
+db=# VACUUM ANALYZE sale_fact;
+VACUUM",1.0,,3,"('generate_series is affected by other condition', 'sold_at')"
+61,"<re.Match object; span=(15, 30), match='generate_series'>","<re.Match object; span=(3, 9), match='100000'>","1, 100000","db-# FROM
+db-#
+generate_series(1, 100000)
+db-# ORDER BY sold_at;
+INSERT 0 100000
+db=# VACUUM ANALYZE sale_fact;
+VACUUM",100000.0,,3,"('generate_series is affected by other condition', 'sold_at')"
+61,"<re.Match object; span=(11, 18), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN
+---------------------------------------------------------------------------------------------",2020.0,,3,"('sold_at is affected by other condition', '\nQUERY PLAN')"
+61,"<re.Match object; span=(11, 18), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN
+---------------------------------------------------------------------------------------------",7.0,,3,"('sold_at is affected by other condition', '\nQUERY PLAN')"
+61,"<re.Match object; span=(11, 18), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN
+---------------------------------------------------------------------------------------------",1.0,,3,"('sold_at is affected by other condition', '\nQUERY PLAN')"
+61,"<re.Match object; span=(11, 18), match='sold_at'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN
+---------------------------------------------------------------------------------------------",2020.0,,3,"('sold_at is affected by other condition', '\nQUERY PLAN')"
+61,"<re.Match object; span=(11, 18), match='sold_at'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN
+---------------------------------------------------------------------------------------------",7.0,,3,"('sold_at is affected by other condition', '\nQUERY PLAN')"
+61,"<re.Match object; span=(11, 18), match='sold_at'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN
+---------------------------------------------------------------------------------------------",31.0,,3,"('sold_at is affected by other condition', '\nQUERY PLAN')"
+61,"<re.Match object; span=(94, 109), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1, 100000","'2020-01-01'::date + (interval '1 day') * round(random() * 365 * 2) AS sold_at
+db-# FROM
+db-#
+generate_series(1, 100000)
+INSERT 0 100000
+db=# ANALYZE sale_fact;
+ANALYZE",1.0,,3,"('generate_series is affected by other condition', '\ndb')"
+61,"<re.Match object; span=(94, 109), match='generate_series'>","<re.Match object; span=(3, 9), match='100000'>","1, 100000","'2020-01-01'::date + (interval '1 day') * round(random() * 365 * 2) AS sold_at
+db-# FROM
+db-#
+generate_series(1, 100000)
+INSERT 0 100000
+db=# ANALYZE sale_fact;
+ANALYZE",100000.0,,3,"('generate_series is affected by other condition', '\ndb')"
+61,"<re.Match object; span=(41, 50), match='sale_fact'>","<re.Match object; span=(1, 11), match='5.9702674e'>",-5.9702674e-05,"-----------+-----------+----------------
+sale_fact | sold_at
+| -5.9702674e-05
+sale_fact | id
+sale_fact | username
+0.010033822
+We loaded data into the table in random order and as a result the correlation of sold_at is close to zero.",5.9702674,e,3,"('sale_fact is affected by other condition', 'close to zero')"
+61,"<re.Match object; span=(41, 50), match='sale_fact'>","<re.Match object; span=(12, 14), match='05'>",-5.9702674e-05,"-----------+-----------+----------------
+sale_fact | sold_at
+| -5.9702674e-05
+sale_fact | id
+sale_fact | username
+0.010033822
+We loaded data into the table in random order and as a result the correlation of sold_at is close to zero.",5.0,,3,"('sale_fact is affected by other condition', 'close to zero')"
+61,"<re.Match object; span=(50, 57), match='sold_at'>","<re.Match object; span=(0, 1), match='1'>",1,"-----------+----------+--------------
+sale_fact | sold_at
+sale_fact | id
+| -0.002239401
+sale_fact | username |
+0.013389298
+After the table was clustered we can see that the correlation for sold_at is 1.",1.0,,3,"('sold_at is affected by other condition', '1')"
+61,"<re.Match object; span=(159, 174), match='pages_per_range'>","<re.Match object; span=(1, 2), match='2'>",[2–9],"[2–9] - Might be here
+[1–7] - Might be here
+[3–8] - Might be here
+In this case the index is not limiting the search at all, hence it is useless.
+Understanding pages_per_range",2.0,,3,"('pages_per_range is affected by other condition', 'the index is not limiting the search at all, hence it is useless')"
+61,"<re.Match object; span=(159, 174), match='pages_per_range'>","<re.Match object; span=(3, 4), match='9'>",[2–9],"[2–9] - Might be here
+[1–7] - Might be here
+[3–8] - Might be here
+In this case the index is not limiting the search at all, hence it is useless.
+Understanding pages_per_range",9.0,,3,"('pages_per_range is affected by other condition', 'the index is not limiting the search at all, hence it is useless')"
+61,"<re.Match object; span=(60, 75), match='pages_per_range'>","<re.Match object; span=(0, 3), match='128'>",128,"The number of adjacent pages is determined by the parameter pages_per_range. The number of pages per range effects the size and accuracy of the BRIN index:
+A large pages_per_range will produce a small and less accurate index
+A small pages_per_range will produce a bigger and more accurate index
+The default pages_per_range is 128.
+BRIN index with lower `pages_per_range`",128.0,,3,"('pages_per_range is affected by other condition', 'the size and accuracy of the BRIN index')"
+61,"<re.Match object; span=(28, 35), match='sold_at'>","<re.Match object; span=(18, 21), match='128'>",pages_per_range = 128,"db=# CREATE INDEX sale_fact_sold_at_bix ON sale_fact
+db-# USING BRIN(sold_at) WITH (pages_per_range = 128);
+CREATE INDEX
+This creates a BRIN index with the default pages_per_range = 128.
+Let's try to query for a range of sale dates:",128.0,,3,"('sold_at affects other configs', 'USING BRIN')"
+61,"<re.Match object; span=(84, 99), match='pages_per_range'>","<re.Match object; span=(0, 3), match='128'>",128,"db=# CREATE INDEX sale_fact_sold_at_bix ON sale_fact
+db-# USING BRIN(sold_at) WITH (pages_per_range = 128);
+CREATE INDEX
+This creates a BRIN index with the default pages_per_range = 128.
+Let's try to query for a range of sale dates:",128.0,,3,"('pages_per_range affects other configs', 'sale dates')"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",1.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(47, 56), match='sale_fact'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",31.0,,3,"('sale_fact is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(68, 75), match='sold_at'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db-# SELECT *
+db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",31.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(180, 187), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01'::date,"--------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=13.11..1135.61 rows=4319 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(180, 187), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01'::date,"--------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=13.11..1135.61 rows=4319 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(180, 187), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01'::date,"--------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=13.11..1135.61 rows=4319 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(285, 292), match='sold_at'>","<re.Match object; span=(18, 20), match='64'>",pages_per_range = 64,"According to the execution plan, the database removed 23,130 rows from the pages it found using the index. This may indicate that the range we set for the index it too large for this particular query. Let's try to create an index with less pages per range:
+db=# CREATE INDEX sale_fact_sold_at_bix64 ON sale_fact
+db-# USING BRIN(sold_at) WITH (pages_per_range = 64);
+CREATE INDEX",64.0,,3,"('sold_at affects other configs', 'BRIN')"
+61,"<re.Match object; span=(343, 358), match='pages_per_range'>","<re.Match object; span=(0, 2), match='64'>",64,"According to the execution plan, the database removed 23,130 rows from the pages it found using the index. This may indicate that the range we set for the index it too large for this particular query. Let's try to create an index with less pages per range:
+db=# CREATE INDEX sale_fact_sold_at_bix64 ON sale_fact
+db-# USING BRIN(sold_at) WITH (pages_per_range = 64);
+CREATE INDEX",64.0,,3,"('pages_per_range is affected by other condition', '64')"
+61,"<re.Match object; span=(45, 54), match='sale_fact'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sale_fact is affected by other condition', '\ndb')"
+61,"<re.Match object; span=(45, 54), match='sale_fact'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sale_fact is affected by other condition', '\ndb')"
+61,"<re.Match object; span=(45, 54), match='sale_fact'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",1.0,,3,"('sale_fact is affected by other condition', '\ndb')"
+61,"<re.Match object; span=(45, 54), match='sale_fact'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sale_fact is affected by other condition', '\ndb')"
+61,"<re.Match object; span=(45, 54), match='sale_fact'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sale_fact is affected by other condition', '\ndb')"
+61,"<re.Match object; span=(45, 54), match='sale_fact'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",31.0,,3,"('sale_fact is affected by other condition', '\ndb')"
+61,"<re.Match object; span=(65, 72), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(65, 72), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(65, 72), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(65, 72), match='sold_at'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(65, 72), match='sold_at'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(65, 72), match='sold_at'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db=# EXPLAIN (ANALYZE)
+db- SELECT *
+db- FROM sale_fact
+db- WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",31.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(181, 188), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01'::date,"---------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=13.10..1048.10 rows=4319 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(181, 188), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01'::date,"---------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=13.10..1048.10 rows=4319 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(181, 188), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01'::date,"---------------------------------------------------------------------------------------------
+Bitmap Heap Scan on sale_fact
+(cost=13.10..1048.10 rows=4319 width=41)
+Recheck Cond: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(389, 404), match='pages_per_range'>","<re.Match object; span=(0, 3), match='128'>",128,"Note that we optimized the query for a very specific query. This is fine for demonstration purposes, but in real life it's best to use values that meet the needs of most queries.
+Evaluating Index Size
+Another big selling point for BRIN indexes is their size. In previous sections we created a B-Tree index on the sold_at field. The size of the index was 2224kB. The size a BRIN index with pages_per_range=128 is only 48kb. That's 46 times smaller than the B-Tree index.",128.0,,3,"('pages_per_range affects other configs', '46 times smaller than the B-Tree index')"
+61,"<re.Match object; span=(9, 30), match='sale_fact_sold_at_bix'>","<re.Match object; span=(19, 23), match='48kB'>","haki
+| sale_fact | 48kB","public | sale_fact_sold_at_bix | index | haki
+| sale_fact | 48kB
+public | sale_fact_sold_at_ix
+| index | haki
+| sale_fact | 2224kB",48.0,kB,3,"('sale_fact_sold_at_bix is affected by other condition', 'haki\n')"
+61,"<re.Match object; span=(45, 60), match='pages_per_range'>","<re.Match object; span=(16, 17), match='2'>",pages_per_range=2,"The size of a BRIN index is also affected by pages_per_range. For example, a BRIN index with pages_per_range=2 weighs 56kb, which is only slightly bigger than 48kb.
+Make Indexes ""Invisible""
+PostgreSQL has a nice feature called transactional DDL. After years of using Oracle, I got used to DDL commands such as CREATE, DROP and ALTER ending a transaction. However, in PostgreSQL you can perform DDL commands inside a transaction, and changes will take effect only when the transaction is committed.",2.0,,3,"('pages_per_range is affected by other condition', 'The size of a BRIN index')"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",31.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(0, 4), match='2020'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(5, 7), match='07'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(8, 10), match='01'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(17, 21), match='2020'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(22, 24), match='07'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(31, 38), match='sold_at'>","<re.Match object; span=(25, 27), match='31'>",2020-07-01' AND '2020-07-31,"db-# FROM sale_fact
+db-# WHERE sold_at BETWEEN '2020-07-01' AND '2020-07-31';
+QUERY PLAN",31.0,,3,"('sold_at is affected by other condition', ""2020-07-01' AND '2020-07-31"")"
+61,"<re.Match object; span=(154, 161), match='sold_at'>","<re.Match object; span=(4, 8), match='2020'>",>= '2020-07-01'::date,"---------------------------------------------------------------------------------
+Seq Scan on sale_fact
+(cost=0.00..2435.00 rows=4319 width=41)
+Filter: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",2020.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(154, 161), match='sold_at'>","<re.Match object; span=(9, 11), match='07'>",>= '2020-07-01'::date,"---------------------------------------------------------------------------------
+Seq Scan on sale_fact
+(cost=0.00..2435.00 rows=4319 width=41)
+Filter: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",7.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+61,"<re.Match object; span=(154, 161), match='sold_at'>","<re.Match object; span=(12, 14), match='01'>",>= '2020-07-01'::date,"---------------------------------------------------------------------------------
+Seq Scan on sale_fact
+(cost=0.00..2435.00 rows=4319 width=41)
+Filter: ((sold_at >= '2020-07-01'::date) AND (sold_at <= '2020-07-31'::date))",1.0,,3,"('sold_at is affected by other condition', ""2020-07-01'::date"")"
+64,"<re.Match object; span=(58, 89), match='max_parallel_workers_per_gather'>","<re.Match object; span=(0, 1), match='6'>",6,"(3 rows)The following example shows an increased value of max_parallel_workers_per_gather:SET max_parallel_workers_per_gather TO 6;
+SHOW max_parallel_workers_per_gather;
+max_parallel_workers_per_gather
+---------------------------------",6.0,,3,"('max_parallel_workers_per_gather is affected by other condition', '6')"
+64,"<re.Match object; span=(74, 90), match='parallel_workers'>","<re.Match object; span=(0, 1), match='3'>",3,"""pgbench_accounts_pkey"" PRIMARY KEY, btree (aid)
+Options: fillfactor=100, parallel_workers=3If the PARALLEL hint is provided with no parallel degree, the returned number of planned
+workers is the value of the parallel_workers parameter.",3.0,,3,"('parallel_workers is affected by other condition', 'If the PARALLEL hint is provided with no parallel degree')"
+64,"<re.Match object; span=(1, 22), match='pgbench_accounts_pkey'>","<re.Match object; span=(11, 14), match='100'>","fillfactor=100, parallel_workers=3","""pgbench_accounts_pkey"" PRIMARY KEY, btree (aid)
+Options: fillfactor=100, parallel_workers=3If the PARALLEL hint is provided with no parallel degree, the returned number of planned
+workers is the value of the parallel_workers parameter.",100.0,,3,"('pgbench_accounts_pkey is affected by other condition', 'PARALLEL hint is provided with no parallel degree')"
+64,"<re.Match object; span=(1, 22), match='pgbench_accounts_pkey'>","<re.Match object; span=(33, 34), match='3'>","fillfactor=100, parallel_workers=3","""pgbench_accounts_pkey"" PRIMARY KEY, btree (aid)
+Options: fillfactor=100, parallel_workers=3If the PARALLEL hint is provided with no parallel degree, the returned number of planned
+workers is the value of the parallel_workers parameter.",3.0,,3,"('pgbench_accounts_pkey is affected by other condition', 'PARALLEL hint is provided with no parallel degree')"
+68,"<re.Match object; span=(116, 131), match='max_connections'>","<re.Match object; span=(0, 3), match='275'>",275,"Linux: /etc/my.cnf
+Windows: c:\Users\All Users\MySQL\MySQL Server 5.x\my.ini
+In the mysqld section, add or edit the max_connections property:
+max_connections = 275
+Restart the database.",275.0,,3,"('max_connections is affected by other condition', 'Restart the database')"
+68,"<re.Match object; span=(0, 22), match='lower_case_table_names'>","<re.Match object; span=(0, 1), match='1'>",1,"lower_case_table_names=1
+Using this variable setting allows MySQL to convert all table names to lowercase on storage and lookup. This behavior also applies to database names and table aliases. This setting also prevents data transfer problems between platforms and between file systems with varying case sensitivity.
+See the MySQL site for more information on this variable.",1.0,,3,"('lower_case_table_names is affected by other condition', 'storage and lookup')"
+68,"<re.Match object; span=(98, 113), match='max_connections'>","<re.Match object; span=(0, 3), match='275'>",275,"Windows: C:\Program Files\PostgreSQL\<version-of-postgresql>\data\postgresql.conf
+Add or edit the max_connections property:
+max_connections = 275
+Restart the database.
+Create a database named alfresco.
+Create a user named alfresco.
+This user must have write permissions on all tables and sequences.",275.0,,3,"('max_connections is affected by other condition', '275')"
+70,"<re.Match object; span=(0, 16), match='jsonb_path_query'>","<re.Match object; span=(8, 10), match='50'>","price"": 50, ""style"": ""pb""}","jsonb_path_query
+------------------------------
+{""price"": 50, ""style"": ""pb""}
+(1 row)
+Select only the hardcover prints from the array:",50.0,,3,"('jsonb_path_query is affected by other condition', '------------------------------')"
+77,"<re.Match object; span=(666, 688), match='enable_plan_management'>","<re.Match object; span=(0, 1), match='1'>",1,"b. In the list, choose the parameter group for your Aurora PostgreSQL DB cluster. You can find the DB Cluster parameter group name by selecting the CloudFormation Stack with description “Amazon Aurora PostgreSQL Labs Stackset” in the Cloudformation Console and referring to the Value for key apgcustomclusterparamgroup in the Outputs tab.The DB cluster must use a parameter group other than the default, because you can’t change values in a default parameter group.
+For more information, see Creating a DB Cluster Parameter Group.
+c. Click on the DB cluster parameter group name selected above and then click on Edit Parameters.
+In Parameter Filter field, enter rds.enable_plan_management to reveal the filtered parameter. Set value of rds.enable_plan_management to 1 and click on Save changes.",1.0,,3,"('enable_plan_management is affected by other condition', 'Save changes')"
+77,"<re.Match object; span=(29, 44), match='pgbench_tellers'>","<re.Match object; span=(22, 25), match='100'>",tbalance = tbalance + 100,"explain (hashes true) UPDATE pgbench_tellers SET tbalance = tbalance + 100 WHERE tid = 200;
+Output:
+QUERY PLAN
+----------------------------------------------------------------------",100.0,,3,"('pgbench_tellers is affected by other condition', '\nQUERY PLAN\n----------------------------------------------------------------------')"
+77,"<re.Match object; span=(357, 370), match='apg_plan_mgmt'>","<re.Match object; span=(21, 24), match='1.1'>","sql_hash, plan_hash, 1.1,'approve')","The following is an example of plan adaptability with QPM. This example evaluates the unapproved plan based on the minimum speedup factor. It approves any captured unapproved plan that is faster by at least 10 percent than the best approved plan for the statement. For additional details, see Evaluating Plan Performance in the Aurora documentation.
+SELECT apg_plan_mgmt.Evolve_plan_baselines (sql_hash, plan_hash, 1.1,'approve')
+FROM
+apg_plan_mgmt.dba_plans",1.1,,3,"('apg_plan_mgmt affects other configs', '\napg_plan_mgmt.dba_plans')"
+77,"<re.Match object; span=(404, 413), match='plan_hash'>","<re.Match object; span=(0, 3), match='1.1'>",1.1,"The following is an example of plan adaptability with QPM. This example evaluates the unapproved plan based on the minimum speedup factor. It approves any captured unapproved plan that is faster by at least 10 percent than the best approved plan for the statement. For additional details, see Evaluating Plan Performance in the Aurora documentation.
+SELECT apg_plan_mgmt.Evolve_plan_baselines (sql_hash, plan_hash, 1.1,'approve')
+FROM
+apg_plan_mgmt.dba_plans",1.1,,3,"('plan_hash affects other configs', ""sql_hash, plan_hash, 1.1,'approve"")"
+77,"<re.Match object; span=(38, 46), match='sql_hash'>","<re.Match object; span=(0, 9), match='356104612'>",356104612,"SELECT apg_plan_mgmt.set_plan_status (sql_hash, plan_hash, 'Rejected') from apg_plan_mgmt.dba_plans where sql_hash = 356104612;
+SELECT apg_plan_mgmt.set_plan_status (356104612, -58126597, 'Approved');
+g. Next, remove the optimizer hint from the SQL, set capture_plan_baselines parameter to off to disable plan capturing and",356104612.0,,3,"('sql_hash affects other configs', 'Rejected')"
+77,"<re.Match object; span=(600, 622), match='enable_plan_management'>","<re.Match object; span=(0, 1), match='0'>",0,"QPM provides an option to export and import QPM-managed plans from one database to another database. With this option, you can manage the query execution plans centrally and deploy them to databases globally. This feature is useful for the scenarios where you investigate a set of plans on a preprod database, verify that they perform well, and then load them into a production database.
+For additional details, see Exporting and Importing Plans in the Aurora documentation.
+5. Disabling QPM and deleting plans manually
+To disable QPM feature, open your cluster-level parameter group and set the rds.enable_plan_management parameter to 0.",0.0,,3,"('enable_plan_management affects other configs', 'disable QPM feature')"
+80,"<re.Match object; span=(60, 71), match='exit_status'>","<re.Match object; span=(0, 3), match='255'>",255,"index: 0, reason: CRASHED, exit_description: out of memory, exit_status: 255
+Where YOUR-APP is the name of your app.
+This error appears when the JVM allocates more OS-level memory than the quota requested by the app, such as through the manifest.",255.0,,3,"('exit_status is affected by other condition', '255')"
+80,"<re.Match object; span=(74, 91), match='memory_calculator'>","<re.Match object; span=(23, 27), match='150m'>",memory_sizes: {native: 150m,"applications:
+- name: YOUR-APP
+memory: 1G
+env:
+JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {memory_sizes: {native: 150m}}]'",150.0,m,3,"('memory_calculator is affected by other condition', '\nJBP_CONFIG_OPEN_JDK_JRE')"
+80,"<re.Match object; span=(94, 106), match='memory_sizes'>","<re.Match object; span=(8, 12), match='150m'>",native: 150m,"applications:
+- name: YOUR-APP
+memory: 1G
+env:
+JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {memory_sizes: {native: 150m}}]'",150.0,m,3,"('memory_sizes is affected by other condition', 'memory_calculator')"
+80,"<re.Match object; span=(610, 622), match='memory_sizes'>","<re.Match object; span=(8, 12), match='512k'>",{stack: 512k,"You can use the stack setting of the memory calculator to configure the amount of space the JVM reserves for each Java thread. You must multiply this value by the number of threads your app requires. Specify the number of threads in the stack_threads setting of the memory calculator. For example, if you estimate the max thread count for an app at 800 and the amount of memory needed to represent the deepest stacktrace of a Java thread is 512KB, configure the memory calculator as follows:
+---
+applications:
+- name: YOUR-APP
+memory: 1G
+env:
+JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {stack_threads: 800, memory_sizes: {stack: 512k}}]'",512.0,k,3,"('memory_sizes is affected by other condition', 'stack: 512k')"
+87,"<re.Match object; span=(1116, 1133), match='max_cluster_count'>","<re.Match object; span=(0, 2), match='10'>",10,"In the above example, Apache Airflow is used to execute multiple parallel tasks (each with a different connection to Snowflake), and each task uses the same virtual warehouse. As the workload increases, jobs begin to queue as there are insufficient resources available. However, the Snowflake multi-cluster feature can be configured to automatically create another same-size virtual warehouse, and this continues to take up the load.As tasks complete, the above solution automatically scales back down to a single cluster, and once the last task finishes, the last running cluster will suspend. This is by far the most efficient method of completing batch parallel tasks, and we still have the option of scaling up.The SQL snippet below illustrates the command needed to create a multi-cluster warehouse, which will automatically suspend after 60 seconds idle time, but use the ECONOMY scaling policy to favour throughput and saving credits over individual query latency.-- Create a multi-cluster warehouse for batch processing
+create or replace warehouse batch_vwh with
+warehouse_size
+= SMALL
+min_cluster_count
+= 1
+max_cluster_count
+= 10
+scaling_policy
+= economy
+auto_suspend",10.0,,3,"('max_cluster_count is affected by other condition', '10')"
+87,"<re.Match object; span=(1094, 1111), match='min_cluster_count'>","<re.Match object; span=(0, 1), match='1'>",1,"In the above example, Apache Airflow is used to execute multiple parallel tasks (each with a different connection to Snowflake), and each task uses the same virtual warehouse. As the workload increases, jobs begin to queue as there are insufficient resources available. However, the Snowflake multi-cluster feature can be configured to automatically create another same-size virtual warehouse, and this continues to take up the load.As tasks complete, the above solution automatically scales back down to a single cluster, and once the last task finishes, the last running cluster will suspend. This is by far the most efficient method of completing batch parallel tasks, and we still have the option of scaling up.The SQL snippet below illustrates the command needed to create a multi-cluster warehouse, which will automatically suspend after 60 seconds idle time, but use the ECONOMY scaling policy to favour throughput and saving credits over individual query latency.-- Create a multi-cluster warehouse for batch processing
+create or replace warehouse batch_vwh with
+warehouse_size
+= SMALL
+min_cluster_count
+= 1
+max_cluster_count
+= 10
+scaling_policy
+= economy
+auto_suspend",1.0,,3,"('min_cluster_count is affected by other condition', '1')"
+87,"<re.Match object; span=(52, 78), match='percent_scanned_from_cache'>","<re.Match object; span=(0, 3), match='100'>",100,"nullif(partitions_total,0)) * 100 as pct_table_scan
+percent_scanned_from_cache * 100
+as pct_from cache
+bytes_spilled_to_local_storage
+as spill_to_local
+bytes_spilled_to_remote_storage
+as spill_to_remote
+from",100.0,,3,"('percent_scanned_from_cache is affected by other condition', 'nullif(partitions_total,0)) * 100')"
+87,"<re.Match object; span=(37, 51), match='pct_table_scan'>","<re.Match object; span=(0, 3), match='100'>",100,"nullif(partitions_total,0)) * 100 as pct_table_scan
+percent_scanned_from_cache * 100
+as pct_from cache
+bytes_spilled_to_local_storage
+as spill_to_local
+bytes_spilled_to_remote_storage
+as spill_to_remote
+from",100.0,,3,"('pct_table_scan is affected by other condition', 'nullif(partitions_total,0)) * 100')"
+87,"<re.Match object; span=(7, 23), match='partitions_total'>","<re.Match object; span=(0, 1), match='0'>",0,"nullif(partitions_total,0)) * 100 as pct_table_scan
+percent_scanned_from_cache * 100
+as pct_from cache
+bytes_spilled_to_local_storage
+as spill_to_local
+bytes_spilled_to_remote_storage
+as spill_to_remote
+from",0.0,,3,"('partitions_total is affected by other condition', '0')"
+87,"<re.Match object; span=(183, 198), match='elapsed_seconds'>","<re.Match object; span=(0, 3), match='120'>",120,"snowflake.account_usage.query_history
+where (bytes_spilled_to_local_storage > 1024 * 1024 or
+bytes_spilled_to_remote_storage > 1024 * 1024 or
+percentage_scanned_from_cache < 0.1)
+and
+elapsed_seconds > 120",120.0,,3,"('elapsed_seconds is affected by other condition', '120')"
+87,"<re.Match object; span=(45, 75), match='bytes_spilled_to_local_storage'>","<re.Match object; span=(0, 4), match='1024'>",1024 * 1024,"snowflake.account_usage.query_history
+where (bytes_spilled_to_local_storage > 1024 * 1024 or
+bytes_spilled_to_remote_storage > 1024 * 1024 or
+percentage_scanned_from_cache < 0.1)
+and
+elapsed_seconds > 120",1024.0,,3,"('bytes_spilled_to_local_storage is affected by other condition', '1024 * 1024')"
+87,"<re.Match object; span=(45, 75), match='bytes_spilled_to_local_storage'>","<re.Match object; span=(7, 11), match='1024'>",1024 * 1024,"snowflake.account_usage.query_history
+where (bytes_spilled_to_local_storage > 1024 * 1024 or
+bytes_spilled_to_remote_storage > 1024 * 1024 or
+percentage_scanned_from_cache < 0.1)
+and
+elapsed_seconds > 120",1024.0,,3,"('bytes_spilled_to_local_storage is affected by other condition', '1024 * 1024')"
+87,"<re.Match object; span=(4, 17), match='bytes_scanned'>","<re.Match object; span=(0, 4), match='1024'>",1024 * 1024,"and
+bytes_scanned > 1024 * 1024
+order by elapsed_seconds desc;",1024.0,,3,"('bytes_scanned is affected by other condition', 'elapsed_seconds desc')"
+87,"<re.Match object; span=(4, 17), match='bytes_scanned'>","<re.Match object; span=(7, 11), match='1024'>",1024 * 1024,"and
+bytes_scanned > 1024 * 1024
+order by elapsed_seconds desc;",1024.0,,3,"('bytes_scanned is affected by other condition', 'elapsed_seconds desc')"
+89,"<re.Match object; span=(175, 183), match='shm_size'>","<re.Match object; span=(0, 2), match='64'>",64,"KeepAlive on, and KeepAliveTimeout very low (1 or 2 sec)
+Disable or comment access.log settings
+Enable mod_deflate or mod_gzip
+Install APC server with higher memory limit apc.shm_size = 64
+Also we can check this options :
+1) Turn Page Caching On",64.0,,3,"('shm_size is affected by other condition', '64')"
+90,"<re.Match object; span=(33, 48), match='generate_series'>","<re.Match object; span=(0, 1), match='1'>","1,1000*1000","create table i1 as select i from generate_series(1,1000*1000) as i;
+create table i2 as select i from generate_series(1,1000) as i;
+analyze;
+explain analyze select sum(i1.i * i2.i) from i1 inner join i2 using (i);",1.0,,3,"('generate_series affects other configs', '\nanalyze;\nexplain')"
+90,"<re.Match object; span=(33, 48), match='generate_series'>","<re.Match object; span=(2, 6), match='1000'>","1,1000*1000","create table i1 as select i from generate_series(1,1000*1000) as i;
+create table i2 as select i from generate_series(1,1000) as i;
+analyze;
+explain analyze select sum(i1.i * i2.i) from i1 inner join i2 using (i);",1000.0,,3,"('generate_series affects other configs', '\nanalyze;\nexplain')"
+90,"<re.Match object; span=(33, 48), match='generate_series'>","<re.Match object; span=(7, 11), match='1000'>","1,1000*1000","create table i1 as select i from generate_series(1,1000*1000) as i;
+create table i2 as select i from generate_series(1,1000) as i;
+analyze;
+explain analyze select sum(i1.i * i2.i) from i1 inner join i2 using (i);",1000.0,,3,"('generate_series affects other configs', '\nanalyze;\nexplain')"
+90,"<re.Match object; span=(255, 274), match='current_clocksource'>","<re.Match object; span=(11, 12), match='0'>",clocksource0,"KVM is used, clock is as fast as the hypervisor’s, and results are similar to
+the first ones shown here. We may also mitigate this effort on r4.large by
+switching to the tsc time source:
+echo tsc | sudo tee -a /sys/devices/system/clocksource/clocksource0/current_clocksource",0.0,,3,"('current_clocksource affects other configs', '\nswitching to the tsc time source')"
+91,"<re.Match object; span=(20, 35), match='max_wal_senders'>","<re.Match object; span=(0, 1), match='0'>",0,"=> ALTER SYSTEM SET max_wal_senders = 0;
+student$ sudo pg_ctlcluster 11 main restart
+Note that the change of the level requires restarting the server.
+Let's remember the current WAL location:
+=> SELECT pg_current_wal_insert_lsn();",0.0,,3,"('max_wal_senders is affected by other condition', '0')"
+91,"<re.Match object; span=(37, 43), match='pg_wal'>","<re.Match object; span=(0, 1), match='0'>",0/353927BC -e 0/353A7DFC,"postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353927BC -e 0/353A7DFC
+Certainly, some details can differ from one launch to another, but in this case we get the following. The record of the Heap2 manager relates to vacuuming, here it is in-page vacuum of a table from the system catalog (system objects are easily distinguished with a naked eye by a small number in rel):",0.0,,3,"('pg_wal is affected by other condition', 'launch to another')"
+91,"<re.Match object; span=(37, 43), match='pg_wal'>","<re.Match object; span=(2, 10), match='353927BC'>",0/353927BC -e 0/353A7DFC,"postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353927BC -e 0/353A7DFC
+Certainly, some details can differ from one launch to another, but in this case we get the following. The record of the Heap2 manager relates to vacuuming, here it is in-page vacuum of a table from the system catalog (system objects are easily distinguished with a naked eye by a small number in rel):",353927.0,BC,3,"('pg_wal is affected by other condition', 'launch to another')"
+91,"<re.Match object; span=(37, 43), match='pg_wal'>","<re.Match object; span=(14, 15), match='0'>",0/353927BC -e 0/353A7DFC,"postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353927BC -e 0/353A7DFC
+Certainly, some details can differ from one launch to another, but in this case we get the following. The record of the Heap2 manager relates to vacuuming, here it is in-page vacuum of a table from the system catalog (system objects are easily distinguished with a naked eye by a small number in rel):",0.0,,3,"('pg_wal is affected by other condition', 'launch to another')"
+91,"<re.Match object; span=(37, 43), match='pg_wal'>","<re.Match object; span=(16, 24), match='353A7DFC'>",0/353927BC -e 0/353A7DFC,"postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353927BC -e 0/353A7DFC
+Certainly, some details can differ from one launch to another, but in this case we get the following. The record of the Heap2 manager relates to vacuuming, here it is in-page vacuum of a table from the system catalog (system objects are easily distinguished with a naked eye by a small number in rel):",353.0,A7DFC,3,"('pg_wal is affected by other condition', 'launch to another')"
+91,"<re.Match object; span=(66, 76), match='pg_waldump'>","<re.Match object; span=(0, 1), match='0'>",0/353AF21C -e 0/353BE51C,"Now let's check WAL records.
+postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353AF21C -e 0/353BE51C",0.0,,3,"('pg_waldump is affected by other condition', '\npostgres$')"
+91,"<re.Match object; span=(66, 76), match='pg_waldump'>","<re.Match object; span=(2, 10), match='353AF21C'>",0/353AF21C -e 0/353BE51C,"Now let's check WAL records.
+postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353AF21C -e 0/353BE51C",353.0,AF21C,3,"('pg_waldump is affected by other condition', '\npostgres$')"
+91,"<re.Match object; span=(66, 76), match='pg_waldump'>","<re.Match object; span=(14, 15), match='0'>",0/353AF21C -e 0/353BE51C,"Now let's check WAL records.
+postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353AF21C -e 0/353BE51C",0.0,,3,"('pg_waldump is affected by other condition', '\npostgres$')"
+91,"<re.Match object; span=(66, 76), match='pg_waldump'>","<re.Match object; span=(16, 24), match='353BE51C'>",0/353AF21C -e 0/353BE51C,"Now let's check WAL records.
+postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353AF21C -e 0/353BE51C",353.0,BE51C,3,"('pg_waldump is affected by other condition', '\npostgres$')"
+91,"<re.Match object; span=(66, 72), match='pg_wal'>","<re.Match object; span=(0, 1), match='0'>",0/353AF21C -e 0/353BE51C,"Now let's check WAL records.
+postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353AF21C -e 0/353BE51C",0.0,,3,"('pg_wal is affected by other condition', '0/353AF21C -e 0/353BE51C')"
+91,"<re.Match object; span=(66, 72), match='pg_wal'>","<re.Match object; span=(2, 10), match='353AF21C'>",0/353AF21C -e 0/353BE51C,"Now let's check WAL records.
+postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353AF21C -e 0/353BE51C",353.0,AF21C,3,"('pg_wal is affected by other condition', '0/353AF21C -e 0/353BE51C')"
+91,"<re.Match object; span=(66, 72), match='pg_wal'>","<re.Match object; span=(14, 15), match='0'>",0/353AF21C -e 0/353BE51C,"Now let's check WAL records.
+postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353AF21C -e 0/353BE51C",0.0,,3,"('pg_wal is affected by other condition', '0/353AF21C -e 0/353BE51C')"
+91,"<re.Match object; span=(66, 72), match='pg_wal'>","<re.Match object; span=(16, 24), match='353BE51C'>",0/353AF21C -e 0/353BE51C,"Now let's check WAL records.
+postgres$ /usr/lib/postgresql/11/bin/pg_waldump -p /var/lib/postgresql/11/main/pg_wal -s 0/353AF21C -e 0/353BE51C",353.0,BE51C,3,"('pg_wal is affected by other condition', '0/353AF21C -e 0/353BE51C')"
+91,"<re.Match object; span=(72, 78), match='pg_lsn'>","<re.Match object; span=(0, 1), match='0'>",0/38E04A08,"Getting the size of WAL records:
+=> SELECT pg_size_pretty('0/3A69C478'::pg_lsn - '0/38E04A08'::pg_lsn);
+pg_size_pretty",0.0,,3,"('pg_lsn affects other configs', '0/38E04A08')"
+91,"<re.Match object; span=(72, 78), match='pg_lsn'>","<re.Match object; span=(2, 10), match='38E04A08'>",0/38E04A08,"Getting the size of WAL records:
+=> SELECT pg_size_pretty('0/3A69C478'::pg_lsn - '0/38E04A08'::pg_lsn);
+pg_size_pretty",38.0,E04A08,3,"('pg_lsn affects other configs', '0/38E04A08')"
+91,"<re.Match object; span=(72, 78), match='pg_lsn'>","<re.Match object; span=(0, 1), match='0'>",0/3A69C530,"Getting the size of WAL records:
+=> SELECT pg_size_pretty('0/3BE87658'::pg_lsn - '0/3A69C530'::pg_lsn);
+pg_size_pretty",0.0,,3,"('pg_lsn affects other configs', ""pg_size_pretty('0/3BE87658"")"
+91,"<re.Match object; span=(72, 78), match='pg_lsn'>","<re.Match object; span=(2, 10), match='3A69C530'>",0/3A69C530,"Getting the size of WAL records:
+=> SELECT pg_size_pretty('0/3BE87658'::pg_lsn - '0/3A69C530'::pg_lsn);
+pg_size_pretty",3.0,A69C530,3,"('pg_lsn affects other configs', ""pg_size_pretty('0/3BE87658"")"
+91,"<re.Match object; span=(72, 78), match='pg_lsn'>","<re.Match object; span=(0, 1), match='0'>",0/3BE87710,"Getting the size of WAL records:
+=> SELECT pg_size_pretty('0/3CBD3EA8'::pg_lsn - '0/3BE87710'::pg_lsn);
+pg_size_pretty",0.0,,3,"('pg_lsn affects other configs', '0/3BE87710')"
+91,"<re.Match object; span=(72, 78), match='pg_lsn'>","<re.Match object; span=(2, 10), match='3BE87710'>",0/3BE87710,"Getting the size of WAL records:
+=> SELECT pg_size_pretty('0/3CBD3EA8'::pg_lsn - '0/3BE87710'::pg_lsn);
+pg_size_pretty",3.0,BE87710,3,"('pg_lsn affects other configs', '0/3BE87710')"
+91,"<re.Match object; span=(249, 261), match='commit_delay'>","<re.Match object; span=(18, 19), match='5'>",commit_siblings = 5 and commit_delay = 0,"Because synchronization is connected with the actual (that is, slow) input/output, it is beneficial to do it as infrequently as possible. To this end, a backend process that completes a transaction and writes WAL makes a short pause, defined by the commit_delay parameter. But this happens only if the system has not less than commit_siblings active transactions. This behavior relies on the expectation that during the waiting time some transactions will be completed and it will be possible to synchronize them in one go. This is similar to how you hold the doors of an elevator so that someone has time to jump into the car.
+By default, commit_siblings = 5 and commit_delay = 0, so actually there is no wait. It makes sense to change the value of commit_delay only for systems that execute a great number of OLTP transactions.",5.0,,3,"('commit_delay is affected by other condition', 'systems that execute a great number of OLTP transactions')"
+91,"<re.Match object; span=(249, 261), match='commit_delay'>","<re.Match object; span=(39, 40), match='0'>",commit_siblings = 5 and commit_delay = 0,"Because synchronization is connected with the actual (that is, slow) input/output, it is beneficial to do it as infrequently as possible. To this end, a backend process that completes a transaction and writes WAL makes a short pause, defined by the commit_delay parameter. But this happens only if the system has not less than commit_siblings active transactions. This behavior relies on the expectation that during the waiting time some transactions will be completed and it will be possible to synchronize them in one go. This is similar to how you hold the doors of an elevator so that someone has time to jump into the car.
+By default, commit_siblings = 5 and commit_delay = 0, so actually there is no wait. It makes sense to change the value of commit_delay only for systems that execute a great number of OLTP transactions.",0.0,,3,"('commit_delay is affected by other condition', 'systems that execute a great number of OLTP transactions')"
+91,"<re.Match object; span=(327, 342), match='commit_siblings'>","<re.Match object; span=(0, 1), match='5'>",5 and commit_delay = 0,"Because synchronization is connected with the actual (that is, slow) input/output, it is beneficial to do it as infrequently as possible. To this end, a backend process that completes a transaction and writes WAL makes a short pause, defined by the commit_delay parameter. But this happens only if the system has not less than commit_siblings active transactions. This behavior relies on the expectation that during the waiting time some transactions will be completed and it will be possible to synchronize them in one go. This is similar to how you hold the doors of an elevator so that someone has time to jump into the car.
+By default, commit_siblings = 5 and commit_delay = 0, so actually there is no wait. It makes sense to change the value of commit_delay only for systems that execute a great number of OLTP transactions.",5.0,,3,"('commit_siblings is affected by other condition', 'commit_delay = 0, so actually there is no wait')"
+91,"<re.Match object; span=(327, 342), match='commit_siblings'>","<re.Match object; span=(21, 22), match='0'>",5 and commit_delay = 0,"Because synchronization is connected with the actual (that is, slow) input/output, it is beneficial to do it as infrequently as possible. To this end, a backend process that completes a transaction and writes WAL makes a short pause, defined by the commit_delay parameter. But this happens only if the system has not less than commit_siblings active transactions. This behavior relies on the expectation that during the waiting time some transactions will be completed and it will be possible to synchronize them in one go. This is similar to how you hold the doors of an elevator so that someone has time to jump into the car.
+By default, commit_siblings = 5 and commit_delay = 0, so actually there is no wait. It makes sense to change the value of commit_delay only for systems that execute a great number of OLTP transactions.",0.0,,3,"('commit_siblings is affected by other condition', 'commit_delay = 0, so actually there is no wait')"
+91,"<re.Match object; span=(233, 249), match='wal_writer_delay'>","<re.Match object; span=(0, 3), match='200'>",200 ms,"You can make writing asynchronous by setting synchronous_commit = off (or local).
+When writing is asynchronous, WAL records are flushed by the wal writer process, which alternates work and waits (the waiting time is specified by the wal_writer_delay parameter with the default value of 200 ms).",200.0,,3,"('wal_writer_delay is affected by other condition', 'waiting time')"
+96,"<re.Match object; span=(47, 60), match='partial_first'>","<re.Match object; span=(6, 7), match='3'>","value#3, false","+- *(5) HashAggregate(keys=[key#6], functions=[partial_first(key#2L, false), partial_first(value#3, false)])
++- *(5) SortMergeJoin [cast(key#6 as bigint)], [key#2L], Inner
+:- *(2) Sort [cast(key#6 as bigint) ASC NULLS FIRST], false, 0",3.0,,3,"('partial_first is affected by other condition', 'value#3, false')"
+97,"<re.Match object; span=(249, 272), match='interned_strings_buffer'>","<re.Match object; span=(0, 1), match='8'>",8,"This link can help you calculate the good values for your system.
+Enable PHP OPcache¶
+The OPcache improves the performance of PHP applications by caching precompiled bytecode. We recommend at least the following settings:
+opcache.enable = 1
+opcache.interned_strings_buffer = 8",8.0,,3,"('interned_strings_buffer affects other configs', '8')"
+97,"<re.Match object; span=(79, 92), match='save_comments'>","<re.Match object; span=(0, 1), match='1'>",1,"opcache.max_accelerated_files = 10000
+opcache.memory_consumption = 128
+opcache.save_comments = 1
+opcache.revalidate_freq = 1
+For more details check out the official documentation or this blog post about some recommended settings.
+Next
+Previous",1.0,,3,"('save_comments affects other configs', '1')"
+97,"<re.Match object; span=(105, 120), match='revalidate_freq'>","<re.Match object; span=(0, 1), match='1'>",1,"opcache.max_accelerated_files = 10000
+opcache.memory_consumption = 128
+opcache.save_comments = 1
+opcache.revalidate_freq = 1
+For more details check out the official documentation or this blog post about some recommended settings.
+Next
+Previous",1.0,,3,"('revalidate_freq affects other configs', '1')"
+97,"<re.Match object; span=(46, 64), match='memory_consumption'>","<re.Match object; span=(0, 3), match='128'>",128,"opcache.max_accelerated_files = 10000
+opcache.memory_consumption = 128
+opcache.save_comments = 1
+opcache.revalidate_freq = 1
+For more details check out the official documentation or this blog post about some recommended settings.
+Next
+Previous",128.0,,3,"('memory_consumption affects other configs', '128')"
+97,"<re.Match object; span=(8, 29), match='max_accelerated_files'>","<re.Match object; span=(0, 5), match='10000'>",10000,"opcache.max_accelerated_files = 10000
+opcache.memory_consumption = 128
+opcache.save_comments = 1
+opcache.revalidate_freq = 1
+For more details check out the official documentation or this blog post about some recommended settings.
+Next
+Previous",10000.0,,3,"('max_accelerated_files affects other configs', '10000')"

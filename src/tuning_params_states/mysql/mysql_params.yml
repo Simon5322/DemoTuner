@@ -1,0 +1,172 @@
+## unit
+## restart 1kb
+innodb_buffer_pool_size:
+  min: 1
+  max: 144    # 18GB
+  float: no
+  default: 1
+  unit: 128MB    # 128MB
+
+innodb_io_capacity:
+  min:  100
+  max:  5000
+  float:  no
+  default: 200
+  unit:  None
+
+innodb_log_buffer_size:
+  min: 1
+  max: 1024
+  float: no
+  default: 16
+  unit: 1MB
+
+innodb_log_file_size:
+  min: 10
+  max: 1024
+  float: no
+  default: 48
+  unit: 1MB
+
+innodb_log_files_in_group:
+  min: 2
+  max: 10
+  float: no
+  default: 2
+  unit: None
+
+innodb_lru_scan_depth:
+  min: 100
+  max: 4096
+  float: no
+  default: 1024
+  unit: None
+
+innodb_purge_threads:
+  min: 1
+  max: 32
+  float: no
+  default: 4
+  unit: None
+
+innodb_read_io_threads:
+  min: 1
+  max: 64
+  float: no
+  default: 4
+  unit: None        #
+
+innodb_write_io_threads:
+  min: 1
+  max: 64
+  float: no
+  default: 4
+  unit: None
+
+innodb_thread_concurrency:
+  min: 0             # 0 表示无限制
+  max: 100            # 官方文档为1000 但是不行
+  float: no
+  default: 0
+  unit: None        # 纯数字，无特定单位
+
+join_buffer_size:
+  min: 1           # 128 bytes
+  max: 2000
+  float: no
+  default: 2    # 256KB
+  unit: 128KB
+
+max_heap_table_size:
+  min: 1         # 16KB
+  max: 131072    #2gb
+  float: no
+  default: 1024  # 16MB
+  unit: 16KB
+
+read_buffer_size:
+  min: 1          # 8KB
+  max: 512
+  float: no
+  default: 16    # 128KB
+  unit: 8KB
+
+sort_buffer_size:
+  min: 1         # 32KB
+  max: 320
+  float: no
+  default: 8    # 256KB
+  unit: 32KB
+
+preload_buffer_size:
+  min: 1
+  max: 3200
+  float: no
+  default: 32
+  unit: 1KB
+
+table_open_cache:
+  min: 1
+  max: 4919
+  float: no
+  default: 4000   # 根据版本和配置而异
+  unit: None        # 纯数字，无特定单位
+
+thread_cache_size:
+  min: 0             # 0 表示大小由系统自动管理
+  max: 16384
+  float: no
+  default: 9
+  unit: None        # 纯数字，无特定单位
+
+tmp_table_size:
+  min: 1          # 1KB
+  max: 262144
+  float: no
+  default: 16384  # 16MB
+  unit: 1KB
+
+net_buffer_length:
+  min: 1          # 1KB
+  max: 1024       #1mb
+  float: no
+  default: 16 # 16kb
+  unit: 1KB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#thread_pool_size:
+#  min: 1
+#  max: 64
+#  float: no
+#  default: 16
+#  unit: None        # 纯数字，无特定单位
+
+
+
+#max_connections:
+#  min: 5
+#  max: 10000
+#  float: no
+#  default: 151
+#  unit: None
+

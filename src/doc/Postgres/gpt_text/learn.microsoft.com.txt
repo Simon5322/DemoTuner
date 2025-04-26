@@ -1,0 +1,11 @@
+
+
+ [    ('autovacuum_vacuum_scale_factor', 'decrease', 'high bloat with minimal autovacuum activity'),
+    ('autovacuum_naptime', 'decrease', 'high bloat with minimal autovacuum activity'),
+    ('autovacuum_vacuum_threshold', 'increase', 'minimal bloat with aggressive autovacuum activity')
+
+[
+    ('bgwriter_delay', 'decrease', 'high write load'),
+    ('checkpoint_completion_target', 'increase', 'overloading the I/O system during checkpoints'),
+    ('max_wal_size', 'increase', 'high write activity or frequent checkpoints')
+]

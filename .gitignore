@@ -1,0 +1,11 @@
+# created by virtualenv automatically
+
+results/
+log/
+benchbase/
+
+venv/
+.venv/
+.idea/
+
+

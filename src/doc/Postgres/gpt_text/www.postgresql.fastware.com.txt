@@ -1,0 +1,11 @@
+[('shared_buffers', '8GB', 'for UNIX or Linux systems'),
+('shared_buffers', '256-512MB', 'for Windows systems'),
+('work_mem', '8MB-64MB', 'based on hardware and type/volume of queries'),
+('maintenance_work_mem', '5% of system memory', 'to prevent swapping and improve performance'),
+('maintenance_work_mem', 'no more than 512MB'),
+('wal_buffers', '1MB', 'under normal conditions'),
+('wal_buffers', 'up to 16MB', 'on very high volume configurations')][('shared_buffers', '8GB', '20-30% of system memory on UNIX or Linux systems, 256-512 MB on Windows. Be sure to review PostgreSQL documentation before making changes.'),
+ ('work_mem', '[8MB, 64MB]', 'Depends on hardware and type/volume of queries. Avoid setting too high and consuming significant amounts of memory.'),
+ ('maintenance_work_mem', '5% of system memory, no more than 512MB', 'Controls memory demand for maintenance operations like vacuuming and index creation. Prevents swapping and improves performance.'),
+ ('wal_buffers', '[1MB, 16MB]', 'Increase to reduce fsync calls. Use 1MB under normal conditions and up to 16MB on high volume configurations. Get it right or seek assistance if issues arise.'),
+ ('vacuuming', 'autovacuum or manual vacuum commands', 'Choose between autovacuum or manual vacuum, depending on the track_counts setting. Vacuum regularly to check for tables with high numbers of inserted, updated, or deleted tuples. Autovacuum requires track_counts to be set to true. More details to be provided in future articles.')]

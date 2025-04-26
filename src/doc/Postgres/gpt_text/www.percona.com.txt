@@ -1,0 +1,8 @@
+[('shared_buffer', '25% RAM', 'working set of data can easily fit into RAM'),
+('shared_buffer', 'increase', 'read-heavy workload with tables that don\'t have indexes'),
+('wal_buffers', 'increase', 'lot of concurrent connections'),
+('effective_cache_size', 'increase', 'query planner decides not to use some indexes')][('work_mem', 'increase', 'complex sorting'),
+('maintenance_work_mem', 'increase', 'maintenance tasks'),
+('synchronous_commit', 'decrease', 'performance over reliability'),
+('checkpoint_timeout', 'decrease', 'crash recovery time'),
+('checkpoint_completion_target', 'decrease', 'checkpoint frequency')]

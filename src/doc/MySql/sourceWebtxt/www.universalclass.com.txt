@@ -1,0 +1,225 @@
+Performance Tuning and Configurations for your MySQL Server
+Open Main Menu
+ 
+ 
+ 
+Browse Courses
+My Classes
+  
+Welcome!
+Sign In
+Subscribe
+Course Catalog
+ 
+ 
+
+		Performance Tuning and Configurations for your MySQL Server
+	
+ 
+ 
+After you install MySQL, you need to configure it. Fortunately, you don't need to configure MySQL every time you restart it. Your configurations are saved in an option file, which is also referred to as a configuration file. With these configurations, you need to think about server performance. Server performance is paramount for a stable application. Performance drives profitability and productivity for a corporation, so you must fine tune your MySQL database for optimal performance. This article discusses performance tuning and configurations for your MySQL server and its databases.
+The MySQL Options File
+The MySQL options file can be short or several lines of preferences, depending on the number of configurations you've set. For new MySQL server installations, it's small and grows as you continue to add more preferences. We'll discuss a few of the major configurations that each database administrator should know.
+First, you need to know where the file is located. For Linux and Unix, the file is stored in the /etc/ or SYSCONFDIR directory for global options. Server specific options are stored in the $MYSQL_HOME directory, and user specific configurations are stored in ~/ where ~/ is the user's home directory.
+With Windows, you don't need to search through directories to find option files. Open Services from the Control Panel Administrative Options section. Right-click the MySQL service and select "Properties." In the executable path, it displays where the my.ini file is located.
+You can open the ini files with any text editor. The options file has several sections marked in brackets. For instance, the [mysql] section has server specific configurations. The [client] section is set for client applications.
+The format is "configuration = value" where value is your configuration value. The configuration is the MySQL specific variable that you can set. If you don't set the configuration, MySQL will use its own default value.
+Let's take a look at the typical client section.
+[client]
+port=3306
+This section has one variable named port. The port is where client applications connect. For security purposes, some MySQL administrators use a non-standard port for MySQL server connections. The reason they do this is to avoid discovery of the database server from port scanners. When hackers scan ports for services, they scan standard ports. Of course, it's not a guarantee that all hackers will never scan non-standard ports, but moving the database services to a non-standard port avoid database discovery for non-specific hacks. In this example, the administrator set port 3306 as the MySQL client connection port, which opens this port for database connections. When you hear a database administrator refer to this port, they often say that the server is "listening" on this port.
+Now let's look at a longer section named [mysqld]. This section has service specific configurations set for the database server. Here is an example configuration section for mysqld.
+[mysqld]
+basedir="C:/Program Files/MySQL/MySQL Server 5.5/"
+datadir="C:/Documents and Settings/All Users/Application Data/MySQL/MySQL Server 5.5/Data/"
+default-storage-engine=INNODB
+max_connections=341
+query_cache_size=9M
+table_cache=700
+You could have several other options in the file, but we're covering a few of the major, common ones. As you might observe, the database system is on a Windows server by the format of the storage directories. Knowing the database runs on a Windows server helps you troubleshoot issues if you are unable to resolve any configuration specific problems.
+First, you have the "basedir" variable. This is the installation location for the service. Any additional installation components use this directory, so always keep installation files within this directory structure. It's also the location of critical system files. If you move your MySQL installation location, then you would change this value. If you change this directory accidentally, it can have serious affects on your database application.
+Second, there is the "datadir" variable. This is the directory that tells the database where to find all data files. It's the basic root of the database, and any changes to this value should be done with care. If you change the location, you must be sure that the data moves with it.
+The next line is the "default-storage-engine" variable and value. If you recall from previous chapters, we mentioned that CREATE TABLE command defaults to the MyISAM storage engine. With this variable, we change the default storage engine type. For most applications, you want to set this as either InnoDB or MyISAM. Setting the default to any other storage engine wouldn't be feasible for a working application. For instance, changing the default to an archive storage engine type means that you would not be able to create primary keys or write transactions on your tables.
+The next variable is the "max_connections" variable. This value determines the number of users that can concurrently connect to your MySQL database. If this value is too small, you risk blocking legitimate users from using the application. However, too many concurrent users can also cause serious performance issues on the database. You should always leave extra connections if you're unsure of the amount of concurrent users needed, but don't overestimate this value too much and lose performance. 
+In this example, we used 341 concurrent connections. This number does not include the super user (or root user) who can connect even when the maximum is reached. For instance, if your database currently has 341 connections and it starts to crash, you must be able to connect to fix any issues. MySQL allows for 1 extra connection to account for the need of an administrator to connect during emergencies even if the current connection limit is reached.
+The next option is "query_cache_size." This value helps speed up commonly used SELECT statements. For instance, suppose you query the same Customer and Order statement. In several parts of the application, you retrieve a list of customers with associated orders. Instead of continually querying the database files for changes, this value stores results in cache. The advantage is faster response times from the MySQL server for static data. This value can actually be a disadvantage if your table data changes often. You want to cache values that are consistently the same, but reduce the cache if your table data changes often. For instance, you wouldn't cache your audit tables since they change each time data is changed or accessed.
+The final variable in our example is the "table_cache" value. This value increases the number of table descriptions. Again, this value can improve performance on your tables and queries.
+In some cases, the options file is only running for your specific instance. You can have global settings and user specific settings. You can use the SHOW VARIABLES command to view a list of variables and values related to the specific instance.
+Performance Tuning Your MySQL Database Server Interested in learning more? Why not take an online MySQL course?
+Small startups and databases don't normally need performance tuning since the number of tables and records are small. However, larger databases that have a high volume of activity won't be able to survive any changes without any performance tuning. We covered the options files, because these performance tuning options are set in the file.
+Before you start performance tuning, you should be absolutely sure what each change does. You should also note the following recommendations before you start:
+1) Only change one setting at a time, if you are unsure of the performance issue root cause. For instance, if you have a slow MySQL database and you don't know the exact root cause, change one setting at a time. This avoids making changes that do more harm than good. It also lets you identify exactly where the problem occurred.
+2) You must put changes in the right section. We mentioned in the previous section that configuration files are segmented into different sections. These sections determine each variable allowed. If you put the wrong configuration and tuning variable in the wrong section, you won't see any changes take effect.
+3) If your MySQL database does not start, you must review the file for any inaccuracies. For instance, if you use megabytes for a variable that requires bytes, it could cause issues when you restart the service. This also happens if you don't put the right settings in the proper section.
+Once you know exactly what settings you need to change, you can review the configuration file and choose the right settings.
+Let's review some basic settings first.
+The innodb_buffer_pool_size variable.
+This setting is the first performance tuning option for database administrators who use the InnoDB storage engine. As we highlighted in the previous section, you can cache common queries, tables and other file structures. We covered some SELECT query caching, but we didn't review any of the storage engine specific caching.
+The innodb_buffer_pool_size setting is the first one for performance tuning with InnoDB. This is the buffer pool size for data and indexes. When you cache these properties, you improve the speed at which the MySQL database can access and display data for your users. Caching stores data and indexing in memory, which is far faster that disk reads. The value you use is dependent on the size of your database. You can use a value as small as 5GB and as high as 128GB.
+The innodb_log_file_size variable.
+This configuration controls the size of the log file, which is also called the "redo file." As the name suggests, the log file can be used to "redo" transactions when your MySQL server crashes or becomes corrupted. Log files record each writable instance to the database, which include UPDATE, DELETE, and INSERT commands. MySQL continues to improve on log file performance. Usually, more crash recovery options cause slower performance, but the latest version of MySQL have improved this limitation.
+If you have a small database with few write transactions, you can start the value at 512M. If you have a large, enterprise level MySQL application, you can set this value to 4G.
+The max_connections variable.
+We covered this variable in the earlier section. However, we didn't convey its importance when performance tuning your server. The default value for this variable is 151. For most small companies, this value is the right setting. Many application developers fail to close the MySQL connection after they are finished using it. This means that the MySQL server keeps a connection open even when the application isn't using it. If the application opens too many connections, the MySQL engine returns a "too many connections" error to the application. This means that any current active fails whether it's for customers or employees.
+You can increase this value to avoid these errors. However, too many open concurrent connections can lead to performance issues. When too many connections are open, the MySQL database becomes unresponsive and must be restarted. You should work with this value to find the right speed and performance for your queries without crashing the server or cutting off applications that open too many connections at once.
+These variables are global values you can set for the MySQL server. Let's take a look at some InnoDB specific settings. If you remember, InnoDB is an ACID compliant database storage engine, which also supports rollbacks, commits, and foreign key constraints. If you rely on data integrity and normalization within your database, you probably use the InnoDB storage engine.
+The innodb_flush_log_at_trx_commit variable.
+Being fully ACID compliant has advantages if you solely rely on data integrity and procedures. However, to have this type of security and rollback system comes at the cost of performance. Setting this value to 1 makes your MySQL database fully ACID compliant. You can usually rollback and any time and recover from any crashes.
+You can also use a value of 2. This value makes the MySQL server a little less reliable, but it improves performance if you notice that you don't have the best performance for your application. In most cases, this is a safe option. The final option is 0. Setting a value to 0 improves performance, but you also have the chance to lose some data if you need to rollback transactions. This option is the least recommended, but it can help performance for servers that need extensive performance tuning.
+The innodb_flush_method variable.
+This variable is a little more difficult to understand if you're not familiar with RAID disk performance. The default value is fdatasync. The most popular is O_DIRECT. This value is common when you have a battery backup cache component. The setting controls how logs are flushed to disk instead of memory. In most scenarios, the O_DIRECT value is used, so you should change this variable from its default to evaluate what's best for your system performance.
+The innodb_log_buffer_size variable.
+As the name suggest, this variable controls the buffer size for log files. For regular databases with little traffic, the default value of 1MB is sufficient. However, this value is small when you have several large field data types such as blobs. The buffer fills up quickly, and you no longer have the performance that you need. If you have several write transactions with large data type values, you should increase the value of the variable to help with performance. 
+The query_cache_size variable.
+This variable is beneficial when you have the same query that's run several times an hour. However, many database administrators suggest that this variable is a known bottleneck and should be changed. Some database administrators suggest that it should be disabled altogether. Current MySQL versions disable this option by default. This variable option is used when you don't have good indexing and optimized queries and need a way to remedy the situation.
+The log_bin variable.
+This variable is used when you need to do a point in time recovery from your log files. If you use MySQL as a replication master, then you must enable this variable value. A point in time recovery happens when you lose data or have corrupted data that occurred at a specific time. When you need to recover from a crash at a specific time, you can use the binary log to recover your data. 
+These files grow to enormous sizes, and the server continues to store new log files with a new numeric extension. It should be obvious, then, that the log files can eat up disk space. You won't need log files for an extensive amount of time, so you should purge these files when they are no longer needed. You can purge files using the PURGE BINARY LOGS MySQL command.
+Another option for purging files is to use the expire_logs_days option in your configuration files. Set this variable value to the number of days you want to keep log files. For instance, keep log files for 30 days if your corporate policy requires log files for 30 days. This value will purge files every 30 days instead of requiring you to manually purge files each month.
+Fine Tuning Queries
+We discussed tuning the MySQL engine using configuration options, but you can also speed up the database by tuning queries. Queries that aren't optimized properly can degrade performance especially when there is a high number of records returned. As a database administrator, you can review SQL queries to ensure that they are optimized for performance.
+Let's take a look at some optimization methods you can use for queries.
+Querying on indexes speed up queries tremendously. Take a look at the following query.
+SELECT first_name, last_name FROM Customer
+WHERE first_name = ‘john' and last_name = ‘smith';
+This query finds every record where the first name is "John" and last name is "Smith," but if the first_name and last_name columns aren't indexes, this query is not optimized. Instead, you should use queries on indexes. The primary key on any table is an index, so instead of querying for a first and last name customer, you should query on the customer_id column. The above query would turn into the following:
+SELECT first_name, last_name FROM Customer
+WHERE customer_id = 2;
+The above query would be much faster, assuming that customer_id is the primary key for the table.
+Another optimization technique is to set indexes on columns where you join tables. Let's take a look at the following query.
+SELECT first_name, last_name FROM Customer AS c
+INNER JOIN Order AS o ON c.first_name = o.first_name
+WHERE c.customer_id = 2;
+Putting aside that the above query would not give accurate results from the join, our goal is to point out the optimization that's needed on this query. Joining tables on columns that aren't indexed and poorly structured degrades performance on those queries. Typically, joining tables is done on primary keys with associated foreign keys. However, there are times when you want to join tables on non-key elements. If you perform this type of query, ensure that you add an index on the columns used for joining.
+Our final optimization tip is to always use JOIN statements rather than subqueries. We discussed subqueries with UPDATE statement samples. You can also use subqueries with other statements. Subqueries are occasionally required, but any common queries that run often should use JOIN statements instead of subqueries.
+Take a look at the following query.
+SELECT first_name, last_name FROM Customer AS c
+WHERE customer_id IN (SELECT customer_id FROM Order WHERE order.customer_id = c.customer_id);
+The above query finds the order associated with the customer id in the Customer table. This query is valid, and it will return accurate results. However, it's not optimized and will give you slower results than what you would get with a JOIN statement. The above query first does a SELECT statement on the entire Order table. Then, the entire Customer table is queried. When a match is found, the database server returns the linked records. If you have millions of records in either table, this puts a strain on your MySQL server resources.
+The above query can be changed to the following:
+SELECT first_name, last_name FROM Customer AS c
+INNER JOIN Order AS o ON c.customer_id = o.customer_id;
+This query gives you the same results, but it is much faster. The more subqueries you add to your main queries, the more time you put on the result set. If there are any queries that use a subquery but could use a JOIN statement instead, rewrite the query for better optimization.
+This article describes some optimization techniques that you can perform on your server. MySQL performance relies on server architecture and networking resources, but optimization and the right configurations greatly improve stability and speed. You'll need to tweak your configurations to find the right combination for your server.
+ 
+
+Implementing User Input in C# Programming
+	
+
+Communications Courses
+	
+
+Final Cut Pro X: Editing Clips in the Timeline
+	
+
+Operations Management Courses
+	
+
+How to Create and Configure Databases in MySQL
+	
+
+User Input and Output in JavaScript
+	
+
+Interactions in C# Programming: Loops and Arrays
+	
+
+Understanding the Basics SQL
+	
+Online Class: Microsoft Word 2019
+	
+
+QuickBooks Courses
+	
+Online Class: Computer Literacy Level 3 - Living and Working Online
+	
+
+Microsoft Word Courses
+	
+
+Database Design in MySQL
+	
+
+Business Writing Courses
+	
+
+CSS Explained in Layman's Terms
+	
+
+Overview of MySQL
+	
+
+A CSS3 and HTML5 Introduction to Responsive Web Design
+	
+
+How to Script Forms with JavaScript
+	
+Online Class: Introduction to SQL
+	
+Online Class: Learn HTML - Create Webpages Using HTML5
+	
+
+Adobe Premiere Pro: The Basics
+	
+Online Class: Office 2019: Word, Excel, PowerPoint, and Outlook
+	
+
+Components of Process in C# Programming: Threading
+	
+
+MySQL Administration: Managing Users and Privileges
+	
+Online Class: Python Programming 101
+	
+
+Microsoft Excel Courses
+	
+Online Class: Adobe Photoshop 101
+	
+Online Class: Google Sheets
+	
+
+How to Use Boolean Logic in C# Programming
+	
+Online Class: Adobe Fireworks 101
+	
+ 
+ 
+×
+Loading...
+ 
+ 
+×
+Explore
+Sign In
+Pricing
+Course Catalog
+Group Discounts
+CEU Verification
+Gift Certificates
+FAQ
+Trending
+Medical Terminology
+Accounting Course
+Writing Basics
+QuickBooks Training
+Proofreading Class
+Sensitivity Training
+Excel Certificate
+About
+About Us
+Teach Online
+Contact Us
+Terms of Service
+Privacy Policy
+Follow Us Online
+Follow Us Online
+© Copyright 2023 Universal Class™ All rights reserved.
+
+		Our site uses cookies for general statistics, security, customization, and to assist in marketing efforts in accordance with our cookie and privacy policy.
+	
+
+		Accept Cookies
+	
+
+		Review Settings

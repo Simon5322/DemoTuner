@@ -1,0 +1,6 @@
+[('max_connection', 'increase', 'receive the error message ¡°Too many connections¡±'),
+('query_cache_size', 'increase', 'waiting for cache lock queries can occur in a chain if there are too many cached queries'),
+('innodb_io_capacity', 'adjust', 'storage drive type and speed'),
+('innodb_buffer_pool_size', 'increase', 'large chunks of data, consider system memory as the database data cache'),
+('max_connection', 'increase', 'receive the error message ¡°Too many connections¡±'),
+('query_cache_size', 'increase', 'waiting for cache lock queries can occur in a chain if there are too many cached queries')]

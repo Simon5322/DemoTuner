@@ -1,0 +1,593 @@
+Ten MySQL performance tuning settings after installation
+Solutions
+Solutions Dropdown
+Resources
+Learn Dropdown
+Community
+Discover Dropdown
+About
+About Dropdown
+Contact us
+Select Page
+Featured
+Percona Monitoring and Management
+Monitor the health of your database infrastructure, explore new patterns in behavior, and improve the performance of your databases no matter where they’re located.
+Learn More
+MySQL 5.7  End of Life
+Comprehensive support to navigate MySQL 5.7 EOL, whether you're looking to upgrade to MySQL 8.0 or stay supported on 5.7.
+Learn More
+Percona Products
+MySQL Software
+Distribution for MySQL
+Server for MySQL
+XtraDB Cluster
+XtraBackup for MySQL Databases
+MongoDB Software
+Distribution for MongoDB
+Server for MongoDB
+Backup for MongoDB
+PostgreSQL
+Software
+Support and Services
+Kubernetes Operators
+Percona Toolkit
+Percona Services
+Support
+Managed Services
+Consulting
+Policies
+Training
+Percona Resources
+Software Downloads
+All of Percona’s open-source software products, in one place, to
+download as much or as little as you need.
+View Downloads
+Product Documentation
+A single source for documentation on all of Percona’s leading,
+open-source software.
+View Documentation
+Resource Hub
+A single source for for all resources
+Webinars
+Presentations
+Datasheets
+Ebooks
+Downloads
+Solution Briefs
+Case Studies
+Percona Videos
+White Papers
+Documentation
+View All Resources
+Financial Services
+Learn More
+Driving Database Success
+Read the Report
+Percona Blog
+Percona Blog
+Our popular knowledge center for all Percona products and all related topics.
+View The Blog
+Community
+Percona Community Hub
+A place to stay in touch with the open-source community
+Forums
+Community Blog
+PMM Contributions
+Explore The Community
+Events
+Percona Events Hub
+See all of Percona’s upcoming events and view materials like webinars and forums from past events
+Percona Live 2023
+Upcoming Events
+View Our Events
+About
+About Percona
+Percona is an open source database software, support, and services company that helps make databases and applications run better.
+Learn More
+Percona in the News
+See Percona’s recent news coverage, press releases and industry recognition for our open source software and support.
+News coverage
+Press Releases
+Our Customers
+Learn More
+Our Partners
+Learn More
+Careers
+Learn More
+Contact Us
+Let's Talk
+Insight for DBAs
+MySQL
+Subscribe to RSS Feed
+MySQL Performance Tuning Settings
+January 28, 2014
+Stephane Combaudon 
+Note: This blog has been updated for MySQL 5.7 here!In this blog, we’re going to discuss the top ten MySQL performance tuning settings that you can implement after an installation.When we are hired for a MySQL performance audit, we are expected to review the MySQL configuration and to suggest improvements. Many people are surprised because in most cases, we only suggest changing a few MySQL performance tuning settings after installation – even though hundreds of options are available. The goal of this post is to give you a list of some of the most critical settings.We already made such suggestions in the past here on this blog a few years ago, but things have changed a lot in the MySQL world since then!Before we start MySQL performance tuning:Even experienced people can make mistakes that can cause a lot of trouble. So before blindly applying the recommendations of this post, please keep in mind the following items:
+Change one setting at a time! This is the only way to estimate if a change is beneficial.
+Most settings can be changed at runtime with SET GLOBAL. It is very handy and it allows you to quickly revert the change if it creates any problem. But in the end, you want the setting to be adjusted permanently in the configuration file.
+A change in the configuration is not visible even after a MySQL restart? Did you use the correct configuration file? Did you put the setting in the right section? (all settings in this post belong to the [mysqld] section)
+The server refuses to start after a change: did you use the correct unit? For instance, innodb_buffer_pool_size should be set in bytes while max_connection is dimensionless.
+Do not allow duplicate settings in the configuration file. If you want to keep track of the changes, use version control.
+Don’t do naive math, like “my new server has 2x RAM, I’ll just make all the values 2x the previous ones”.
+Basic settingsHere are 3 MySQL performance tuning settings that you should always look at. If you do not, you are very likely to run into problems very quickly.innodb_buffer_pool_size: this is the #1 setting to look at for any installation using InnoDB. The buffer pool is where data and indexes are cached: having it as large as possible will ensure you use memory and not disks for most read operations. Typical values are 5-6GB (8GB RAM), 20-25GB (32GB RAM), 100-120GB (128GB RAM).innodb_log_file_size: this is the size of the redo logs. The redo logs are used to make sure writes are fast and durable and also during crash recovery. Up to MySQL 5.1, it was hard to adjust, as you wanted both large redo logs for good performance and small redo logs for fast crash recovery. Fortunately, crash recovery performance has improved a lot since MySQL 5.5 so you can now have good write performance and fast crash recovery. Until MySQL 5.5 the total redo log size was limited to 4GB (the default is to have 2 log files). This has been lifted in MySQL 5.6.Starting with innodb_log_file_size = 512M (giving 1GB of redo logs) should give you plenty of room for writes. If you know your application is write-intensive and you are using MySQL 5.6, you can start with innodb_log_file_size = 4G.max_connections: if you are often facing the ‘Too many connections’ error, max_connections is too low. It is very frequent that because the application does not close connections to the database correctly, you need much more than the default 151 connections. The main drawback of high values for max_connections (like 1000 or more) is that the server will become unresponsive if for any reason it has to run 1000 or more active transactions. Using a connection pool at the application level or a thread pool at the MySQL level can help here.InnoDB settingsInnoDB has been the default storage engine since MySQL 5.5 and it is much more frequently used than any other storage engine. That’s why it should be configured carefully.innodb_file_per_table: this setting will tell InnoDB if it should store data and indexes in the shared tablespace (innodb_file_per_table = OFF) or in a separate .ibd file for each table (innodb_file_per_table= ON). Having a file per table allows you to reclaim space when dropping, truncating or rebuilding a table. It is also needed for some advanced features such as compression. However it does not provide any performance benefit. The main scenario when you do NOT want file per table is when you have a very high number of tables (say 10k+).With MySQL 5.6, the default value is ON so you have nothing to do in most cases. For previous versions, you should set it to ON prior to loading data as it has an effect on newly created tables only.innodb_flush_log_at_trx_commit: the default setting of 1 means that InnoDB is fully ACID compliant. It is the best value when your primary concern is data safety, for instance on a master. However, it can have a significant overhead on systems with slow disks because of the extra fsyncs that are needed to flush each change to the redo logs. Setting it to 2 is a bit less reliable because committed transactions will be flushed to the redo logs only once a second, but that can be acceptable on some situations for a master and that is definitely a good value for a replica. 0 is even faster but you are more likely to lose some data in case of a crash: it is only a good value for a replica.innodb_flush_method: this setting controls how data and logs are flushed to disk. Popular values are O_DIRECT when you have a hardware RAID controller with a battery-protected write-back cache and fdatasync (default value) for most other scenarios. sysbench is a good tool to help you choose between the 2 values.innodb_log_buffer_size: this is the size of the buffer for transactions that have not been committed yet. The default value (1MB) is usually fine but as soon as you have transactions with large blob/text fields, the buffer can fill up very quickly and trigger extra I/O load. Look at the Innodb_log_waits status variable and if it is not 0, increase innodb_log_buffer_size.Other settingsquery_cache_size: the query cache is a well-known bottleneck that can be seen even when concurrency is moderate. The best option is to disable it from day 1 by setting query_cache_size = 0 (now the default on MySQL 5.6) and to use other ways to speed up read queries: good indexing, adding replicas to spread the read load or using an external cache (memcache or redis for instance). If you have already built your MySQL application with the query cache enabled and if you have never noticed any problem, the query cache may be beneficial for you. So you should be cautious if you decide to disable it.log_bin: enabling binary logging is mandatory if you want the server to act as a replication master. If so, don’t forget to also set server_id to a unique value. It is also useful for a single server when you want to be able to do point-in-time recovery: restore your latest backup and apply the binary logs. Once created, binary log files are kept forever. So if you do not want to run out of disk space, you should either purge old files with PURGE BINARY LOGS or set expire_logs_days to specify after how many days the logs will be automatically purged.Binary logging, however, is not free, so if you do not need for instance on a replica that is not a master, it is recommended to keep it disabled.skip_name_resolve: when a client connects, the server will perform hostname resolution, and when DNS is slow, establishing the connection will become slow as well. It is therefore recommended to start the server with skip-name-resolve to disable all DNS lookups. The only limitation is that the GRANT statements must then use IP addresses only, so be careful when adding this setting to an existing system.ConclusionThere are of course other settings that can make a difference depending on your workload or your hardware: low memory and fast disks, high concurrency, write-intensive workloads, for instance, are cases when you will need specific tuning. However, the goal here is to give you a few MySQL performance tuning to allow you to quickly get a sane MySQL configuration without spending too much time on changing non-essential MySQL settings or on reading documentation to understand which settings do matter to you.More resources:Posts
+MySQL 5.7 performance tuning immediately after installation
+Best practices for configuring optimal MySQL memory usage
+Webinars
+Top most overlooked MySQL performance optimizations
+Percona Server for MySQL 5.7: key performance algorithms
+Presentations
+Practical MySQL Performance Optimization
+Free eBooks
+Practical MySQL Performance Tuning: section 1 – understanding query parameter tuning and MySQL optimization
+Practical MySQL Performance Tuning: section 2 – troubleshooting performance issues and optimizing MySQL
+Practical MySQL Performance Tuning: section 3 – query optimization
+Tools
+Percona Monitoring and Management
+Download our new white paper today to discover the true cost of downtime and how to avoid potential losses caused by a poorly configured database and infrastructure setup.Download PDF
+Related
+Share This Post!
+ 
+ 
+29 Comments 
+Oldest
+Newest
+Most Voted
+ Inline Feedbacks 
+View all comments
+Marcos Albe
+9 years ago
+To get a decent my.cnf you can start with https://tools.percona.com/wizard and then proceed to tune based on that.
+0
+aftab
+9 years ago
+>Binary logging however is not free, so if you do not need for instance on a replica that is not a master, it is recommended to keep it disabled.
+I think binary logging is required for point-in-time recovery, this type of recovery is performed after restoring a full backup that brings the server to its state as of the time the backup was made.
+ innodb-purge-threads – This option variable controls purge function, In versions prior to 5.5 that was part of the responsibility of the InnoDB master thread. A high load on the server that dirtied a lot of pages would force the master thread to spend most of its time flushing and therefore no purging would get done and vice a versa.
+0
+Peter Zaitsev
+Admin
+9 years ago
+Aftab,
+This is interesting topic to look at the Binary log on the slaves. I like to have binary log at the slaves enabled in all cases. By default slaves are not going to write anything into binary log anyway – unless there is log_slave_updates option enabled. 
+Keeping binary logs enabled with log_slave_updates off allows me to very easily see if there have been any direct writes to the slave because of some mistake.
+In many cases we want one of the slaves to be ready to become master easily in this case it is best if it has both binary log and log_slave_updates enabled.
+From recovery standpoint it is entirely possible to use master binary logs for crash recovery whenever you’re using master or slave as a source.
+0
+Rick James
+9 years ago
+A quibble: “For instance, innodb_buffer_pool_size should be set in MB”. That setting is in bytes, not “MB”, although you can use a suffix of M (or G).
+0
+Stephane Combaudon
+Author
+9 years ago
+Thanks Rick, this is fixed!
+0
+Karl
+9 years ago
+It would be interesting to know more about the query cache being a performance bottleneck – in what situations?
+0
+Rick James
+9 years ago
+Query Cache:
+* EVERY update to a table causes ALL entries in the QC for that table to be flushed. If the QC is large and/or updates happen frequently, this leads to pauses for the purge. (If you use the QC, don’t make it bigger than 50M.)
+* If the QC is on (type != OFF _or_ size > 0), a “mutex” is taken out on _every_ SELECT so that it can check the QC. (Yes, even before it notices SQL_NO_CACHE.) An old benchmark showed 11% overhead.
+* With multiple cores, and multiple threads running, the QC serializes (at some level) the SELECTs. This makes it hard to get parallelism. (There are many other things in the way of parallelism, too.)
+0
+Roman
+9 years ago
+I performed recomendation above but I see slow “Copying to tmp table” (tmpdir on RAM device). I tried to increase join_buffer_size but problem still the same. Can expedite the processing of such requests without changing the sql requests (unfortunately at the moment there is no possibility to optimize queries)?
+MYSQL server 5.5.34 on zfs filesystem.
+> show global status like ‘Created_tmp%’;
++————————-+——–+
+| Variable_name | Value |
++————————-+——–+
+| Created_tmp_disk_tables | 305388 |
+| Created_tmp_files | 7944 |
+| Created_tmp_tables | 590596 |
++————————-+——–+
+3 rows in set (0.00 sec)
+Example:
+> SELECT DISTINCT(n.nid), n.title, n.type, n.changed, n.uid, u.name, GREATEST(n.changed, l.last_comment_timestamp) AS last_updated, l.comment_count FROM node n INNER JOIN node_comment_statistics l ON n.nid = l.nid INNER JOIN users u ON n.uid = u.uid LEFT JOIN comments c ON n.nid = c.nid AND (c.status = 0 OR c.status IS NULL) WHERE n.status = 1 AND (n.uid = 28178 OR c.uid = 28178) ORDER BY last_updated DESC LIMIT 0, 25;
+ rows in set (5.42 sec)
+> show profile for query 8;
++——————————–+———-+
+| Status | Duration |
++——————————–+———-+
+| starting | 0.000027 |
+| Waiting for query cache lock | 0.000005 |
+| checking query cache for query | 0.000114 |
+| checking permissions | 0.000006 |
+| checking permissions | 0.000003 |
+| checking permissions | 0.000003 |
+| checking permissions | 0.000007 |
+| Opening tables | 0.000035 |
+| System lock | 0.000014 |
+| Waiting for query cache lock | 0.000038 |
+| init | 0.000044 |
+| optimizing | 0.000035 |
+| statistics | 0.000122 |
+| preparing | 0.000030 |
+| Creating tmp table | 0.000039 |
+| executing | 0.000005 |
+| Copying to tmp table | 5.419415 |
+| Sorting result | 0.000056 |
+| Sending data | 0.000037 |
+| end | 0.000006 |
+| removing tmp table | 0.000050 |
+| end | 0.000006 |
+| query end | 0.000022 |
+| closing tables | 0.000020 |
+| freeing items | 0.000041 |
+| logging slow query | 0.000004 |
+| logging slow query | 0.000004 |
+| cleaning up | 0.000009 |
++——————————–+———-+
+28 rows in set (0.00 sec)
+> explain SELECT DISTINCT(n.nid), n.title, n.type, n.changed, n.uid, u.name, GREATEST(n.changed, l.last_comment_timestamp) AS last_updated, l.comment_count FROM node n INNER JOIN node_comment_statistics l ON n.nid = l.nid INNER JOIN users u ON n.uid = u.uid LEFT JOIN comments c ON n.nid = c.nid AND (c.status = 0 OR c.status IS NULL) WHERE n.status = 1 AND (n.uid = 28178 OR c.uid = 28178) ORDER BY last_updated DESC LIMIT 0, 25;
++—-+————-+——-+——–+—————————————–+———+———+————-+——–+———————————+
+| id | select_type | table | type | possible_keys | key | key_len | ref | rows | Extra |
++—-+————-+——-+——–+—————————————–+———+———+————-+——–+———————————+
+| 1 | SIMPLE | n | ref | PRIMARY,status,uid,node_status_type,nid | status | 4 | const | 403897 | Using temporary; Using filesort |
+| 1 | SIMPLE | u | eq_ref | PRIMARY | PRIMARY | 4 | xxxx.n.uid | 1 | Using where |
+| 1 | SIMPLE | c | ref | lid | lid | 4 | xxxx.n.nid | 2 | Using where |
+| 1 | SIMPLE | l | eq_ref | PRIMARY | PRIMARY | 4 | xxxx.n.nid | 1 | |
++—-+————-+——-+——–+—————————————–+———+———+————-+——–+———————————+
+mysql config:
+[client]
+port = 3306
+socket = /tmp/mysql.sock
+[mysqld]
+port = 3306
+socket = /tmp/mysql.sock
+skip-external-locking
+key_buffer_size = 256M
+max_allowed_packet = 1024M
+table_open_cache = 256
+sort_buffer_size = 3M
+read_buffer_size = 3M
+read_rnd_buffer_size = 4M
+myisam_sort_buffer_size = 64M
+thread_cache_size = 8
+query_cache_size= 512M
+query_cache_limit = 16M
+tmp_table_size = 512M
+max_heap_table_size = 512M
+max_connections = 100
+back-log = 20
+thread_cache=256
+join_buffer_size=128M
+key_buffer = 512M
+query_cache_type = 1
+skip-innodb_doublewrite
+innodb-doublewrite = FALSE
+long_query_time = 5
+slow-query-log = 0
+slow_query_log_file = /var/log/mysql/mysqld_slow_query.log
+thread_concurrency = 12
+skip-name-resolve
+server-id = 2
+auto_increment_increment=2
+auto_increment_offset=2
+log-bin=x_mysql-bin
+expire_logs_days=7
+binlog_format=mixed
+slave-compressed = 1
+relay-log=x_slave-relay-bin
+relay-log-index=x_slave-relay-bin.index
+innodb=on
+innodb_data_home_dir = /var/db/mysql/innodb
+innodb_data_file_path = ibdata1:10M:autoextend
+innodb_log_group_home_dir = /var/db/mysql/iblogs
+innodb_buffer_pool_size = 12G
+innodb_buffer_pool_instances = 9
+innodb_additional_mem_pool_size = 20M
+innodb_log_file_size = 1500M
+innodb_log_buffer_size = 16M
+innodb_flush_log_at_trx_commit = 2
+innodb_thread_concurrency=16
+tmpdir=/tmp
+[mysqldump]
+quick
+max_allowed_packet = 1024M
+[mysql]
+no-auto-rehash
+[mysqlhotcopy]
+interactive-timeout
+ZFS properties for /var/db/mysql/data:
+recordsize 8K
+atime off
+primarycache all
+for /var/db/mysql/innodb:
+recordsize 16K
+atime off
+primarycache metadata
+for /var/db/mysql/iblogs:
+recordsize 128K
+atime off
+primarycache all
+Thanks
+0
+Stephane Combaudon
+Author
+9 years ago
+Roman, a temporary table is needed because you have DISTINCT(n.nid). This has nothing to do with configuration.
+Try adding an index on (status, nid) and see if the temp table is still needed.
+0
+bibi
+9 years ago
+Nice one.
+0
+GBirch
+8 years ago
+You should probably mention potential problems with changing innodb_log_file_size – you have to stop the server, and delete/remove the old log files before starting with the new value. See http://octathorpeweb.com/blog/2012/06/12/fixing-innodb-error-log-file-ib_logfile0-is-of-different-size-error/
+0
+Stephane Combaudon
+Author
+8 years ago
+GBirch,
+This is true, however note that starting with 5.6, this tedious set of operations is no longer necessary: you can simply edit your configuration file and restart the server.
+0
+Madan
+8 years ago
+Hi i am planning to host my e-commerce site on some hosting acccount…. Here i need multiple severs and rapication CDN’s, And i dont have much idea on server config.. Can you please send the settings details to my mail id. I hope for your reply….. Thank you
+0
+Kara
+8 years ago
+I am a complete novice with mysql and am attempting to tune our WordPress DB. As suggested, I am doing one thing at a time. Here is our config:
+CentOS 6.4, 4GB (virtual server)
+MySQL 5.1.73
+innodb status showed the following before starting to make changes:
+BUFFER POOL AND MEMORY
+———————-
+Total memory allocated 20365640; in additional pool allocated 818176
+Dictionary memory allocated 85192
+Buffer pool size 512
+Free buffers 476
+Database pages 35
+Modified db pages 0
+Pending reads 0
+Pending writes: LRU 0, flush list 0, single page 0
+Pages read 35, created 0, written 1
+0.00 reads/s, 0.00 creates/s, 0.00 writes/s
+No buffer pool page gets since the last printout
+The original my.cnf file looked like this:
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+I added the following line:
+innodb_buffer_pool_size = 2000M
+Now innodb status shows the following:
+BUFFER POOL AND MEMORY
+———————-
+Total memory allocated 20358952; in additional pool allocated 653824
+Dictionary memory allocated 33320
+Buffer pool size 512
+Free buffers 491
+Database pages 21
+Modified db pages 0
+Pending reads 0
+Pending writes: LRU 0, flush list 0, single page 0
+Pages read 21, created 0, written 0
+0.14 reads/s, 0.00 creates/s, 0.00 writes/s
+Buffer pool hit rate 950 / 1000
+It doesn’t look like my.cnf changes are taking place. Can you tell me what I am doing wrong?
+0
+Stephane Combaudon
+Author
+8 years ago
+Hello Kara,
+You need to restart the server for the innodb_buffer_pool_size change to take effect.
+0
+Kara
+8 years ago
+I restarted the server, no love.
+$ uptime
+18:18:24 up 22 min, 2 users, load average: 0.02, 0.01, 0.00
+$ cat /etc/my.cnf
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+# added innodb_buffer_pool_size below on 1/12/15
+innodb_buffer_pool_size = 2000M
+mysql> show engine innodb status\G
+*************************** 1. row ***************************
+Type: InnoDB
+Name:
+Status:
+=====================================
+150113 18:20:06 INNODB MONITOR OUTPUT
+=====================================
+Per second averages calculated from the last 57 seconds
+———-
+SEMAPHORES
+———-
+OS WAIT ARRAY INFO: reservation count 4, signal count 4
+Mutex spin waits 0, rounds 20, OS waits 1
+RW-shared spins 4, OS waits 2; RW-excl spins 1, OS waits 1
+————
+TRANSACTIONS
+————
+Trx id counter 0 7936
+Purge done for trx’s n:o < 0 4836 undo n:o 
+The total memory here is listed in bytes, correct?
+Total memory allocated 20358952; in additional pool allocated 653824
+0
+Stephane Combaudon
+Author
+8 years ago
+Kara,
+The innodb_buffer_pool_size setting must be in the [mysqld] section, not in the [mysqld_safe] section.
+1
+Kingsley
+8 years ago
+Hello;
+Thanks for this tutorial, it worked for me
+0
+albert aguirre
+8 years ago
+The tuning script is terrible
+Poor coding
+poor ideas
+0
+LucArt
+8 years ago
+Thanks for this tutorial. Nice one.
+0
+agnosticdev
+7 years ago
+Thank you very much! Very insightful information!
+0
+Liju Mathew
+7 years ago
+I have enabled HugeTLB on MySQL server. I have modified SHMAX, SHMALL , vm.nr.pages,vm.hugetlb_shm_group in sysctl file and every works fine. But after I’m inspecting the status of TOP command it is showing Mysql RES memory below 3G and VRTS showing 44G. innodb_buffer_pool size was set to 38G. My question is why MySQL RES showing 3G even though we have set to reserve 38G Physical memory to mysql.
+Do you have any idea about RES value showing very low
+0
+Aurimas Mikalauskas
+7 years ago
+Thanks, Stephane. Indeed a lot of the times very few variables need to be changed to make a big enough impact. BTW, I have just published an update to this – 17 Key MySQL Config File Settings – that also includes a few MySQL 5.6/5.7 performance specific variables that are new but very useful for high concurrency setups.
+0
+Jitin Maherchandani
+7 years ago
+I have a column in my table which keeps on changing very frequently .How should i implement caching on that particular table ,should i move this column to different table ? How should i avoid caching invalidation ?
+0
+Ballon
+6 years ago
+So, regarding performance, the only parameter is the innodb buffer size? Why do you post all other parameters if aren’t related to performance?
+0
+Vasiliy Lyk'yanchikov
+6 years ago
+Hello, Stephane!
+Good post, thanks for that. I want to translate it to russian language. Please let me know if you have any objection.
+0
+Bogdan Moisin
+6 years ago
+Hello Stephane !
+This is a good article and a great starting point !
+0
+sram
+6 years ago
+nice one as part of first-cut performance design with the following:
+1. data modelling for the workload (OLTP vs DSS vs combination0
+2. table spaces, database creation time
+3. redo log and data files organization (mounting)
+4. choosing right table features, types (heap organized vs partioned vs IOT etc.,
+5. indexes – first-cut ones
+7. writing good queries for correctness and performance
+8. measure it with right workload (representative of production) 
+and probably much more
+0
+Pandikrishnan
+6 years ago
+Recently we have upgraded to mysql 5.7.16-10(5.7.16-10-log Percona Server). After upgrade , we don’t find the utility mysqld_safe and the values which we specify on the mysqld_safe section on the my.cnf doesn’t have any effect. Example
+[mysqld_safe]
+log-error = /data/mysql/error1.log
+socket = /data/mysql/mysql.sock
+malloc-lib=/usr/lib64/libjemalloc.so.1
+flush_caches = 1
+0
+ 
+Want to get weekly updates listing the latest blog posts?
+Subscribe now and we'll send you an update every Friday at 1pm ET.
+Related Blog Articles
+RECOMMENDED ARTICLES
+September 1, 2023
+David Stokes 
+PostgreSQL for MySQL DBAs Episode 13: Inheritance
+Insight for DBAs
+MySQL
+PostgreSQL
+August 30, 2023
+Jobin Augustine 
+PostgreSQL Parameters: Scope and Priority Users Should Know
+Insight for DBAs
+Insight for Developers
+PostgreSQL
+August 30, 2023
+Pete Scott 
+Backup and Recovery for Databases: What You Should Know
+Insight for DBAs
+Insight for Developers
+Open Source
+MOST POPULAR ARTICLES
+June 20, 2023
+Sergey Pronin 
+Deploy Django on Kubernetes With Percona Operator for PostgreSQL
+Cloud
+Insight for Developers
+Percona Software
+PostgreSQL
+February 10, 2023
+Marcelo Altmann 
+Percona XtraBackup Now Supports IAM Instance Profile
+Cloud
+Insight for DBAs
+MySQL
+Percona Software
+March 15, 2023
+Sergey Pronin and Ege Gunes 
+Automating Physical Backups of MongoDB on Kubernetes
+Cloud
+MongoDB
+Percona Software
+Ready to get started?
+Subscribe to our newsletter for updates on enterprise-grade open source software and tools to keep your business running better.
+By submitting my information I agree that Percona may use my personal data in sending communication to me about Percona services. I understand that I can unsubscribe from the communication at any time in accordance with the Percona Privacy Policy.
+This site is protected by reCAPTCHA and the Google
+Privacy Policy and
+Terms of Service apply.
+Follow us for updates
+Twitter
+Facebook
+LinkedIn
+Instagram
+GitHub
+FeaturedMonitor Management
+ProductsMySQL DB Software
+Distribution for MySQL
+Server for MySQL
+XtraDB Cluster
+XtraBackup for MySQL Databases
+MongoDB Software
+Distribution for MongoDB
+Server for MongoDB
+Backup for MongoDB
+PostgreSQL
+Software
+Support and Services
+Kubernetes Operators
+Percona Toolkit
+ServicesSupport
+Managed Services
+Consulting
+Policies
+Training
+LearnDownloads
+Resources
+Docs
+DiscoverBlog
+Community
+Events
+AboutAbout Percona
+Partners
+In The News
+Careers
+Terms of Use
+Privacy
+Copyright
+Legal
+Security Center
+MySQL, PostgreSQL, InnoDB, MariaDB, MongoDB and Kubernetes are trademarks for their respective owners.
+Copyright © 2006-2023 Percona LLC.
+wpDiscuzInsert

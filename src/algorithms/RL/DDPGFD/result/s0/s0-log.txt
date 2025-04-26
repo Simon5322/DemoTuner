@@ -1,0 +1,4 @@
+[04-26 17:21:18] RLTrainer:INFO    : use CPU for computation
+[04-26 17:21:18] TP       :INFO    : Backup /home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/run/../algorithms/RL/DDPGFD/config/s0.yaml
+[04-26 17:21:18] RLTrainer:INFO    : Environment Loaded
+[04-26 17:21:18] RLTrainer:INFO    : No Demo Trajectory Loaded

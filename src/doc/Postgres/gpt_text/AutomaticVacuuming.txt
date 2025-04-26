@@ -1,0 +1,13 @@
+[
+   ('autovacuum_max_workers', 'increase', 'highly concurrent workload with multiple databases and tables'),
+   ('autovacuum_naptime', 'increase', 'large databases with frequent updates and high write activity'),
+   ('autovacuum_vacuum_threshold', 'adjust based on table size and update/delete activity', 'tables with large amounts of updated or deleted tuples'),
+   ('autovacuum_vacuum_insert_threshold', 'adjust based on table size and insert activity', 'tables with large amounts of inserted tuples'),
+   ('autovacuum_analyze_threshold', 'adjust based on table size and update/delete/insert activity', 'tables with large amounts of inserted, updated, or deleted tuples')
+][('autovacuum_vacuum_scale_factor', '25% table size', 'databases with large tables that experience frequent updates/deletes'),
+('autovacuum_vacuum_insert_scale_factor', '25% table size', 'databases with large tables that experience frequent inserts'),
+('autovacuum_analyze_scale_factor', '10% table size', 'databases with tables that have frequent changes in data distribution and require frequent ANALYZE operations'),
+('autovacuum_freeze_max_age', '200 million', 'databases with high transactional activity that need to prevent transaction ID wraparound')]
+[('autovacuum_multixact_freeze_max_age', 'increase', 'when table's pg_class.relminmxid field approaches the maximum age to prevent multixact ID wraparound within the table'),
+('autovacuum_vacuum_cost_delay', 'increase', 'when the cost delay value for automatic VACUUM operations needs to be increased')]
+

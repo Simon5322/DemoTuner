@@ -1,0 +1,6 @@
+[('column_name', 'increase', 'large VARCHAR(255) size'),
+ ('table_name', 'increase', 'large number of columns'),
+ ('demo_column', 'increase', 'large VARCHAR(255) size'),
+ ('demo_table', 'increase', 'large number of columns'),
+ ('column', 'increase', 'use of wildcard in LIKE clause'),
+ ('c1', 'increase', 'large number of columns')]

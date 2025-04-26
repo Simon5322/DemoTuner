@@ -1,0 +1,121 @@
+# 21个负载相关的参数，保证与ini中的数量相对应 18个 metrics
+recordcount:    # 数据量的大小
+  type: int
+  min: 100
+  max: 10000
+  default: 1000
+
+operationcount: # operation to performance 的大小
+  type: int
+  min: 100
+  max: 10000
+  default: 1000
+
+threadcount:
+  type: int
+  min: 1
+  max: 5
+  default: 1
+
+fieldcount:    # 每个record字段的数量
+  type: int
+  min: 0
+  max: 100
+  default: 10
+
+fieldlength:
+  type: int
+  min: 0
+  max: 500
+  default: 100
+
+readproportion:
+  type: float
+  min: 0
+  max: 1
+  default: 0.95
+
+updateproportion:
+  type: float
+  min: 0
+  max: 1
+  default: 0.05
+
+insertproportion:
+  type: float
+  min: 0
+  max: 1
+  default: 0
+
+scanproportion:
+  type: float
+  min: 0
+  max: 1
+  default: 0
+
+insertorder:
+  type: enum
+  default: hashed
+  enum: 2 # 0: ordered, 1: hashed
+
+scanlengthdistribution:
+  type: enum
+  default: uniform
+  enum: 6 # 0:uniform, zipfian, hotspot, sequential, exponential, latest
+
+requestdistribution:
+  type: enum
+  default: uniform
+  enum: 6   # 0:uniform, zipfian, hotspot, sequential, exponential, latest
+#
+#minfieldlength:
+#  type: int
+#  min: 1
+#  max: 10
+#  default: 1
+#
+#
+#readmodifywriteproportion:
+#  type: float
+#  min: 0
+#  max: 1
+#  default: 0
+#
+#minscanlength:
+#  type: int
+#  min: 1
+#  max: 10
+#  default: 1
+#
+#maxscanlength:
+#  type: int
+#  min: 100
+#  max: 5000
+#  default: 1000
+#
+#insertstart:
+#  type: int
+#  min: 0
+#  max: 10
+#  default: 0
+#
+#insertcount:
+#  type: int
+#  min: 10000
+#  max: 100000
+#  default: 10000
+#
+#zeropadding:
+#  type: int
+#  min: 1
+#  max: 10
+#  default: 1
+#
+#readallfields:
+#  type: bool
+#  default: true
+#
+#writeallfields:
+#  type: bool
+#  default: false
+

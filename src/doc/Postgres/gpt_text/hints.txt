@@ -1,0 +1,46 @@
+[('maintenance_work_mem', 'increase', 'loading large amounts of data, CREATE INDEX commands, ALTER TABLE ADD FOREIGN KEY commands'),
+('max_wal_size', 'increase', 'large data loads into PostgreSQL')][
+('max_connections', 'a few hundred', 'PostgreSQL on good hardware can support a few hundred connections.'),
+('shared_buffers', '1/4 of the memory in your system', 'shared_buffers is typically set to 1/4 of the memory in your system. If you have less RAM, you may need to adjust it accordingly.'),
+('shared_buffers', 'above 2 ~ 2.5GB', 'For effective performance, set shared_buffers above 2 ~ 2.5GB.'),
+('shared_buffers', 'increase', 'If you are experiencing performance issues with caching data, you may need to increase the shared_buffers parameter.'),
+('shared_buffers', 'closer to 15% of RAM', 'If you have less RAM and need to account for how much RAM the OS is taking up, setting shared_buffers closer to 15% of RAM is more typical.'),
+('shared_buffers', 'increase', 'If you want to use more than 40% of RAM and find it to be beneficial, you may increase the shared_buffers parameter.'),
+('shared_buffers', 'increase', 'If you receive a message indicating that the shared memory segment allocation is not supported, you can increase the shared_buffers parameter.'),
+('max_connections', 'thousands', 'If you want to have thousands of client connections instead of just a few hundred, consider using connection pooling software to reduce connection overhead.')
+]('effective_cache_size', '1/2 or 3/4 of total memory', 'estimate of available memory for disk caching', 'shared_buffers setting not taken into account', 'UNIX-like systems: add free+cached numbers from free or top', 'Windows: see "System Cache" size in Task Manager', 'changing this setting does not require restarting the database with HUP')
+('checkpoint_segments', 'increase', 'resource intensive, checkpoint occurs every 48MB', 'setting to a larger value improves performance bottleneck', 'recommended value: at least 10 for better completion target', 'small configurations may need higher value')
+
+  ('checkpoint_timeout', 'not necessary', 'most systems'),
+  ('checkpoint_completion_target', '0.9', 'aim to finish by the time 90% of the next checkpoint is here'),
+  ('checkpoint_completion_target', '0.5', 'aim to finish when the next one is 50% done'),
+  ('checkpoint_completion_target', '0', 'similar behavior to obsolete versions'),
+  ('log_destination', 'not important', 'knowing the logging destination'),
+  ('log_directory', 'not important', 'knowing the logging destination'),
+  ('log_filename', 'not important', 'knowing the logging destination'),
+  ('synchronous_commit', 'off', 'more severe performance regression'),
+  ('default_statistics_target', 'increase', 'poor execution query plans on larger or more varied tables'),
+  ('default_statistics_target', 'default value', 'reasonable starting point')
+][
+    ('default_statistics_target', 'increase', 'improve query plans'),
+    ('work_mem', 'increase', 'complex sorts with a lot of memory available'),
+    ('max_connections', 'increase', 'data warehouse systems with large queries'),
+    ('log_temp_files', 'increase', 'sorting operations spilling to disk'),
+    ('maintenance_work_mem', 'increase', 'maintenance operations like VACUUM and CREATE INDEX'),
+    ('wal_sync_method', '[fsync, fdatasync]', 'configure the method of writing WAL to disk')
+][
+('wal_sync_method', 'open_sync', 'non-default setting switched to, on platforms that support it but default to one of the fsync methods'),
+('wal_buffers', '[1MB, 16MB]', 'write-heavy systems, with modern servers with sufficient RAM'),
+('wal_sync_method', 'fdatasync', 'running on Linux'),
+('constraint_exclusion', 'partition', 'for partitioned tables, in nearly all cases'),
+('max_prepared_transactions', '0', 'if not using two-phase commit'),
+('max_prepared_transactions', 'default value', 'for database systems with a large number of concurrent connections')
+][('max_prepared_transactions', 'requires a server restart', 'N/A'),
+ ('synchronous_commit', 'PostgreSQL can only safely use a write cache if it has a battery backup', 'N/A'),
+ ('random_page_cost', 'between 2.0 and 3.0', 'fast disks with RAID arrays of SCSI disks')]
+
+Note: The context for 'random_page_cost' includes other factors like autovacuum, statistics collection, and memory parameters, but these are not included in the trio as they are not specific tuning recommendations for this parameter.[('max_connections', 'increase', 'when you need to support a large number of parallel connections and have enough hardware resources'),
+ ('shared_buffers', '25% RAM', 'to allocate a reasonable amount of memory for shared memory buffers'),
+ ('temp_buffers', 'depend on the number of active sessions', 'to allocate enough memory for temporary buffers for each session'),
+ ('wal_buffers', 'increase', 'when you want to buffer a larger amount of WAL data before writing to disk'),
+ ('work_mem', 'increase', 'when queries require more memory for operations such as sorts and hash tables')]

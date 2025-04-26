@@ -1,0 +1,7 @@
+
+[
+    ('max_connections', 'increase', 'high number of concurrent connections'),
+    ('shared_buffers', 'range [2GB, 25% RAM]', 'frequency of operations on Satellite'),
+    ('work_mem', 'absolute value 8MB', 'most intensive operations on Satellite'),
+    ('autovacuum_vacuum_cost_limit', 'absolute value 2000', 'medium to extra-extra-large profiles and general load on Satellite')
+]

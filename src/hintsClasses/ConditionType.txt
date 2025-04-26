@@ -1,0 +1,29 @@
+ORDER BY
+DISTINCT
+join
+merge join
+hash
+hash table
+heavy sort
+index
+complex query
+
+frequently access temporary tables
+
+maintenance operation
+analytics workload
+heavy write
+heavy read
+
+memory available
+
+many active session
+many concurrent transactions
+many clients committing
+
+high cache miss
+dirty data in the kernel page cache
+
+windows
+Linux
+

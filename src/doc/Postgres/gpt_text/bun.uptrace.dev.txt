@@ -1,0 +1,23 @@
+[
+('max_connections', '<4-8 * number_of_cpus>', 'To give each connection more RAM, disk time, and CPU. Use a connection pool in front of PostgreSQL to avoid "FATAL too many connections" error.'),
+('shared_buffers', '<20-40% of RAM>', 'Controls how much memory PostgreSQL reserves for writing data to disk. Lowering it too much may hurt write performance.'),
+('work_mem', '<1-5% of RAM>', 'Specifies the max amount of memory each PostgreSQL query can use before falling back to temporary disk files.'),
+('maintenance_work_mem', '<10-20% of RAM>', 'Limits the max amount of memory used by maintenance operations.'),
+('effective_cache_size', '<70-80% of RAM>', 'Gives PostgreSQL a hint about how much data it can expect to find in the system cache or ZFS ARC.'),
+('autovacuum_naptime', '10s', 'Run autovacuum when 5% of rows are inserted/updated/deleted. Use smaller nap time if you have many tables.'),
+('autovacuum_max_workers', '2', 'Run 2 autovacuum workers instead of 3.'),
+('autovacuum_work_mem', '<2-3% of RAM>', 'Allocate more memory for each autovacuum worker.'),
+('wal_compression', 'on', 'Enables compression of WAL records.'),
+('min_wal_size', '1GB', 'Specifies the minimum size of the WAL.'),
+('max_wal_size', '8GB', 'Specifies the maximum size of the WAL.'),
+('wal_buffers', '16MB', 'Specifies the size of the shared memory buffer used for WAL.'),
+('checkpoint_timeout', '30min', 'Specifies the time interval between automatic WAL checkpoints.'),
+('checkpoint_completion_target', '0.9', 'Specifies the target fraction of time for checkpoints.'),
+('random_page_cost', '1.1', 'Specifies the cost of a randomly fetched disk page.'),
+('effective_io_concurrency', '200', 'Specifies the number of simultaneous requests that can be handled efficiently by the disk subsystem.'),
+('statement_timeout', '5000', 'Cancels queries that are slower than 5 seconds.'),
+('lock_timeout', '5000', 'Specifies the maximum time to wait for a lock.'),
+('log_min_duration_statement', '500', 'Logs queries that are slower than 500ms.'),
+('log_temp_files', '0', 'Logs queries that use temp files.'),
+('log_lock_waits', 'on', 'Logs queries that wait for locks.')
+]

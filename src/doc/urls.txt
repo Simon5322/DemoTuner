@@ -1,0 +1,1 @@
+https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/optimally-tuning-your-workload-on-azure-database-for-mysql/ba-p/1421960

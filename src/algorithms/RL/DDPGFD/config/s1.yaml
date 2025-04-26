@@ -1,0 +1,59 @@
+---
+train_config:
+  device: 'cuda:0'
+  env_port: 19999
+  seed: 1000
+  exp_name: 's1'
+  exp_idx : '1'
+  pretrain_lr_rate: 0.00001  # 0.00001
+  lr_optimizer: exp   #'pretrain', 'action_guide_exp', 'exp', LrFinder
+  lr_rate: 0.000001 #0.0005
+  lr_decrease_rate : 100 # lr 训练结束时减小多少倍 default:100
+  w_decay: 0.00001
+  restore: false # Restore for training or evaluation
+  tps: 30 # Restored episode for evaluation
+  n_episode: 32 # Total Training Episode
+  batch_size: 20 # Sample from PER
+  update_step: 5 # Update per env step
+  mse_loss: true # for Q loss
+  save_every: 5 # save and evaluate
+  update_hint_priority: false   # 是否调优过程中动态更改hint的优先级
+  action_guide : false #action扰动
+  action_guide_episode : 5 #default 5
+  reward_guide : false    # 是否使用reward来guide探索
+  reward_shaping_threshold: 0.5   # 优先级大于此才会在reward shaping中记录shaping的个数
+  reward_shaping_ratio: 5    # 用于reward shaping的削减大小 比如： 100/reward_shaping_ratio（5） = 20%
+
+  # Pretrain Setting
+  pretrain_demo: false
+  pretrain_step: 5
+  pretrain_save_step: 5
+
+  eval_episode: 2
+  train_gui: false
+  eval_gui: true
+
+  reward_func_multiple_ratio: 10   # 正向reward的增加倍数
+  reward_func_multiple_ratio_negative : 1  #负向reward的放大倍数
+  reward_function_type: speed  # speed, IRL
+
+agent_config:
+  N_step: 5  # N step backup
+  gamma: 0.9 # Reward discount default 0.9
+  seed: 54760
+  replay_buffer_size: 100000
+  discrete_update: false
+  discrete_update_eps: 5 # Discrete update every N episode
+  tau: 0.3 # Continuous update, source network portion, per episode
+  action_noise_std: 0.1
+  const_demo_priority: 0.99 # Should be less than 1
+  const_min_priority: 0.001
+  transition_priority_multiple: 1
+  no_per: false # No prioritized experience replay (Don't  update priority)
+
+demo_config:
+  load_demo_data: false  # demo2memory 是否加载到replaybuffer中
+  demo_dir: './data/demo'
+  demo_N: 1000 # manually fill in
+  load_N: 1000  # manually fill in
+  prefix: 'demo_' # demo_i.pkl

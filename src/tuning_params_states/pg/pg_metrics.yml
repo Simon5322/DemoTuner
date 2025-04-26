@@ -1,0 +1,231 @@
+
+blks_read:
+  min: 0
+  max: 300000000
+  view: pg_stat_database
+  collect_metric : True
+
+blks_hit:
+  min: 0
+  max: 300000000
+  view: pg_stat_database
+  collect_metric : True
+
+temp_bytes:
+  min: 0
+  max: 3000000000
+  view: pg_stat_database
+  collect_metric: True
+
+xact_commit:
+  min: 0
+  max: 1000000000
+  view: pg_stat_database
+  collect_metric: True
+
+buffers_backend:
+  min: 0
+  max: 1000000000
+  view: pg_stat_bgwriter
+  collect_metric: True
+
+buffers_checkpoint:
+  min: 0
+  max: 1000000000
+  view: pg_stat_bgwriter
+  collect_metric: True
+
+checkpoints_req:
+  min: 0
+  max: 1000000000
+  view: pg_stat_bgwriter
+  collect_metric: True
+
+wal_records:
+  min: 0
+  max: 200000000000
+  view: pg_stat_wal
+  collect_metric : True
+
+wal_write_time:
+  min: 0
+  max: 200000000000
+  view: pg_stat_wal
+  collect_metric: True
+
+idx_scan:
+  min: 0
+  max: 100000000
+  view: pg_stat_user_tables
+  collect_metric: False
+
+vacuum_count:
+  min: 0
+  max: 100000000
+  view: pg_stat_user_tables
+  collect_metric: False
+
+cpu_changed:
+  min: 0
+  max: 100
+  view: system
+  collect_metric: False
+
+cpu_usage:
+  min: 0
+  max: 100
+  view: system
+  collect_metric: False
+
+mem_changed:
+  min: 0
+  max: 100
+  view: system
+  collect_metric : False
+
+mem_usage:
+  min: 0
+  max: 100
+  view: system
+  collect_metric : False
+
+write_speed_changed:
+  min: 0
+  max: 200000000000
+  view: system
+  collect_metric : False
+
+io_latency_changed:
+  min: 0
+  max: 200000000000
+  view: system
+  collect_metric : True
+
+load1:
+  min: 0
+  max: 200000000000
+  view: system
+  collect_metric : False
+
+node_memory_Dirty_bytes:
+  min: 0
+  max: 200000000000
+  view: system
+  collect_metric : False
+
+#latency:
+#  min: 0
+#  max: 200000000000
+#  view: performance
+#  collect_metric: False
+#
+#throughput:
+#  min: 0
+#  max: 200000000000
+#  view: performance
+#  collect_metric: False
+
+
+
+
+
+#
+#checkpoints_timed:
+#  min: 0
+#  max: 50000
+#  view: pg_stat_bgwriter
+#checkpoint_write_time:
+#  min: 0
+#  max: 100000
+#  view: pg_stat_bgwriter
+#
+#checkpoint_sync_time:
+#  min: 0
+#  max: 50000
+#  view: pg_stat_bgwriter
+#
+#buffers_checkpoint:
+#  min: 0
+#  max: 50000
+#  view: pg_stat_bgwriter
+#
+#buffers_clean:
+#  min: 0
+#  max: 8000
+#  view: pg_stat_bgwriter
+#
+#buffers_backend:
+#  min: 0
+#  max: 30000
+#  view: pg_stat_bgwriter
+
+
+
+#Total Execution Time:
+#  min: 0.0
+#  max: 100.0
+#
+#Mean Execution Time:
+#  min: 0.0
+#  max: 50.0
+#
+#Calls:
+#  min: 0
+#  max: 10000
+#
+#Shared Blks Hit:
+#  min: 0
+#  max: 100000
+#
+#Shared Blks Read:
+#  min: 0
+#  max: 100000
+#
+#Local Blks Hit:
+#  min: 0
+#  max: 10000
+#
+#Local Blks Read:
+#  min: 0
+#  max: 10000
+#
+#Temp Blks Read:
+#  min: 0
+#  max: 1000
+#
+#Temp Blks Written:
+#  min: 0
+#  max: 1000
+#
+
+#CPU Percent Used:
+#  min: 0.0
+#  max: 100.0
+#
+#Memory Percent Used:
+#  min: 0.0
+#  max: 100.0
+#
+#Disk Read Count:
+#  min: 0
+#  max: 10000000
+#
+#Disk Write Count:
+#  min: 0
+#  max: 10000000
+#
+#Disk Read Bytes:
+#  min: 0
+#  max: 100000000000
+#
+#Disk Write Bytes:
+#  min: 0
+#  max: 100000000000
+#
+#Disk Read Time:
+#  min: 0
+#  max: 10000000
+#
+#Disk Write Time:
+#  min: 0
+#  max: 10000000

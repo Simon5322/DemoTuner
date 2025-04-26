@@ -1,0 +1,5 @@
+paths:
+  base: "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject"
+  results: "${paths.base}/results"
+  config: "${paths.base}/config"
+  data: "${paths.base}/data"

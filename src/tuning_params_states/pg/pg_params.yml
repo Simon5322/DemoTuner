@@ -1,0 +1,127 @@
+#
+# restart 1kb
+work_mem:
+  min: 64
+  max: 16384   # 16mb
+  float: no
+  default: 4096
+
+# unit: 8kb, restart
+wal_buffers:
+    min: 4
+    max: 65535   # 512MB unit8kb89
+    float: no
+    default: 512  # 4mb
+
+# unit 8kb
+temp_buffers:
+    min: 100
+    max : 131072  # 1gb unit:8kb
+    float: no
+    default: 1024  # 8mb
+
+# restart 8kb
+shared_buffers:
+    min: 2048   # 16mb
+    max: 1048576 # 1048576 8gb
+    float: no
+    default: 16384  # 128mb
+
+# unit:8kb
+effective_cache_size:
+    min: 131072        # min 1
+    max: 1572864  # 12gb: 1572864
+    float: no
+    default: 524288  # 4gb
+# 1kb
+maintenance_work_mem:
+  min: 1024
+  max:  1048576    # 1gb
+  float: no
+  default: 65536   # 64mb
+
+max_connections:
+  min: 100 # ycsb 20 tpcc 100
+  max: 10000
+  float: no
+  default: 100
+
+bgwriter_lru_multiplier:   #!!!!!!!!!!!!!!!!!
+  min: 0      # tpch 2
+  max: 10
+  float: yes
+  default: 2
+
+# 8kb
+backend_flush_after:
+    min: 0
+    max: 256
+    float: no
+    default: 0
+
+# ms
+bgwriter_delay:
+  min: 10
+  max: 10000
+  float: no
+  default: 200
+
+max_parallel_workers:
+  min: 8                  # min 0
+  max: 1024
+  float: no
+  default: 8
+
+hash_mem_multiplier:
+  min: 1
+  max: 1000
+  float: yes
+  default: 2
+
+checkpoint_flush_after: # 8kb  ！！！！！！！！！！！！1
+  min: 0      # tpch 32
+  max: 256
+  float: no
+  default: 32
+
+# mb related to disk
+max_wal_size:
+   min: 32
+   max: 10240  #10gb
+   float: no
+   default: 1024
+
+join_collapse_limit:
+   min: 4
+   max: 1000
+   float: no
+   default: 8
+
+vacuum_cost_page_dirty:
+    min: 10            # min 0
+    max: 10000
+    float: no
+    default: 20
+
+# 8kb
+min_parallel_table_scan_size:
+    min: 0            # tpch 512
+    max: 131072  #ycsb 131072 tpch 8192
+    float: no
+    default: 1024
+
+# 8kb
+min_parallel_index_scan_size:
+    min: 16            # min 0
+    max: 131072  #1gb tpch 8192 ycsb 131072
+    float: no
+    default: 64
+
+#max_parallel_workers_per_gather:
+#    min: 2
+#    max: 1024
+#    float: no
+#    default: 2
+#
+#
+#

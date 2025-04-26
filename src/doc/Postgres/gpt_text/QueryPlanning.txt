@@ -1,0 +1,61 @@
+[('enable_async_append', 'on', 'Use when there are queries that can benefit from async-aware append plan types'),
+ ('enable_bitmapscan', 'on', 'Use when there are queries that can benefit from bitmap-scan plan types'),
+ ('enable_gathermerge', 'on', 'Use when there are queries that can benefit from gather merge plan types'),
+ ('enable_hashagg', 'on', 'Use when there are queries that can benefit from hashed aggregation plan types'),
+ ('enable_hashjoin', 'on', 'Use when there are queries that can benefit from hash-join plan types'),
+ ('enable_incremental_sort', 'on', 'Use when there are queries that can benefit from incremental sort steps'),
+ ('enable_indexscan', 'on', 'Use when there are queries that can benefit from index-scan plan types'),
+ ('enable_indexonlyscan', 'on', 'Use when there are queries that can benefit from index-only-scan plan types'),
+ ('enable_material', 'on', 'Use when there are queries that can benefit from materialization'),
+ ('enable_memoize', 'on', 'Use when there are queries that can benefit from memoize plans for caching results from parameterized scans inside nested-loop joins'),
+ ('enable_mergejoin', 'on', 'Use when there are queries that can benefit from merge-join plan types')][('enable_nestloop', 'off', 'when there are other join methods available'),
+('enable_parallel_append', 'on', 'when parallel-aware append plan types are desired'),
+('enable_parallel_hash', 'on', 'when hash-join plan types with parallel hash are enabled'),
+('enable_partition_pruning', 'on', 'when the query planner should eliminate a partitioned table\'s partitions from query plans and allow query executor to remove partitions during query execution'),
+('enable_partitionwise_join', 'off', 'when the join conditions include all the partition keys and there are matching sets of child partitions'),
+('enable_partitionwise_aggregate', 'off', 'when partitionwise grouping or aggregation is not required and complete aggregation can be performed later')]
+[
+   ('enable_presorted_aggregate', 'on', 'When there are ORDER BY / DISTINCT aggregate functions and the planner can produce a more efficient plan by providing input that is presorted in the required order.'),
+   ('enable_seqscan', 'off', 'When the planner should be discouraged from using sequential scan plan types if there are other methods available.'),
+   ('enable_sort', 'off', 'When the planner should be discouraged from using explicit sort steps if there are other methods available.')
+]
+
+('enable_tidscan', 'on', 'when TID scan plan types are required by the query planner')
+('seq_page_cost', 'increase', 'when the actual execution times in milliseconds for sequential page fetches are high')
+('seq_page_cost', 'decrease', 'when the actual execution times in milliseconds for sequential page fetches are low')
+
+
+[
+    ('random_page_cost', 'decrease', 'workload with high cache rate or smaller database size'),
+    ('random_page_cost', 'increase', 'workload with low cache rate or SSD storage'),
+    ('random_page_cost', 'increase', 'tables and indexes in a particular tablespace')
+][
+('cpu_tuple_cost', 0.01, 'lower values for CPU-bound workloads'),
+('cpu_index_tuple_cost', 0.005, 'lower values if indexes are heavily used in queries'),
+('cpu_operator_cost', 0.0025, 'lower values for CPU-bound workloads'),
+('parallel_setup_cost', 1000, 'higher values for workloads with frequent parallel queries'),
+('parallel_tuple_cost', 0.1, 'higher values for workloads with large amounts of data transfer between parallel worker processes'),
+('min_parallel_table_scan_size', '8MB', 'lower values for smaller tables or read-heavy workloads'),
+('min_parallel_index_scan_size', '512kB', 'lower values for smaller indexes or read-heavy workloads')
+][('effective_cache_size', 'increase', 'read-heavy workload with tables that don't have indexes'), 
+('jit_above_cost', 'decrease', 'workloads with lower query costs where JIT compilation can be beneficial'), 
+('jit_inline_above_cost', 'increase', 'workloads with higher query costs where JIT compilation can be beneficial')]
+
+('geqo_effort', 'increase', 'when query plan quality is more important than planning time'),
+('geqo_pool_size', '100-1000', 'during GEQO optimization with a number of tables in the query'),
+('geqo_generations', '100-1000', 'during GEQO optimization with a number of tables in the query'),
+('geqo_selection_bias', '1.50-2.00', 'to adjust the selection pressure within the population'),
+('geqo_seed', 'increase', 'to explore different join paths and potentially find a better best path')
+][('default_statistics_target', 'increase', 'to improve the quality of the planner\'s estimates')]
+('constraint_exclusion', 'partition', 'used with traditional inheritance trees to improve performance')[
+  ('cursor_tuple_fraction', 'decrease', 'to bias planner towards using "fast start" plans for cursors'),
+  ('from_collapse_limit', '[5, 8]', 'to reduce planning time but avoid inferior query plans'),
+  ('jit', 'off', 'to disable JIT compilation if not available or undesirable')
+][('join_collapse_limit', 'decrease', 'large number of JOIN constructs in the query'), 
+('join_collapse_limit', 'increase', 'small number of JOIN constructs in the query'), 
+('plan_cache_mode', 'force_generic_plan', 'parameter values do not strongly influence query plans')][
+  ("jit_optimize_above_cost", "500000", "set the query cost above which JIT compilation applies expensive optimizations"),
+  ("jit_optimize_above_cost", "-1", "disable expensive optimizations"),
+  ("geqo", "on", "enable genetic query optimization"),
+  ("geqo", "off", "disable genetic query optimization in production")
+]

@@ -1,0 +1,37 @@
+Hint: ( innodb_buffer_pool_size , 6gb , [] )  hint_id : 1 
+Hint: ( innodb_buffer_pool_size , 5gb , [] )  hint_id : 2 
+Hint: ( innodb_buffer_pool_size , 0.75mem , ['write heavy'] )  hint_id : 6 
+Hint: ( innodb_buffer_pool_size , increase , ['large queries'] )  hint_id : 14 
+Hint: ( innodb_io_capacity , 1000 , ['SSD'] )  hint_id : 17 
+Hint: ( innodb_buffer_pool_size , increase , ['write heavy'] )  hint_id : 18 
+Hint: ( innodb_log_buffer_size , 8mb , [] )  hint_id : 20 
+Hint: ( innodb_log_buffer_size , 256mb , [] )  hint_id : 21 
+Hint: ( innodb_log_buffer_size , increase , ['large queries'] )  hint_id : 22 
+Hint: ( innodb_log_buffer_size , increase , ['write heavy'] )  hint_id : 23 
+Hint: ( innodb_log_file_size , 512mb , ['write heavy'] )  hint_id : 24 
+Hint: ( innodb_log_file_size , 256mb , ['write heavy'] )  hint_id : 25 
+Hint: ( innodb_log_file_size , increase , ['write heavy'] )  hint_id : 26 
+Hint: ( innodb_log_file_size , 64mb , [] )  hint_id : 27 
+Hint: ( innodb_log_file_size , 128mb , [] )  hint_id : 28 
+Hint: ( innodb_log_file_size , 500mb , [] )  hint_id : 29 
+Hint: ( innodb_log_file_size , 1024mb , [] )  hint_id : 30 
+Hint: ( innodb_log_file_size , 20gb , [] )  hint_id : 31 
+Hint: ( innodb_log_file_size , 4gb , ['write heavy'] )  hint_id : 32 
+Hint: ( innodb_log_file_size , 2gb , [] )  hint_id : 33 
+Hint: ( innodb_log_files_in_group , increase , ['write heavy'] )  hint_id : 34 
+Hint: ( innodb_log_files_in_group , 5gb , [] )  hint_id : 35 
+Hint: ( innodb_lru_scan_depth , decrease , ['write heavy'] )  hint_id : 36 
+Hint: ( innodb_purge_threads , increase , ['purge operation'] )  hint_id : 37 
+Hint: ( innodb_write_io_threads , 8 , ['write heavy'] )  hint_id : 41 
+Hint: ( innodb_thread_concurrency , 16 , [] )  hint_id : 42 
+Hint: ( innodb_thread_concurrency , increase , ['write heavy'] )  hint_id : 43 
+Hint: ( join_buffer_size , 256kb , [] )  hint_id : 47 
+Hint: ( max_heap_table_size , 64mb , [] )  hint_id : 49 
+Hint: ( max_heap_table_size , 48mb , [] )  hint_id : 50 
+Hint: ( max_heap_table_size , 32mb , [] )  hint_id : 51 
+Hint: ( table_open_cache , 2000 , [] )  hint_id : 60 
+Hint: ( tmp_table_size , 1gb , ['complex queries'] )  hint_id : 64 
+Hint: ( tmp_table_size , 32mb , [] )  hint_id : 65 
+Hint: ( tmp_table_size , 48mb , [] )  hint_id : 66 
+Hint: ( tmp_table_size , 64mb , [] )  hint_id : 67 
+Hint: ( net_buffer_length , 1mb , [] )  hint_id : 68 

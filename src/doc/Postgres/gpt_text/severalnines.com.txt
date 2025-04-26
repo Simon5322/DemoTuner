@@ -1,0 +1,16 @@
+[('max_connections', 'increase', 'when there is a high demand for simultaneous connections to the database'),
+ ('shared_buffers', '25% RAM', 'for a dedicated database server with at least 1GB of RAM'),
+ ('temp_buffers', 'increase', 'when there is a need for more temporary buffers for accessing temporary tables'),
+ ('work_mem', 'increase', 'when multiple sessions are executing operations like ORDER BY, DISTINCT, JOIN, and hash tables at the same time'),
+ ('maintenance_work_mem', 'increase', 'for improving performance of maintenance operations like VACUUM, CREATE INDEX, and ALTER TABLE ADD FOREIGN KEY'),
+ ('fsync', 'disable', 'if the database can be easily recreated from external data and the risk of data loss is acceptable'),
+ ('checkpoint_segments', 'increase', 'in systems with high data modifications to reduce the frequency of checkpoints and improve performance')]
+ [('max_wal_size', 'increase', 'circumstances where the WAL size exceeds the limit and more time for fault recovery is acceptable'),
+ ('min_wal_size', 'relative', 'to ensure enough reserved WAL space for spikes in WAL usage, such as during large batch jobs'), 
+ ('wal_sync_method', 'N/A', 'if fsync is disabled'), 
+ ('wal_buffers', 'increase', 'servers with high concurrency and many concurrent transactions'), 
+
+ ('default_statistics_target', 'increase', 'if execution plans are not satisfactory and after running ANALYZE or waiting for AUTOVACUUM'), 
+ ('synchronous_commit', 'decrease', 'when performance is prioritized over the exact certainty of transaction durability')]
+ [('effective_cache_size', '50% RAM', 'to take into account plans that may or may not fit in memory; affects cost estimates of using an index')]
+[('effective_cache_size', '50% RAM', 'used by query planner for cost estimates and index usage')]

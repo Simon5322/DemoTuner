@@ -1,0 +1,4 @@
+[('work_mem', 'increase', 'to reduce disk spilling during complex sorts'), 
+ ('maintenance_work_mem', 'increase', 'to speed up maintenance operations like VACUUM, CREATE INDEX, and ALTER TABLE ADD FOREIGN KEY'), 
+ ('effective_cache_size', 'estimate available memory', 'to optimize disk caching by the operating system and within the database'), 
+ ('shared_buffers', 'tune', 'unless using a managed service to allocate memory for caching data')]

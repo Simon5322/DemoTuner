@@ -1,0 +1,279 @@
+cpu_changed:
+  min: 0
+  max: 100
+  view: system
+  collect_metric: True
+
+cpu_usage:
+  min: 0
+  max: 100
+  view: system
+  collect_metric: False
+
+mem_changed:
+  min: 0
+  max: 100
+  view: system
+  collect_metric : True
+
+mem_usage:
+  min: 0
+  max: 100
+  view: system
+  collect_metric : False
+
+write_speed_changed:
+  min: 0
+  max: 200000000000
+  view: system
+  collect_metric : True
+
+io_latency_changed:
+  min: 0
+  max: 200000000000
+  view: system
+  collect_metric : True
+
+load1:
+  min: 0
+  max: 200000000000
+  view: system
+  collect_metric : False
+
+node_memory_Dirty_bytes:
+  min: 0
+  max: 200000000000
+  view: system
+  collect_metric : False
+
+
+Innodb_buffer_pool_reads:
+  min: 0
+  max: 200000000000
+  view: global
+  collect_metric: True
+
+Innodb_buffer_pool_read_requests:
+  min: 0
+  max: 200000000000
+  view: global
+  collect_metric: True
+
+Com_select:
+  min: 0
+  max: 200000000000
+  view: global
+  collect_metric: True
+
+Com_insert:
+  min: 0
+  max: 200000000000
+  view: global
+  collect_metric: True
+
+Com_update:
+  min: 0
+  max: 200000000000
+  view: global
+  collect_metric: True
+
+Com_delete:
+  min: 0
+  max: 200000000000
+  view: global
+  collect_metric: True
+
+Innodb_data_reads:
+  min: 0
+  max: 200000000000
+  view: global
+  collect_metric: True
+
+Innodb_data_writes:
+  min: 0
+  max: 200000000000
+  view: global
+  collect_metric: True
+
+Innodb_buffer_pool_pages_dirty:
+  min: 0
+  max: 200000000
+  view: global
+  collect_metric: False
+
+Innodb_buffer_pool_pages_total:
+  min: 0
+  max: 200000000
+  view: global
+  collect_metric: False
+
+Innodb_log_waits:
+  min: 0
+  max: 200
+  view: global
+  collect_metric: False
+
+Handler_read_rnd_next:
+  min: 0
+  max: 20000000
+  view: global
+  collect_metric: True
+
+Created_tmp_tables:
+  min: 0
+  max: 20000000
+  view: global
+  collect_metric: True
+
+Created_tmp_disk_tables:
+  min: 0
+  max: 20000000
+  view: global
+  collect_metric: True
+
+Sort_merge_passes:
+  min: 0
+  max: 1
+  view: global
+  collect_metric: True
+
+Threads_connected:
+  min: 0
+  max: 200000
+  view: status
+  collect_metric: False
+
+data_set_num:
+  min: 0
+  max: 2000000
+  view: workload
+  collect_metric: True
+
+latency:
+  min: 0
+  max: 200000000000
+  view: performance
+  collect_metric: False
+
+throughput:
+  min: 0
+  max: 200000000000
+  view: performance
+  collect_metric: False
+
+
+
+
+
+
+
+
+
+
+
+#operation_num:
+#  min: 0
+#  max: 2000000
+#  view: workload
+#  collect_metric: True
+
+#
+#checkpoints_timed:
+#  min: 0
+#  max: 50000
+#  view: pg_stat_bgwriter
+#checkpoint_write_time:
+#  min: 0
+#  max: 100000
+#  view: pg_stat_bgwriter
+#
+#checkpoint_sync_time:
+#  min: 0
+#  max: 50000
+#  view: pg_stat_bgwriter
+#
+#buffers_checkpoint:
+#  min: 0
+#  max: 50000
+#  view: pg_stat_bgwriter
+#
+#buffers_clean:
+#  min: 0
+#  max: 8000
+#  view: pg_stat_bgwriter
+#
+#buffers_backend:
+#  min: 0
+#  max: 30000
+#  view: pg_stat_bgwriter
+
+
+
+#Total Execution Time:
+#  min: 0.0
+#  max: 100.0
+#
+#Mean Execution Time:
+#  min: 0.0
+#  max: 50.0
+#
+#Calls:
+#  min: 0
+#  max: 10000
+#
+#Shared Blks Hit:
+#  min: 0
+#  max: 100000
+#
+#Shared Blks Read:
+#  min: 0
+#  max: 100000
+#
+#Local Blks Hit:
+#  min: 0
+#  max: 10000
+#
+#Local Blks Read:
+#  min: 0
+#  max: 10000
+#
+#Temp Blks Read:
+#  min: 0
+#  max: 1000
+#
+#Temp Blks Written:
+#  min: 0
+#  max: 1000
+#
+
+#CPU Percent Used:
+#  min: 0.0
+#  max: 100.0
+#
+#Memory Percent Used:
+#  min: 0.0
+#  max: 100.0
+#
+#Disk Read Count:
+#  min: 0
+#  max: 10000000
+#
+#Disk Write Count:
+#  min: 0
+#  max: 10000000
+#
+#Disk Read Bytes:
+#  min: 0
+#  max: 100000000000
+#
+#Disk Write Bytes:
+#  min: 0
+#  max: 100000000000
+#
+#Disk Read Time:
+#  min: 0
+#  max: 10000000
+#
+#Disk Write Time:
+#  min: 0
+#  max: 10000000

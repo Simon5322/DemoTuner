@@ -1,0 +1,10 @@
+
+tuning_recommendations =     ('max_connections', 'decrease', 'when memory allocations are a concern and the number of connections can be reduced to improve performance'),
+    ('checkpoint_segments', 'increase', 'when the default configuration performs checkpoints too often and increasing the value can make checkpoints less frequent'),
+    ('work_mem', 'increase', 'when the system is performing a lot of complex sorts and increasing the sort memory can help optimize the database configuration'),
+    ('random_page_cost', 'alter', 'after performing other plan-based optimizations such as vacuuming, indexing, or modifying queries and schema'),
+    ('log_line_prefix', 'customize', 'when using tools like PGBadger that require rich log data and a specific data format'),
+    ('log_statement', 'modify', 'to set the desired logging level, whether it's logging only structural changes, modifications to existing data, or everything'),
+    ('log_checkpoints', 'enable', 'to get detailed information about checkpoints, including frequency and possible triggers'),
+    ('logging_connection', 'monitor', 'to track the number of concurrent connections and identify any issues that may affect performance')
+]
