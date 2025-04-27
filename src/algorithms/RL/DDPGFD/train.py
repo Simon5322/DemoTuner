@@ -730,7 +730,6 @@ class RLTrainer:
 
             joblib.dump(demo_record, save_name)
             meeted_hint_save_name = os.path.join(project_dir, 'src/algorithms/RL/DDPGFD/data/demo/meeted_hints.txt')
-                # "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/data/demo/meeted_hints.txt"
             with open(meeted_hint_save_name, 'w') as file:
                 # 遍历数组中的每个字符串
                 for hint_meeted in self.hints_meeted:

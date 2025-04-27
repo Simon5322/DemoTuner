@@ -56,19 +56,6 @@ class ForestEstimateBenchmark(benchmark):
         Global_Variables.globalCurrentAction = default_action
         self.default_action = default_action
 
-if __name__ == '__main__':
-    dbms_name = 'pg'
-    config_path = f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/tuning_params_states/{dbms_name}/{dbms_name}_params.yml'
-    with open(config_path, "r") as f:
-        conf = yaml.load(f, Loader=yaml.FullLoader)
-    f = ForestEstimateBenchmark('forestEstimater', conf, dbms_name)
-    string_data_mysql = '143	100	1	1023	2	100	1	1	1	0	2000	1	4	3	2	22	0	2166	1'
-    string_data_pg = '4096	512	1024	16384	524288	65536	100	2	0	200	8	2	32	1024	8	20	1024	64	2'
-    real_values = trans_string_to_num(string_data_pg, split_type='\t')
-    actions = real_to_action(dbms_name, real_values)
-    Global_Variables.globalCurrentAction = actions
-    _, latency = f.run_benchmark(-1)
-    print(latency)
 
 
 

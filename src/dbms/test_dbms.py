@@ -13,13 +13,6 @@ from dbms.postgres import PgConfig
 # from myMySql import MySQLconfig
 # from dbms.postgres import PgConfig
 
-
-"""
-    this is test file for function of dbms (postgres and mysql)
-    configuration should be :
-        pg : /home/zhouyuxuan/workspace/pythonWorkspace/bertProject/config/pg.ini
-        mysql : /home/zhouyuxuan/workspace/pythonWorkspace/bertProject/config/mysql.ini
-"""
 script_dir = os.path.dirname(os.path.abspath(__file__))
 arg_parser = ArgumentParser(description='DDPGFD-gpt: use gpt to guide RL parameter tuning')
 arg_parser.add_argument('cpath', type=str, help='Path to configuration file')

@@ -497,8 +497,8 @@ class PgEnv(gym.Env):
             else:
                 raise KeyError(f'{self.dbms.__class__} is not a mysql or postgres instance')
 
-            config.read(f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/config/{dbms_name}.ini')
-            workload_file_path = fr'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/tuning_params_states/{dbms_name}/{dbms_name}_workload.yml'
+            config.read(os.path.join(script_path, f'../../../../../../config/{dbms_name}.ini'))
+            workload_file_path = os.path.join(script_path, f'../../../../../../src/tuning_params_states/{dbms_name}/{dbms_name}_workload.yml')
             with open(workload_file_path, 'r') as f:
                 workload_settings = yaml.load(f, Loader=yaml.FullLoader)
 

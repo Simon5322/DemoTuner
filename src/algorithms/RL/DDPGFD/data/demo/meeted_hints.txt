@@ -1,2 +1,0 @@
-Hint: ( work_mem , 8mb , [] )  hint_id : 1 
-Hint: ( work_mem , 36mb , [] )  hint_id : 2 

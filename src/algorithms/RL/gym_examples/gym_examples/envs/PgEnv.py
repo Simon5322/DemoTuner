@@ -104,9 +104,7 @@ class PgEnv(gym.Env):
         self.dbms.make_conf_effect()
 
         # 进行测试
-        # self.benchmark.run_benchmark(self.step)
-        # result_path = "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/pgResult" + "/pg_ycsb" + ".txt"
-        throughput, latency = self.benchmark.run_benchmark(-1)  # self.benchmark.get_result(self.step)
+        throughput, latency = self.benchmark.run_benchmark(-1)
 
         if throughput > self.throughput_default:
             if throughput > self.throughput_best:

@@ -30,7 +30,6 @@ import dbms.factory
 
 from algorithms.RL.DDPGFD.train import RLTrainer
 from algorithms.RL.agent.Ddpg import DDPG, Ddpg
-from algorithms.bo import BOenvOptimizer
 
 from benchmark.YCSB import YCSB
 
@@ -75,8 +74,8 @@ with open(metrics_path, "r") as f:
 workload_setting_path = os.path.join(script_dir, f'../tuning_params_states/{dbms_name}/{dbms_name}_workload.yml')
 with open(workload_setting_path, 'r') as f:
     workload = yaml.load(f, Loader=yaml.FullLoader)
-# 建立dbms和benchamrk
 
+# 建立dbms和benchamrk
 dbms = dbms.factory.from_file(config)  # pg or mysql
 
 bm = None
@@ -120,8 +119,6 @@ else:
 performance_default = (throughput_default, latency_default)
 
 conf_path = os.path.join(script_dir, f"../algorithms/RL/DDPGFD/config/{DDPGFD_config}.yaml")
-
-
 with open(conf_path, 'r') as file:
     s_conf = yaml.load(file, Loader=yaml.FullLoader)
 restore = bool(s_conf['train_config']['restore'])
