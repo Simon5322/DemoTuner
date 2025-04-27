@@ -28,11 +28,13 @@ pip install -r requirements.txt
 The main benchmark we employed for configuration evaluation is YCSB (Yahoo! Cloud Serving Benchmark), which is a frequently used benchmarking tool for performance evaluation of DBMSs. After installation, you need to modify the YCSB installation path in pg.ini or mysql.ini by setting the YCSB_path.
 
 ## Main Code
-Run tuning_run.py with the configuration file path and the --collect option to collect and generate demonstration data. Set the YCSB workload type and size in mysql.ini or pg.ini. Then, run tuning_run.py again with the configuration file path and set the training-related options in section s1 of the .ini file to perform offline training.
+Run `tuning_run.py` with the configuration file path and the `--collect` option to collect and generate demonstration data. Set the YCSB workload type and size in `mysql.ini` or `pg.ini`. Then, run `tuning_run.py` again with the configuration file path and set the training-related options in section `s1` of the `.ini` file to perform offline training.
 
 ## Acknowledge
 We would like to express our special thanks to the open-source benchmarks, traces and codes of these papers or repositories:
-https://github.com/brianfrankcooper/YCSB
-https://github.com/cmu-db/benchbase
+
+- [YCSB](https://github.com/brianfrankcooper/YCSB)
+- [Benchbase](https://github.com/cmu-db/benchbase)
+
 
 
