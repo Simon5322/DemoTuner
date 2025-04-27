@@ -15,3 +15,4 @@ Training Enhancements: Apply action-guidance and reward-shaping techniques to sp
 We evaluated DEMOTune on MySQL and PostgreSQL under three different workloads.
 Results show that DEMOTune significantly outperforms state-of-the-art methods in effectiveness, efficiency, and adaptability.
 
+![DEMOTune Overview](./)
