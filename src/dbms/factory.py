@@ -1,8 +1,4 @@
-'''
-Created on May 12, 2021
 
-@author: immanueltrummer
-'''
 from dbms.postgres import PgConfig
 from dbms.myMySql import MySQLconfig
 

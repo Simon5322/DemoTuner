@@ -1,7 +1,0 @@
-[('shared_buffers', 'increase', 'dedicated database server with 1GB or more of RAM'),
- ('shared_buffers', 'decrease', 'systems with less than 1GB of RAM'),
- ('work_mem', 'increase', 'sorting operations (ORDER BY, DISTINCT, merge joins)'),
- ('maintenance_work_mem', 'increase', 'maintenance operations (VACUUM, CREATE INDEX, ALTER TABLE ADD FOREIGN KEY)'),
- ('random_page_cost', 'decrease', 'prefer index scans over sequential scans'),  # 降低时 更倾向于用索引而不是scan进行扫描
- ('nestloop', 'disable', 'queries with nested loops that have long execution times'),
- ('VACUUM', 'periodically', 'frequently-updated tables to reclaim storage occupied by dead tuples')]

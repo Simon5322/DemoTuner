@@ -1,1 +1,0 @@
-""" Functions for natural language analysis of text. """

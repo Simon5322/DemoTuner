@@ -1,8 +1,4 @@
-'''
-Created on Nov 13, 2021
 
-@author: immanueltrummer
-'''
 import math
 import os
 import shutil

@@ -1,8 +1,4 @@
-'''
-Created on Apr 17, 2021
 
-@author: immanueltrummer
-'''
 import configparser
 import re
 

@@ -1,8 +1,4 @@
-'''
-Created on Apr 2, 2021
 
-@author: immanueltrummer
-'''
 from abc import ABC, abstractmethod
 import copy
 

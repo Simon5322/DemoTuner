@@ -1,9 +1,0 @@
-`column_name` VARCHAR(255) NOT NULL DEFAULT 'value';CREATE TABLE table_name ([column_details]) [partitioning_details];CREATE TABLE table_name (`demo_column` VARCHAR(255) NOT NULL DEFAULT ''Partitioning has another very important upside as well. It allows users to delete all of the data stored in a single partition; ALTER TABLE demo TRUNCATE PARTITION partition_name will do the trick.SELECT * FROM demo_table WHERE column LIKE 'string%';INSERT IGNORE INTO demo_table (c1) VALUES ('Demo');`column_name` VARCHAR(255) NOT NULL DEFAULT 'value';CREATE TABLE table_name (
-[column_details]
-) [partitioning_details];
-CREATE TABLE table_name (
-`demo_column` VARCHAR(255) NOT NULL DEFAULT ''
-Partitioning has another very important upside as well. It allows users to delete all of the data stored in a single partition; ALTER TABLE demo TRUNCATE PARTITION partition_name will do the trick.
-SELECT * FROM demo_table WHERE column LIKE 'string%';
-INSERT IGNORE INTO demo_table (c1) VALUES ('Demo');
-`column_name` VARCHAR(255) NOT NULL DEFAULT 'value';

@@ -1,8 +1,4 @@
-'''
-Created on Apr 7, 2021
 
-@author: immanueltrummer
-'''
 import shutil
 import subprocess
 

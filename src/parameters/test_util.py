@@ -1,8 +1,3 @@
-'''
-Created on Apr 22, 2021
-
-@author: immanueltrummer
-'''
 from parameters.util import is_numerical, decompose_val
 import unittest
 
