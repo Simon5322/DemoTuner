@@ -340,20 +340,3 @@ class PgConfig(ConfigurableDBMS):
         success = self._connect()
         return success
 
-    """
-    自己的方法
-    """
-
-    def benchmark_evaluate(self, x, times):
-        self.set_params(x)
-        # self.benchmark.load_data()
-        self.benchmark.run_benchmark(times)
-        result_path = "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/pgResult"
-        result_path = result_path + "/pg_ycsb" + str(times) + ".txt"
-        throughput, latency = self.benchmark.get_result(result_path)
-        return throughput, latency
-
-    def set_params(self, x):
-        self.dbms.set_param("work_mem", x)
-        self.dbms.make_conf_effect()
-        print("配置信息" + str(self.dbms.get_value("work_mem")))

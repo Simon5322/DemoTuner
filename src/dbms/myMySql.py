@@ -22,12 +22,13 @@ import time
 from utils.prometheus import Prometheus
 from utils.util import take_unit
 
-
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 class MySQLconfig(ConfigurableDBMS):
     """ Represents configurable MySQL database. """
 
     def __init__(self, db, user, password,
-                 restart_cmd, recovery_cmd, timeout_s):
+                 restart_cmd, recovery_cmd, timeout_s, cnf_target_path):
         """ Initialize DB connection with given credentials. 
         
         Args:
@@ -51,7 +52,7 @@ class MySQLconfig(ConfigurableDBMS):
             'select cost_name from mysql.engine_cost')]
         self.all_variables = self.global_vars + \
                              self.server_cost_params + self.engine_cost_params
-        config_path = '/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/tuning_params_states/mysql/mysql_params.yml'
+        config_path = os.path.join(project_dir, 'src/tuning_params_states/mysql/mysql_params.yml')
         with open(config_path, "r") as f:
             conf = yaml.load(f, Loader=yaml.FullLoader)
         self.conf = {**conf}
@@ -62,6 +63,7 @@ class MySQLconfig(ConfigurableDBMS):
             'GB': 1024 * 1024 * 1024,
         }
         self.dbms_name = 'mysql'
+        self.cnf_target_path = cnf_target_path
         print(f'Global variables: {self.global_vars}')
         print(f'Server cost parameters: {self.server_cost_params}')
         print(f'Engine cost parameters: {self.engine_cost_params}')
@@ -84,8 +86,9 @@ class MySQLconfig(ConfigurableDBMS):
         restart_cmd = config['DATABASE']['restart_cmd']
         recovery_cmd = config['DATABASE']['recovery_cmd']
         timeout_s = config['LEARNING']['timeout_s']
+        cnf_target_path = config['SETTING']['cnf_target_path']
         return cls(db_name, db_user, password,
-                   restart_cmd, recovery_cmd, timeout_s)
+                   restart_cmd, recovery_cmd, timeout_s, cnf_target_path)
 
     def __del__(self):
         """ Close DBMS connection if any. """
@@ -341,13 +344,13 @@ class MySQLconfig(ConfigurableDBMS):
     import re
 
     def render(self, config_dict):
-        with open('/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/dbms/template/mysqld_template.cnf',
+        with open(os.path.join(project_dir, "src/dbms/template/mysqld_template.cnf"),
                   'r') as file:
             mysql_template = file.read()
         template = Template(mysql_template)
         rendered_config = template.render(config_dict)
-        local_des = '/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/dbms/config_files/mysqld.cnf'
-        target_file = '"/etc/mysql/mysql.conf.d/mysqld.cnf"'
+        local_des = os.path.join(project_dir, 'src/dbms/config_files/mysqld.cnf')
+        target_file = self.cnf_target_path
         with open(local_des, "w") as config_file:
             config_file.write(rendered_config)
         sudo_command = f'sudo cp {local_des} {target_file}'

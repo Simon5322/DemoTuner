@@ -5,18 +5,19 @@ from abc import ABC, abstractmethod
 
 from benchmark.benchmark import benchmark
 
-
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 class YCSB(benchmark):
-    def __init__(self, dbms_name, save_folder_name, workload="workloada"):
+    def __init__(self, dbms_name, save_folder_name, workload="workloada", YCSB_path=None):
         super().__init__(self.__class__.__name__)
         self.workload = workload
         self.dbms_name = dbms_name
-        self.result_path = os.path.join(
-            f"/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/{dbms_name}Result",
+        self.result_path = os.path.join(project_dir, f'results/{dbms_name}Result',
             save_folder_name)
-        self.YCSB_path = "/home/zhouyuxuan/Program/YCSB-0.15.0"
-        self.workload_setting_path = f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/config/{dbms_name}.ini'
-        self.myworkload_path = '/home/zhouyuxuan/Program/YCSB-0.15.0/workloads/myworkload'
+
+        self.YCSB_path = YCSB_path
+        self.workload_setting_path = os.path.join(project_dir, f'config/{dbms_name}.ini')
+        self.myworkload_path = os.path.join(YCSB_path, 'workloads/myworkload')
         self.jdbc_jar = 'mysql-connector-java-8.3.0.jar' if self.dbms_name == 'mysql' else 'postgresql-42.6.0.jar'
         config = configparser.ConfigParser()
         config.read(self.workload_setting_path)
@@ -100,14 +101,10 @@ class YCSB(benchmark):
             if not os.path.exists(result_file_path):
                 with open(result_file_path, "w") as result_file:
                     pass  # 创建一个空的txt文件
-            # run_data_cmd = "bin/ycsb.sh run basic -P workloads/myworkload > " + result_file_path
-            # run_data_cmd = 'bin/ycsb run jdbc - P workloads/myworkload -P./jdbc-binding/conf/db.properties -cp pg-42.6.0.jar'
             run_data_cmd = ['python2', 'bin/ycsb', 'run', 'jdbc', '-P', 'workloads/myworkload', '-P',
                             f'./jdbc-binding/conf/{self.dbms_name}Db.properties', '-cp ' + f'{self.jdbc_jar}']
             # print(run_data_cmd)
         elif times == -1:
-            # run_data_cmd = ['python2', 'bin/ycsb', 'run', 'jdbc', '-P', 'workloads/myworkload', '-P',
-            #                 f'./jdbc-binding/conf/{self.dbms_name}Db.properties', '-cp ' + f'{self.jdbc_jar}']
             run_data_cmd = [
                 'python2',
                 'bin/ycsb',
@@ -153,11 +150,5 @@ class YCSB(benchmark):
                     latency = float(line.split(", ")[2])
         return throughput, latency
 
-    def analysis_workload(self, workload):
 
-        pass
 
-# if __name__ == '__main__':
-#     result_path = "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/pgResult/pg_test.txt"
-#     ycsb =YCSB()
-#     throughput, latency = ycsb.get_result(result_path)

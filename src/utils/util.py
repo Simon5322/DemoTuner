@@ -13,6 +13,8 @@ import yaml
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 
 async def record_cpu_utilization(stop_recording_event, record_list):
     while not stop_recording_event.is_set():
@@ -129,23 +131,24 @@ def state_to_real(db_name, s):
     return real_state
 
 
-# 将具有空格的数字串转为列表,用于尝试直接从excel中复制过来的一串数字，比如这样的'144	100	6	1024	2	100	1	1	1	1	2000	301	506	4	1	60	182	1	15'
 def trans_string_to_num(data_str, split_type):
     data = [int(num) for num in data_str.split(split_type)]
     return data
 
 
 def clear_progress_result():
-    progress_path = '/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/progress/'
-    result_path = '/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/result/'
+    progress_path = os.path.join(project_dir, 'src/algorithms/RL/DDPGFD/progress/')
+    result_path = os.path.join(project_dir, 'src/algorithms/RL/DDPGFD/result/')
+
     clear_folder(progress_path + 's0')
     clear_folder(progress_path + 's1')
     clear_folder(result_path + 's0')
     clear_folder(result_path + 's1')
+
     file_paths = [
-        "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/result/hint_chosen.txt",
-        "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/result/not_obey.txt"
-        "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/result/hint_priority.xlsx"
+        os.path.join(result_path, 'hint_chosen.txt'),
+        os.path.join(result_path, 'not_obey.txt'),
+        os.path.join(result_path, 'hint_priority.xlsx')
     ]
     for file_path in file_paths:
         if os.path.exists(file_path):
@@ -235,44 +238,6 @@ def get_current_workload_str(cpath):
     """
 
     return workload_str
-# def save_excel():
-#     result_X = env.get_wrapper_attr('result_X')
-#     result = env.get_wrapper_attr('result')
-#     conf_names = [str(k) for k in {**conf}.keys()]
-#     df = pd.DataFrame(result_X, columns=conf_names)
-#     goal_series = pd.Series(result, name=str(goal))
-#     df = pd.concat([goal_series, df], axis=1)
-#     collect_name = '_collect' if args.collect else ''
-#     df.to_excel(
-#         f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/{dbms_name}Result/{save_folder_name}/data_hint2_{collect_name}.xlsx',
-#         index=False)
-#
-#     # 画图
-#     epochs = list(range(1, len(result) + 1))
-#     matplotlib.use('TkAgg')
-#     plt.figure(figsize=(8, 6))
-#     plt.plot(epochs, result, label='Method 1', marker='o')
-#     plt.xlabel('Epochs')
-#     plt.ylabel(goal)
-#     plt.title(goal + ' Comparison')
-#     plt.legend()
-#     plt.savefig(
-#         f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/{dbms_name}Result/{save_folder_name}/output_plot2_{collect_name}.png')
-#     plt.show()
-#
-#     # 保存数据
-#     shutil.copy(f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/config/{dbms_name}.ini',
-#                 f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/{dbms_name}Result/{save_folder_name}/{dbms_name}.ini')
-#     shutil.copy(
-#         f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/config/{DDPGFD_config}.yaml',
-#         f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/{dbms_name}Result/{save_folder_name}/{DDPGFD_config}.yaml')
-#     shutil.copytree(f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/progress',
-#                     f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/{dbms_name}Result/{save_folder_name}',
-#                     dirs_exist_ok=True)
-#     shutil.copytree(f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/result',
-#                     f'/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/{dbms_name}Result/{save_folder_name}',
-#                     dirs_exist_ok=True)
-
 
 if __name__ == '__main__':
     clear_progress_result()

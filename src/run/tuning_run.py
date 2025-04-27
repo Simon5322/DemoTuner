@@ -16,10 +16,6 @@ import yaml
 import pandas as pd
 import matplotlib
 
-from benchmark.ForestRegressionEstimater import ForestEstimateBenchmark
-from benchmark.TPCC import TPCC
-from benchmark.TPCH import TPCH
-from benchmark.simulateBenchmark import SimulateBenchmark
 from hintsClasses.Hint import get_all_hints
 from utils.util import clear_folder, clear_progress_result
 
@@ -59,7 +55,7 @@ fieldcount = int(config['WORKLOAD']['fieldcount'])
 save_folder_name = config['SETTING']['save_name']
 fake_test = True if config['LEARNING']['fake_test'] == 'True' else False
 repeat_times = int(config['LEARNING']['repeat_times'])
-
+YCSB_path = config['SETTING']['YCSB_path']
 
 # 清空文件夹爱
 clear_progress_result()
@@ -80,15 +76,7 @@ dbms = dbms.factory.from_file(config)  # pg or mysql
 
 bm = None
 if benchmark == "YCSB":
-    bm = YCSB(dbms_name=dbms_name, save_folder_name=save_folder_name)
-elif benchmark == 'TPCH':
-    bm = TPCH("tpch", "pg")  # 现在只有postgresql上的TPCH benchbase
-elif benchmark == 'TPCC':
-    bm = TPCC("tpcc", "pg")  # 现在只有postgresql上的TPCH benchbase
-elif benchmark == 'Simulate':
-    bm = SimulateBenchmark('simulate', conf)
-elif benchmark == 'ForestEstimator':
-    bm = ForestEstimateBenchmark('forestEstimator', conf, dbms_name)
+    bm = YCSB(dbms_name=dbms_name, save_folder_name=save_folder_name, YCSB_path=YCSB_path)
 else:
     raise KeyError(f"benchmark {benchmark} is not valid")
 

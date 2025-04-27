@@ -26,8 +26,6 @@ from pathlib import Path
 from Global_Variables import globalCurrentAction
 from IRL.Maximun_Entropy_IRL import load_reward_weights, reward_function, load_global_min_max
 from benchmark.ForestRegressionEstimater import ForestEstimateBenchmark
-from benchmark.TPCC import TPCC
-from benchmark.TPCH import TPCH
 from benchmark.YCSB import YCSB
 from benchmark.simulateBenchmark import SimulateBenchmark
 from dbms.myMySql import MySQLconfig
@@ -487,7 +485,7 @@ class PgEnv(gym.Env):
     def get_workload(self):
         continues_settings = {}
         discrete_settings = {}
-        if isinstance(self.benchmark, YCSB) or isinstance(self.benchmark, TPCH) or isinstance(self.benchmark, TPCC) or isinstance(self.benchmark, SimulateBenchmark) or isinstance(self.benchmark, ForestEstimateBenchmark) :
+        if isinstance(self.benchmark, YCSB) or isinstance(self.benchmark, SimulateBenchmark) or isinstance(self.benchmark, ForestEstimateBenchmark) :
             config = configparser.ConfigParser()
             dbms_name = None
             if isinstance(self.dbms, PgConfig):  # MySQLconfig):

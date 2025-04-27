@@ -266,7 +266,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # source_path = "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/data/demo/demo_1.pkl"
-    # save_path = "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/src/algorithms/RL/DDPGFD/data/demo/demo_1.pkl"
-    # reward_path = "/home/zhouyuxuan/workspace/pythonWorkspace/bertProject/results/reward_weights/reward_weight.txt"
-    # replace_r_in_pkl(source_path, save_path, reward_weight_path=reward_path)
+

@@ -23,11 +23,6 @@ from LLM import LLM_model_names
 from LLM.LLM_tools import gpt_recommend_conf, align_gpt_conf
 from LLM.tools import get_conf_description
 from agent import DATE_CHAIN_DEMO
-from src.benchmark.ForestRegressionEstimater import ForestEstimateBenchmark
-from benchmark.TPCC import TPCC
-from benchmark.TPCH import TPCH
-from benchmark.simulateBenchmark import SimulateBenchmark
-from hintsClasses.Hint import get_all_hints
 from utils.util import clear_folder, clear_progress_result, state_to_real, get_current_workload_str, action_to_real, \
     real_to_action, append_to_pkl, save_results_to_csv
 
@@ -80,14 +75,6 @@ dbms = dbms.factory.from_file(config)  # pg or mysql
 bm = None
 if benchmark == "YCSB":
     bm = YCSB(dbms_name=dbms_name, save_folder_name=save_folder_name)
-elif benchmark == 'TPCH':
-    bm = TPCH("tpch", "pg")  # 现在只有postgresql上的TPCH benchbase
-elif benchmark == 'TPCC':
-    bm = TPCC("tpcc", "pg")  # 现在只有postgresql上的TPCH benchbase
-elif benchmark == 'Simulate':
-    bm = SimulateBenchmark('simulate', conf)
-elif benchmark == 'ForestEstimator':
-    bm = ForestEstimateBenchmark('forestEstimator', conf, dbms_name)
 else:
     raise KeyError(f"benchmark {benchmark} is not valid")
 
