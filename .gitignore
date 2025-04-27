@@ -9,4 +9,4 @@ venv/
 .idea/
 local/
 lib/
-sql/
+sql
