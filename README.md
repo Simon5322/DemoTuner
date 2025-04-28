@@ -4,6 +4,7 @@
 Database systems expose hundreds of parameters that critically impact performance. However, automatic tuning remains challenging due to the vast configuration space and complex parameter interactions. Traditional reinforcement learning (RL) methods often suffer from low sample efficiency and slow training, partly due to the lack of guidance during exploration.
 
 **DEMOTune** addresses these challenges by leveraging domain knowledge and high-quality tuning hints to pretrain the agent, effectively balancing domain-guided exploration with self-exploration. This reduces training overhead and improves tuning effectiveness.
+
 We evaluated **DEMOTune** on **MySQL** and **PostgreSQL** under three different workloads.  
 Experimental results show that DEMOTune significantly outperforms state-of-the-art methods in terms of **effectiveness**, **efficiency**, and **adaptability**.
 ## Key Contributions
