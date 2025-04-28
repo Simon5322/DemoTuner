@@ -7,7 +7,7 @@ train_config:
   exp_idx : '1'
   pretrain_lr_rate: 0.00001  # 0.00001
   lr_optimizer: exp   #'pretrain', 'action_guide_exp', 'exp', LrFinder
-  lr_rate: 0.000001 #0.0005
+  lr_rate: 0.0005 #0.0005
   lr_decrease_rate : 100 # lr 训练结束时减小多少倍 default:100
   w_decay: 0.00001
   restore: false # Restore for training or evaluation
@@ -17,15 +17,15 @@ train_config:
   update_step: 5 # Update per env step
   mse_loss: true # for Q loss
   save_every: 5 # save and evaluate
-  update_hint_priority: false   # 是否调优过程中动态更改hint的优先级
-  action_guide : false #action扰动
+  update_hint_priority: true   # 是否调优过程中动态更改hint的优先级
+  action_guide : true #action扰动
   action_guide_episode : 5 #default 5
-  reward_guide : false    # 是否使用reward来guide探索
+  reward_guide : true    # 是否使用reward来guide探索
   reward_shaping_threshold: 0.5   # 优先级大于此才会在reward shaping中记录shaping的个数
   reward_shaping_ratio: 5    # 用于reward shaping的削减大小 比如： 100/reward_shaping_ratio（5） = 20%
 
   # Pretrain Setting
-  pretrain_demo: false
+  pretrain_demo: true
   pretrain_step: 5
   pretrain_save_step: 5
 
@@ -52,7 +52,7 @@ agent_config:
   no_per: false # No prioritized experience replay (Don't  update priority)
 
 demo_config:
-  load_demo_data: false  # demo2memory 是否加载到replaybuffer中
+  load_demo_data: true  # demo2memory 是否加载到replaybuffer中
   demo_dir: './data/demo'
   demo_N: 1000 # manually fill in
   load_N: 1000  # manually fill in
