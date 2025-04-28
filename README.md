@@ -1,19 +1,20 @@
 # DemoTuner: Efficient DBMS Knobs Tuning via LLM-Assisted Demonstration Reinforcement Learning
-Database systems offer hundreds of parameters that critically impact performance. However, automatic tuning remains challenging due to the vast configuration space and complex parameter interactions. Traditional reinforcement learning (RL) methods suffer from low sample efficiency and slow training, partly due to the lack of guidance during exploration.
+**DEMOTune** is the first approach that introduces **demonstration learning** into database configuration tuning.
 
-DEMOTune is the first approach to bring demonstration learning into database configuration tuning.
-By leveraging domain knowledge and high-quality tuning hints, DEMOTune pretrains the agent with high-quality configurations, and later balances domain-guided exploration with self-exploration. This reduces training overhead while improving tuning effectiveness.
+Database systems expose hundreds of parameters that critically impact performance. However, automatic tuning remains challenging due to the vast configuration space and complex parameter interactions. Traditional reinforcement learning (RL) methods often suffer from low sample efficiency and slow training, partly due to the lack of guidance during exploration.
 
-Our key contributions:
+**DEMOTune** addresses these challenges by leveraging domain knowledge and high-quality tuning hints to pretrain the agent, effectively balancing domain-guided exploration with self-exploration. This reduces training overhead and improves tuning effectiveness.
 
-Knowledge Extraction: Use large language models (LLMs) to mine detailed domain knowledge from expert texts, including parameter recommendations.
+## Key Contributions
 
-Demonstration Learning: Incorporate domain knowledge into the RL agent’s exploration through demonstrations.
+- **Knowledge Extraction:** Utilize large language models (LLMs) to mine detailed domain knowledge from expert texts, including parameter recommendations.
+- **Demonstration Learning:** Incorporate domain knowledge into the RL agent’s exploration through demonstrations.
+- **Training Enhancements:** Apply action-guidance and reward-shaping techniques to accelerate and improve training.
 
-Training Enhancements: Apply action-guidance and reward-shaping techniques to speed up and improve training.
+## Evaluation
 
-We evaluated DEMOTune on MySQL and PostgreSQL under three different workloads.
-Results show that DEMOTune significantly outperforms state-of-the-art methods in effectiveness, efficiency, and adaptability.
+We evaluated **DEMOTune** on **MySQL** and **PostgreSQL** under three different workloads.  
+Experimental results show that DEMOTune significantly outperforms state-of-the-art methods in terms of **effectiveness**, **efficiency**, and **adaptability**.
 
 ![DEMOTune Overview](./overview1.png)
 # start
