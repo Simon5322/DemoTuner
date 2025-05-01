@@ -23,8 +23,10 @@ PostgreSQL (16.1)
 MySQL (8.0.36)
 
 ## Install dependencies
+
 ```bash
 pip install -r requirements.txt
+```
 
 ## Benchmark
 The main benchmark we employed for configuration evaluation is YCSB (Yahoo! Cloud Serving Benchmark), which is a frequently used benchmarking tool for performance evaluation of DBMSs. After installation, you need to modify the YCSB installation path in pg.ini or mysql.ini by setting the YCSB_path.
