@@ -23,6 +23,7 @@ PostgreSQL (16.1)
 MySQL (8.0.36)
 
 ## Install dependencies
+```bash
 pip install -r requirements.txt
 
 ## Benchmark
